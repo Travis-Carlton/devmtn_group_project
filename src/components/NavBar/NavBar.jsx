@@ -4,7 +4,10 @@ import './NavBar.scss';
 export default class NavBar extends Component {
     render() {
         return (
-            <div>Nav</div>
+            <div>
+                Nav
+                TEST MERGE
+            </div>
         );
     }
 }
