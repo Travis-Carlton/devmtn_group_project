@@ -6,7 +6,8 @@ export default class NavBar extends Component {
         return (
             <div>
                 Nav
-                TEST MERGE
+                TEST
+                <h1>hello</h1>
             </div>
         );
     }
