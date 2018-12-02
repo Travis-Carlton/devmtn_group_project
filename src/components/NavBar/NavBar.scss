@@ -1,0 +1,38 @@
+.navbarp{
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.808);
+}
+.navbarc{
+    height: 100%;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbarlogo{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-left: 5px solid black;
+    padding-left: 30px;
+    font-size: 30px;
+    color: white;
+}
+.navbarcc{
+    height: 100%;
+    width: 35%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-right: 5px solid black;
+    > * {
+        color: white;
+        text-decoration: none;
+        font-size: 26px;
+        margin-right: 30px;
+    }
+}

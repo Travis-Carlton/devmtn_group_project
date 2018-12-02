@@ -1,0 +1,27 @@
+.landingpagep{
+    height: 80vh;
+    background: rgb(0, 0, 59);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.landingpagec{
+    height: 50%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    > button {
+        cursor: pointer;
+        margin: 20px;
+        height: 70px;
+        width: 200px;
+        border: none;
+        border-radius: 10px;
+        background-color: rgba(184, 184, 184, 0.527);
+        box-shadow: 2px 2px 5px rgb(34, 34, 34);
+        font-size: 20px;
+    }
+}
