@@ -7,7 +7,7 @@ require('dotenv').config();
 const app = express();
 const server = require('http').createServer(app)
 const io = require('socket.io')(server)
-
+const authController = require('./authController'); 
 
 // controllers
 const controller = require('./controller.js');
@@ -28,8 +28,8 @@ app.use(session({
     cookie: {
         expires: 1000*60*60*24*14
     }
-  }));
-  
+}));
+
 app.use(express.static(`${__dirname}/../build`));
 
 
@@ -45,12 +45,22 @@ io.sockets.on('connection', (socket) =>{
     })
 })
 
+//auth endpoints
+app.get('/auth/callback', authController.login);
+app.get('/api/user-data', (req, res) => {
+    res.json({ user: req.session.user});
+});
+app.post('/api/logout', (req, res) => {
+    req.session.destroy();
+    res.send();
+});
+
 ///////////////////////////////
 
 
 const path = require('path')
 app.get('*', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../build/index.html'));
+    res.sendFile(path.join(__dirname, '../build/index.html'));
 })
 
 server.listen(4005,()=>{
