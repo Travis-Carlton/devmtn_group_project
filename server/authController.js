@@ -36,8 +36,7 @@ module.exports = {
                 userData.sub,
                 userData.email,
                 userData.name,
-                userData.picture,
-                true
+                userData.picture
               ]).then(newUsers => {
                 const newUser = newUsers[0];
                 req.session.user = newUser;
