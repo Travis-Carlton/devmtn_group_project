@@ -6,8 +6,14 @@ export default class LandingPage extends Component {
         return (
             <div className='landingpagep'>
                 <div className="landingpagec">
-                    <button>Get started as <br /> a developer</button>
-                    <button>Get started as <br /> a client</button>
+                    <div className='landingpagecc'>
+                        <h1>DevWay</h1>
+                        <h2>The best site for developers to meet clients</h2>
+                        <div>
+                            <button>Get started as developer</button>
+                            <button>Get started as client</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
