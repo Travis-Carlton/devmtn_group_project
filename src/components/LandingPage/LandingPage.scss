@@ -1,27 +1,58 @@
 .landingpagep{
-    height: 80vh;
-    background: rgb(0, 0, 59);
+    height: 95vh;
+    background: url('../../notebook-1280538_1920.jpg');
+    background-size: cover;
+    background-attachment: fixed;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    color: white;
 }
 .landingpagec{
     height: 50%;
     width: 50%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: white;
     border-radius: 10px;
-    > button {
-        cursor: pointer;
-        margin: 20px;
-        height: 70px;
-        width: 200px;
-        border: none;
-        border-radius: 10px;
-        background-color: rgba(184, 184, 184, 0.527);
-        box-shadow: 2px 2px 5px rgb(34, 34, 34);
-        font-size: 20px;
+    >.landingpagecc{
+        >div> button {
+            cursor: pointer;
+            margin: 20px;
+            height: 30px;
+            width: 250px;
+            border: none;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.789);
+            box-shadow: 10px 10px 5px rgb(34, 34, 34);
+            font-size: 20px;
+        }
+        > h1 {
+            font-size: 100px;
+            text-shadow: 10px 10px 5px rgb(34, 34, 34);
+        }
+        > h2 {
+            margin-bottom: 30px;
+            text-shadow: 10px 10px 5px rgb(34, 34, 34);
+        }
+
+    }
+}
+
+@media (min-width: 414px) and (max-width: 1024px){
+    .landingpagec{
+        height: 80%;
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+
+@media screen and (max-width: 414px){
+    .landingpagec{
+        height: 80%;
+        width: 100%;
+        padding: 10px;
     }
 }
