@@ -5,12 +5,12 @@ create table users (
     email varchar not null,
     profile_name text not null,
     picture text not null,
-    developer boolean not null
+    developer boolean 
 );
 
 -- DEVELOPER PROFILE
 create table developer_profile (
-    id serial primary,
+    id serial primary key,
     user_id int references users(user_id),
     title text,
     overview text,
@@ -23,20 +23,23 @@ create table developer_profile (
 -- JOBS TABLE
 create table jobs (
     job_id serial primary key,
-    client_id text references users(user_id),
+    client_id int references users(user_id),
     title varchar not null,
     description varchar not null,
     start_date varchar not null,
     estimation varchar not null,
-    pay varchar not null
+    pay varchar not null,
+    stamp date default now()
+
 );
 
 -- JOB FAVORITES TABLE
 create table favorites (
-    id serial primary,
+    id serial primary key,
     user_id int references users(user_id),
-    job_id int references jobs(job_id),
+    job_id int references jobs(job_id)
 );
+
 
 -- JOB FAVORITES VIEW
 select * from

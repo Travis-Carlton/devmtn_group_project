@@ -56,7 +56,12 @@ app.post('/api/logout', (req, res) => {
 });
 
 ///////////////////////////////
-
+app.post('/api/devorclient', controller.isDeveloper);
+app.post('/api/createdevprofile', controller.createDevProfile); 
+app.get('/api/getdevprofile/:id', controller.viewDevProfile);
+app.post('/api/createjob', controller.createJob);
+app.get('/api/getalljobs', controller.viewAllJobs);
+app.get('/api/getselectedjob/:id', controller.viewSelectedJob);
 
 const path = require('path')
 app.get('*', (req, res)=>{
