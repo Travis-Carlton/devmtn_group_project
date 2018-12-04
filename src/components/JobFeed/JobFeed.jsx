@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './JobFeed.scss';
-import axios from 'axios';
 import {Link} from 'react-router-dom';
 
 class JobFeed extends Component {
