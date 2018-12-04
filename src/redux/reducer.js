@@ -1,4 +1,5 @@
 const initialState = {
+    loggedIn: false,
     example: false,
 };
 
