@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './JobFeed.scss';
+import axios from 'axios';
 
 class JobFeed extends Component {
 constructor(){
@@ -24,9 +25,9 @@ constructor(){
 }
 
 componentDidMount(){
-    axios.get('/').then(res => {
-        this.setState({jobs: res.data})
-    })
+    // axios.get('/').then(res => {
+    //     this.setState({jobs: res.data})
+    // })
 }
 
 render() {
@@ -40,8 +41,8 @@ render() {
         </div>
     })
     return (
-        <div>
-            <br /> <br /> <br />
+        <div className='jobfeedp'>
+            {/* <br /> <br /> <br /> */}
             {displayJobs}
         </div>
     )}

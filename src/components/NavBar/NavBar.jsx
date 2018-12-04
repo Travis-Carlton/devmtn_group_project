@@ -29,9 +29,9 @@ export default class NavBar extends Component {
                         <Link to='/'>Home</Link>
                         {/* a tags are place holders for visual */}
                         <Link to='/#'>How It Works</Link>
-                        <p onClick={this.props.login}>Log In/Sign Up</p>
+                        <p onClick={this.props.login}>Log In</p>
                         <Link to='/jobfeed'>Job Feed</Link>
-                        <Link to='/#'>Profile</Link>
+                        <Link to='/profile'>Profile</Link>
                     </div>
                         <button onClick={this.toggleTabs} className='mobiletab'>❖</button>
                         {this.state.showTabs &&
@@ -39,9 +39,9 @@ export default class NavBar extends Component {
                                 <div>
                                     <Link to='/'>Home</Link>
                                     <Link to='/#'>How It Works</Link>
-                                    <p onClick={this.props.login}>Log In/Sign Up</p>
+                                    <p onClick={this.props.login}>Log In</p>
                                     <Link to='/jobfeed'>Job Feed</Link>
-                                    <Link to='/#'>Profile</Link>
+                                    <Link to='/profile'>Profile</Link>
                                 </div>
                             </div>
                         }

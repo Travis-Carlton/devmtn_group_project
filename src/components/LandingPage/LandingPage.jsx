@@ -4,6 +4,12 @@ import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
 
 class LandingPage extends Component {
+
+    login = () => {
+        const redirecturi = encodeURIComponent(window.location.origin + '/auth/callback');
+        const url = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/authorize?client_id=${process.env.REACT_APP_AUTH0_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${redirecturi}&response_type=code`
+        window.location = url;  
+    }
     
     render() {
         return (
@@ -19,7 +25,7 @@ class LandingPage extends Component {
                                 <button>Get started as client</button>
                             </>
                             :
-                            <button>Login/Sign Up</button>
+                            <button onClick={this.login}>Login/Sign Up</button>
 
                             }
                         </div>
