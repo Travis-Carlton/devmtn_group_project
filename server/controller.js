@@ -11,8 +11,8 @@ module.exports = {
     },
     createDevProfile: (req, res) => {
         const db = req.app.get('db');
-        const { user_id, title, overview, hourly_rate, portfolio, skills, education } = req.body;
-        db.create_dev_profile(user_id, title, overview, hourly_rate, portfolio, skills, education)
+        const { user_id, title, overview, hourly_rate, portfolio, skills, education, profile_picture, developer_email } = req.body;
+        db.create_dev_profile(user_id, title, overview, hourly_rate, portfolio, skills, education, profile_picture, developer_email)
         .then(profile => {
             res.status(200).json(profile)
         }).catch(error => {
@@ -32,8 +32,8 @@ module.exports = {
     },
     createJob: (req, res) => {
         const db = req.app.get('db');
-        const { client_id, title, description, start_date, estimation, pay, email } = req.body;
-        db.create_job(client_id, title, description, start_date, estimation, pay, email)
+        const { client_id, title, description, start_date, estimation, pay, job_email } = req.body;
+        db.create_job(client_id, title, description, start_date, estimation, pay, job_email)
         .then(job => {
             console.log(job)
             res.status(200).json(job)

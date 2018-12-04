@@ -22,6 +22,9 @@ create table developer_profile (
 alter table developer_profile
 add column profile_picture text;
 
+alter table developer_profile
+add column developer_email text;
+
 -- JOBS TABLE
 create table jobs (
     job_id serial primary key,
@@ -34,7 +37,7 @@ create table jobs (
     stamp date default now()
 );
 alter table jobs 
-add column email text;
+add column job_email text;
 
 -- JOB FAVORITES TABLE
 create table favorites (
