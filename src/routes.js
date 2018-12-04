@@ -7,6 +7,7 @@ import JobFeed from './components/JobFeed/JobFeed.jsx';
 import CreateJob from './components/JobForm/JobForm';
 import DetailedJob from './components/DetailedJob/DetailedJobs';
 import Favorites from './components/Favorites/Favorites';
+import HowItWorks from './components/HowItWorks/HowItWorks';
 
 export default (
     <Switch>
@@ -17,6 +18,6 @@ export default (
        <Route path='/create' component={CreateJob} />
        <Route path='/job/:id' component={DetailedJob} />
        <Route path='/favorites' component={Favorites} />
-
+       <Route path='/howitworks' component={HowItWorks} />
     </Switch>
 )
