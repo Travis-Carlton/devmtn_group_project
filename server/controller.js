@@ -21,11 +21,11 @@ module.exports = {
     },
     viewDevProfile: (req, res) => {
         const db = req.app.get('db');
-        const { id } = req.params;
-        db.get_dev_profile(id)
+        let { id } = req.params;
+        id = parseInt(id);
+        db.get_dev_profile([id])
         .then(profile => {
-            console.log(profile)
-            res.status(200).json(profile)
+            res.status(200).json(profile[0])
         }).catch(error => {
             console.error('Error on viewDevProfile', error)
         })

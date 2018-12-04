@@ -19,7 +19,7 @@ class LandingPage extends Component {
                         <h1>DevWay</h1>
                         <h2>The best site for developers to meet clients</h2>
                         <div>
-                            {!this.props.loggedIn?
+                            {this.props.loggedIn?
                             <>
                                 <Link to='/devwiz'><button>Get started as developer</button></Link>
                                 <button>Get started as client</button>

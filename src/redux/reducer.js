@@ -1,7 +1,8 @@
 const initialState = {
     loggedIn: false,
-    isDeveloper: false,
+    isDeveloper: null,
     userID: '',
+    name: '',
     title: '',
     overview: '',
     hourlyRate: '',
@@ -17,6 +18,7 @@ const initialState = {
 const UPDATE_LOGGED_IN = 'UPDATE_LOGGED_IN';
 const UPDATE_IS_DEVELOPER = 'UPDATE_IS_DEVELOPER';
 const UPDATE_USER_ID = 'UPDATE_USER_ID';
+const UPDATE_NAME = 'UPDATE_NAME';
 const UPDATE_TITLE = 'UPDATE_TITLE';
 const UPDATE_OVERVIEW = 'UPDATE_OVERVIEW';
 const UPDATE_HOURLY_RATE = 'UPDATE_HOURLY_RATE';
@@ -26,6 +28,7 @@ const UPDATE_EDUCATION = 'UPDATE_EDUCATION';
 const UPDATE_PROFILE_PICTURE = 'UPDATE_PROFILE_PICTURE';
 const UPDATE_DEV_EMAIL = 'UPDATE_DEV_EMAIL';
 const UPDATE_SAVED_JOBS = 'UPDATE_SAVED_JOBS';
+const CLEAR_STATE = 'CLEAR_STATE';
 const EXAMPLE = 'EXAMPLE';
 
 
@@ -37,6 +40,8 @@ export default function reducer(state = initialState, action){
             return {...state, isDeveloper: action.payload}
         case UPDATE_USER_ID:
             return {...state, userID: action.payload}
+        case UPDATE_NAME:
+            return {...state, name: action.payload}
         case UPDATE_TITLE:
             return {...state, title: action.payload}
         case UPDATE_OVERVIEW:
@@ -55,6 +60,10 @@ export default function reducer(state = initialState, action){
             return {...state, devEmail: action.payload}
         case UPDATE_SAVED_JOBS:
             return {...state, savedJobs: action.payload}
+        case CLEAR_STATE:
+            return {...state, ...action.payload}
+
+
         case EXAMPLE:
             return {...state, example: action.payload}
         
@@ -81,6 +90,12 @@ export function updateUserID(id){
     return {
         type: UPDATE_USER_ID,
         payload: id
+    }
+}
+export function updateName(name){
+    return {
+        type: UPDATE_NAME,
+        payload: name
     }
 }
 export function updateTitle(title){
@@ -135,6 +150,26 @@ export function updateSavedJobs(jobs){
     return {
         type: UPDATE_SAVED_JOBS,
         payload: jobs
+    }
+}
+export function clearState(){
+    return {
+        type: CLEAR_STATE,
+        payload: {
+            loggedIn: false,
+            isDeveloper: null,
+            userID: '',
+            name: '',
+            title: '',
+            overview: '',
+            hourlyRate: '',
+            portfolio: '',
+            skills: '',
+            education: '',
+            profilePicture: '',
+            devEmail: '',
+            savedJobs: [],
+        }
     }
 }
 export function updateExample(ex){
