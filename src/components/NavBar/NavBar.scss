@@ -29,6 +29,7 @@
     justify-content: flex-end;
     align-items: center;
     > * {
+        cursor: pointer;
         color: white;
         text-decoration: none;
         font-size: 26px;
@@ -77,6 +78,7 @@
            height: 80%;
            width: 80%;
             > * {
+                cursor: pointer;
                 color: white;
                 text-decoration: none;
                 font-size: 30px;

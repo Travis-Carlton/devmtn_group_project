@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './LandingPage.scss';
+import {connect} from 'react-redux';
+import {Link, withRouter} from 'react-router-dom';
 
-export default class LandingPage extends Component {
+class LandingPage extends Component {
+    
     render() {
         return (
             <div className='landingpagep'>
@@ -10,8 +13,15 @@ export default class LandingPage extends Component {
                         <h1>DevWay</h1>
                         <h2>The best site for developers to meet clients</h2>
                         <div>
-                            <button>Get started as developer</button>
-                            <button>Get started as client</button>
+                            {!this.props.loggedIn?
+                            <>
+                                <Link to='/devwiz'><button>Get started as developer</button></Link>
+                                <button>Get started as client</button>
+                            </>
+                            :
+                            <button>Login/Sign Up</button>
+
+                            }
                         </div>
                     </div>
                 </div>
@@ -19,3 +29,12 @@ export default class LandingPage extends Component {
         );
     }
 }
+
+function mapStateToProps(state){
+    const {loggedIn} = state;
+    return {
+        loggedIn
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(LandingPage))
