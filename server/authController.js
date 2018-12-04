@@ -2,7 +2,6 @@ const axios = require('axios');
 
 module.exports = {
     login: (req, res) => {
-        console.log('req.query', req.query);
 
         const payload = {
           client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
@@ -11,7 +10,6 @@ module.exports = {
           grant_type: 'authorization_code',
           redirect_uri: `http://${req.headers.host}/auth/callback`
         };
-        console.log(payload)
 
         function tradeCodeForAccessToken() {
           return axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, payload);
@@ -23,13 +21,11 @@ module.exports = {
         
         function storeUserInfoInDataBase(response) {
           const userData = response.data;
-          console.log('userData', userData)
       
           return req.app.get('db').find_user_by_auth0_id(userData.sub).then(users => {
             if (users.length) {
               const user = users[0];
               req.session.user = user;
-              console.log('cart--------->', req.session.cart)
               res.redirect('/');
             } else {
               return req.app.get('db').create_user([
@@ -47,7 +43,7 @@ module.exports = {
               });
             }
           }).catch(error => {
-            console.log('error in storeUserInfoInDatabase', error);
+            console.error('error in storeUserInfoInDatabase', error);
             res.status(500).json({ message: 'Error on server, sorry bro' });
           });
         }
@@ -56,7 +52,7 @@ module.exports = {
         .then(accessToken => tradeAccessTokenForUserInfo(accessToken))
         .then(userInfo => storeUserInfoInDataBase(userInfo))
         .catch(error => {
-          console.log('-------------- error', error);
+          console.error('-------------- error', error);
           res.status(500).json({ message: 'There was an unexpected error on the server.' })
         });
     }

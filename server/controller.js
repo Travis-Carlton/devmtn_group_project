@@ -21,21 +21,20 @@ module.exports = {
     },
     viewDevProfile: (req, res) => {
         const db = req.app.get('db');
-        const { id } = req.params;
-        db.get_dev_profile(id)
+        let { id } = req.params;
+        id = parseInt(id);
+        db.get_dev_profile([id])
         .then(profile => {
-            res.status(200).json(profile)
+            res.status(200).json(profile[0])
         }).catch(error => {
             console.error('Error on viewDevProfile', error)
         })
     },
     createJob: (req, res) => {
-        console.log(req.body)
         const db = req.app.get('db');
         const { client_id, title, description, start_date, estimation, pay, job_email } = req.body;
         db.create_job(client_id, title, description, start_date, estimation, pay, job_email)
         .then(job => {
-            console.log(job)
             res.status(200).json(job)
         }).catch(error => {
             console.error('Error on createJob', error)
@@ -45,7 +44,6 @@ module.exports = {
         const db = req.app.get('db');
         db.get_all_jobs()
         .then(jobs => {
-            console.log(jobs)
             res.status(200).json(jobs)
         }).catch(error => {
             console.error('Error on viewAllJobs', error)

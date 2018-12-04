@@ -48,7 +48,10 @@ io.sockets.on('connection', (socket) =>{
 //auth endpoints
 app.get('/auth/callback', authController.login);
 app.get('/api/user-data', (req, res) => {
-    res.json({ user: req.session.user});
+    req.session.user ?
+    res.status(200).json({ user: req.session.user})
+    :
+    res.status(200).send('no session')
 });
 app.post('/api/logout', (req, res) => {
     req.session.destroy();
