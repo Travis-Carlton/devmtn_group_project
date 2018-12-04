@@ -19,6 +19,8 @@ create table developer_profile (
     skills text,
     education text
 );
+alter table developer_profile
+add column profile_picture text;
 
 -- JOBS TABLE
 create table jobs (
@@ -30,8 +32,9 @@ create table jobs (
     estimation varchar not null,
     pay varchar not null,
     stamp date default now()
-
 );
+alter table jobs 
+add column email text;
 
 -- JOB FAVORITES TABLE
 create table favorites (

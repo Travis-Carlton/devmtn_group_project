@@ -32,8 +32,8 @@ module.exports = {
     },
     createJob: (req, res) => {
         const db = req.app.get('db');
-        const { job_id, client_id, title, description, start_date, estimation, pay } = req.body;
-        db.create_job(job_id, client_id, title, description, start_date, estimation, pay)
+        const { client_id, title, description, start_date, estimation, pay, email } = req.body;
+        db.create_job(client_id, title, description, start_date, estimation, pay, email)
         .then(job => {
             console.log(job)
             res.status(200).json(job)
