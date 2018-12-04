@@ -42,8 +42,8 @@ render() {
         </div>
     })
     return (
-        <div>
-            <br /> <br /> <br />
+        <div className='jobfeedp'>
+            {/* <br /> <br /> <br /> */}
             {displayJobs}
         </div>
     )}

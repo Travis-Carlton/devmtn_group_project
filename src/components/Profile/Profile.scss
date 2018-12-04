@@ -1,0 +1,24 @@
+.profilep{
+    padding-top: 10vh;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(86, 86, 255);
+}
+
+.profilec{
+    height: 90%;
+    width: 70%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 414px){
+
+
+}
