@@ -24,7 +24,6 @@ module.exports = {
         const { id } = req.params;
         db.get_dev_profile(id)
         .then(profile => {
-            console.log(profile)
             res.status(200).json(profile)
         }).catch(error => {
             console.error('Error on viewDevProfile', error)
@@ -60,6 +59,25 @@ module.exports = {
             res.status(200).json(job)
         }).catch(error => {
             console.error('Error on viewSelectedJob', error)
+        })
+    },
+    addFavorite: (req, res) => {
+        const db = req.app.get('db');
+        const {user_id, job_id} = req.body;
+        db.add_favorite([user_id, job_id]).then(fav => {
+            res.status(200).json(fav)
+        }).catch(error => {
+            console.error('Error on addFavorite', error)
+        })
+    },
+    getFavorites: (req, res) => {
+        const db = req.app.get('db');
+        const {id} = req.params;
+        db.get_favorites(id)
+        .then(fav => {
+            res.status(200).json(fav)
+        }).catch(error => {
+            console.error('Error on getFavorites', error)
         })
     }
 }

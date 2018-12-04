@@ -15,7 +15,14 @@ class DetailedJob extends Component {
         })
     }
 
+    addFavorite = (userId, jobId) => {
+        axios.post('/api/addfavorite', {user_id: userId, job_id: jobId}).then(res => {
+            alert('Job added to favorites')
+        })
+    }
+
     render() {
+        let {userID} = this.props;
         return (
             <div>
                 <br /> <br /> <br />
@@ -27,6 +34,7 @@ class DetailedJob extends Component {
                         <p>{job.start_date}</p>
                         <p>{job.estimation} Days</p>
                         <p>${job.pay}</p>
+                        <button onClick={() => this.addFavorite(userID, job.job_id)}>Watch Post</button>
                         </div>
                     })
                 }
@@ -41,7 +49,7 @@ class DetailedJob extends Component {
                         </div>
                     })
                 }
-                {console.log(this.state.job_email)}
+                {console.log(this.state.job)}
             </div>
         )}
 }

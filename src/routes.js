@@ -6,6 +6,7 @@ import DevWizard from './components/DevWizard/DevWizard.jsx';
 import JobFeed from './components/JobFeed/JobFeed.jsx';
 import CreateJob from './components/JobForm/JobForm';
 import DetailedJob from './components/DetailedJob/DetailedJobs';
+import Favorites from './components/Favorites/Favorites';
 
 export default (
     <Switch>
@@ -15,6 +16,7 @@ export default (
        <Route path='/jobfeed' component={JobFeed} />
        <Route path='/create' component={CreateJob} />
        <Route path='/job/:id' component={DetailedJob} />
+       <Route path='/favorites' component={Favorites} />
 
     </Switch>
 )

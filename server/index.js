@@ -62,6 +62,8 @@ app.get('/api/getdevprofile/:id', controller.viewDevProfile);
 app.post('/api/createjob', controller.createJob);
 app.get('/api/getalljobs', controller.viewAllJobs);
 app.get('/api/getselectedjob/:id', controller.viewSelectedJob);
+app.post('/api/addfavorite', controller.addFavorite);
+app.get('/api/getfavorite/:id', controller.getFavorites);
 
 const path = require('path')
 app.get('*', (req, res)=>{
