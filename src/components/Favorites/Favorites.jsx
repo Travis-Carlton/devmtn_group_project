@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 class Favorites extends Component {
     constructor(){
@@ -10,7 +11,8 @@ class Favorites extends Component {
         }
     }
     componentDidMount(){
-        axios.get(`/api/getfavorite/1`).then(res => {
+        console.log('----->', this.props)
+        axios.get(`/api/getfavorite/${this.props.userID}`).then(res => {
             this.setState({list: res.data})
         })
     }
@@ -52,4 +54,10 @@ render() {
     )}
 }
 
-export default Favorites;
+const mapStateToProps = (state) => {
+    return {
+        userID: state.userID
+    }
+}
+
+export default connect(mapStateToProps)(Favorites);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux'
 
 class DetailedJob extends Component {
     constructor(){
@@ -54,4 +55,10 @@ class DetailedJob extends Component {
         )}
 }
 
-export default DetailedJob;
+const mapStateToProps = (state) => {
+    return {
+        userID: state.userID
+    }
+}
+
+export default connect(mapStateToProps)(DetailedJob);
