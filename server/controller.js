@@ -24,7 +24,6 @@ module.exports = {
         const { id } = req.params;
         db.get_dev_profile(id)
         .then(profile => {
-            console.log(profile)
             res.status(200).json(profile)
         }).catch(error => {
             console.error('Error on viewDevProfile', error)

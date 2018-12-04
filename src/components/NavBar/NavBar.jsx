@@ -26,22 +26,22 @@ export default class NavBar extends Component {
                         DevWay
                     </div>
                     <div className="navbarcc">
-                        <Link to='/'>Home</Link>
+                        <Link to='/'>HOME</Link>
                         {/* a tags are place holders for visual */}
-                        <Link to='/#'>How It Works</Link>
-                        <p onClick={this.props.login}>Log In</p>
-                        <Link to='/jobfeed'>Job Feed</Link>
-                        <Link to='/profile'>Profile</Link>
+                        <Link to='/howitworks'>HOW IT WORKS</Link>
+                        <p onClick={this.props.login}>LOG IN</p>
+                        <Link to='/jobfeed'>JOB FEED</Link>
+                        <Link to='/profile'>PROFILE</Link>
                     </div>
                         <button onClick={this.toggleTabs} className='mobiletab'>❖</button>
                         {this.state.showTabs &&
                             <div className="showtabs">
                                 <div>
-                                    <Link to='/'>Home</Link>
-                                    <Link to='/#'>How It Works</Link>
-                                    <p onClick={this.props.login}>Log In</p>
-                                    <Link to='/jobfeed'>Job Feed</Link>
-                                    <Link to='/profile'>Profile</Link>
+                                    <Link to='/'>HOME</Link>
+                                    <Link to='/howitworks'>HOW IT WORKS</Link>
+                                    <p onClick={this.props.login}>LOG IN</p>
+                                    <Link to='/jobfeed'>JOB FEED</Link>
+                                    <Link to='/profile'>PROFILE</Link>
                                 </div>
                             </div>
                         }
