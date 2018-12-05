@@ -70,9 +70,11 @@ module.exports = {
     },
     getFavorites: (req, res) => {
         const db = req.app.get('db');
-        const {id} = req.params;
+        let {id} = req.params;
+        id = parseInt(id)
         db.get_favorites(id)
         .then(fav => {
+            console.log(fav)
             res.status(200).json(fav)
         }).catch(error => {
             console.error('Error on getFavorites', error)

@@ -11,7 +11,7 @@ class Favorites extends Component {
         }
     }
     componentDidMount(){
-        console.log('----->', this.props)
+        console.log(this.props)
         axios.get(`/api/getfavorite/${this.props.userID}`).then(res => {
             this.setState({list: res.data})
         })
@@ -20,12 +20,12 @@ class Favorites extends Component {
 render() {
     return (
         <div>
+            {console.log(this.state.list)}
         {
-            this.state.list.length > 0 ?
+            this.state.list.length > 0 || this.props.userID ?
             <div>
                 {
                 this.state.list.map(job => {
-                    console.log(job)
                     let num = job.description.split(' ').length
                     let splitDescription = job.description.split(' ')
                     let trimDescription = splitDescription.splice(0, ((splitDescription.length/1.5))).join(' ')
