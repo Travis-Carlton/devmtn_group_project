@@ -58,26 +58,26 @@ class App extends Component {
       } else {
         let {
           user_id,
-          profile_name,
           picture,
           email,
           developer
         } = res.data.user;
-        localStorage.setItem('userId', user_id)
-        if (developer === null) {
-          developer = false;
-        } else return developer;
+        console.log(user_id)
+        // if (developer === null) {
+        //   developer = false;
+        // } else
         if (user_id) {
-          // console.log(developer)
+          console.log('developer', developer)
           updateLoggedIn(true);
           updateIsDeveloper(developer);
           updateUserID(user_id);
-          updateName(profile_name);
+          localStorage.setItem('userId', user_id)
         }
         axios.get(`/api/getdevprofile/${user_id}`).then(res2 => {
           console.log("profile get ", res2.data);
           let { developer_email,education,hourly_rate,overview,
-                portfolio,profile_picture,skills,title } = res2.data;
+            portfolio,profile_picture,skills,title, name } = res2.data;
+          updateName(name);
           updateTitle(title)
           updateOverview(overview);
           updateHourlyRate(hourly_rate);

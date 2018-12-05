@@ -11,8 +11,8 @@ module.exports = {
     },
     createDevProfile: (req, res) => {
         const db = req.app.get('db');
-        const { user_id, title, overview, hourly_rate, portfolio, skills, education, profile_picture, developer_email } = req.body;
-        db.create_dev_profile(user_id, title, overview, hourly_rate, portfolio, skills, education, profile_picture, developer_email)
+        const { userID, name, title, overview, hourly_rate, portfolio, skills, education} = req.body;
+        db.create_dev_profile(userID, name, title, overview, hourly_rate, portfolio, skills, education)
         .then(profile => {
             res.status(200).json(profile)
         }).catch(error => {
