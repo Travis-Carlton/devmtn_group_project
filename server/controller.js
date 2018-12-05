@@ -79,5 +79,14 @@ module.exports = {
         }).catch(error => {
             console.error('Error on getFavorites', error)
         })
+    },
+    getAllDevelopers: (req, res) => {
+        const db = req.app.get('db');
+        db.get_all_developers()
+        .then(developer => {
+            res.status(200).json(developer)
+        }).catch(error => {
+            console.error('Error on getAllDevelopers', error)
+        })
     }
 }

@@ -1,0 +1,1 @@
+select * from developer_profile;

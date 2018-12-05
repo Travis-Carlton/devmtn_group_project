@@ -15,7 +15,7 @@ class JobForm extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        const id = 1
+        const id = localStorage.getItem('userId')
         const title = this.state.title;
         const description = this.state.description;
         const startDate = this.state.startDate;
@@ -45,6 +45,7 @@ class JobForm extends Component {
     render() {
     return (
         <div>
+            {console.log(localStorage.getItem('userId'))}
             <form onSubmit={(e) => this.handleSubmit(e)}>
                 <br /> <br /> <br /> <br />
                 <h1>Create Job Posting</h1> <br />
