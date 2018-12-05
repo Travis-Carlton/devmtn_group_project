@@ -13,7 +13,67 @@
     align-items: center;
     padding: 0 30px;
     > * {
+        cursor: pointer;
         text-decoration: none;
         color: white;
+        margin-right: 20px;        
+    }
+}
+.contactModal{
+    position: absolute;
+    z-index: 1;
+    transform: translate(0,-95vh);
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.685);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.contactCloseBtn{
+    cursor: pointer;
+    height: 20px;
+    width: 50px;
+    background: rgb(255, 255, 255);
+    border-bottom-right-radius: 50px 50px;
+    border-bottom-left-radius: 50px 50px;
+    border: none;
+}
+.hide{
+    display: none;
+}
+.contactModalForm{
+    height: 45%;
+    width: 20%;
+    background: rgba(255, 255, 255, 0.76);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    >h1{
+        margin-bottom: 0;
+    }
+    > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px; 
+        > label {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        > input, textarea {
+            background: rgba(255, 255, 255, 0);
+            border: 0.5px solid rgba(0, 0, 0, 0.411);
+            padding: 5px;
+            border-radius: 10px 10px;
+        }
+        >button{
+            cursor: pointer;
+           
+        }
     }
 }
