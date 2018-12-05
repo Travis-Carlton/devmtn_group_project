@@ -11,8 +11,14 @@ class Favorites extends Component {
         }
     }
     componentDidMount(){
-        console.log(this.props)
-        axios.get(`/api/getfavorite/${this.props.userID}`).then(res => {
+        this.getUserFavorites()
+    }
+
+    getUserFavorites = () => {
+        let userId = localStorage.getItem('userId')
+        console.log(userId)
+        axios.get(`/api/getfavorite/${userId}`).then(res => {
+            console.log(res)
             this.setState({list: res.data})
         })
     }
@@ -22,7 +28,7 @@ render() {
         <div>
             {console.log(this.state.list)}
         {
-            this.state.list.length > 0 || this.props.userID ?
+            this.state.list.length > 0 && this.props.userID ?
             <div>
                 {
                 this.state.list.map(job => {
@@ -48,7 +54,10 @@ render() {
                 }
             </div>
             :
-            <div>LOADING...</div>
+            <div>
+                <br /> <br /> <br /> <br /> <br />
+                PLease login before viewing watched tasks
+            </div>
         }
         </div>
     )}

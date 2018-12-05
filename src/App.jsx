@@ -63,6 +63,7 @@ class App extends Component {
           email,
           developer
         } = res.data.user;
+        localStorage.setItem('userId', user_id)
         if (developer === null) {
           developer = false;
         } else return developer;
