@@ -11,6 +11,7 @@ const authController = require('./authController');
 
 // controllers
 const controller = require('./controller.js');
+const emailController = require('./emailController.js');
 
 
 massive(process.env.CONNECTION_STRING).then(database => {
@@ -50,27 +51,8 @@ io.sockets.on('connection', (socket) =>{
 /////////Send Grid///
 // using SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-app.post('/api/contact/sendgrid', (req,res)=>{
-    const {name,email,message} = req.body;
- 
-    const msg = {
-        to: 'devway.us@gmail.com',
-        from: 'devway.us@gmail.com',
-        subject: 'Sending with SendGrid is Fun',
-        // name: `${name}`,
-        // text: `${message}`,
-        
-        html: `<body style='background:blue;'>
-                <strong> name: ${name} </strong> <br/>  
-                <strong> email: ${email} </strong> <br/>
-                <strong> message: ${message}</strong>
-            </body>`,
-      };
-      sgMail.send(msg);
-})
+app.post('/api/contact/sendgrid', emailController.contactEmail);
+app.post(`/api/sendEmailToClient`, emailController.u2uEmail);
 
 
 /////////////////////////
