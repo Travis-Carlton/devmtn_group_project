@@ -1,24 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:800i|Quicksand');
+
 .profilep{
     padding-top: 10vh;
-    height: 85vh;
+    height: fit-content;
+    min-height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(86, 86, 255);
+    background-image: linear-gradient(180deg, rgb(20,20,20), rgb(50,50,50),rgb(20,20,20));
+    h1 {
+        color: white;
+        font-size: 40px;
+    }
 }
 
 .profilec{
-    height: 90%;
-    width: 70%;
-    background-color: white;
+    // height: 90%;
+    width: 85%;
+    min-height: 60vh;
+    padding: 10px 20px;
+    margin: 20px auto;
+    background-color: rgba(53, 53, 53, 0.5);
     border-radius: 10px;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    img {
+        margin: 20px auto 0px auto;
+        text-align: center;
+        max-width: 200px;
+        border-radius: 50%;
+        border: 7px solid rgb(182, 182, 182);
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 0;
+        font-size: 40px;
+    }
+    h2 {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+    p {
+        margin-top: 8px;
+        margin-bottom: 12px;
+        font-weight: 400;
+        font-size: 18px;
+    }
+    .profile-category {
+        margin-top: 20px;
+        margin-bottom: 0px;
+        font-weight: 900;
+        font-size: 22px;
+    }
 }
 
-@media screen and (max-width: 414px){
+.child {
+    width: 400px;
+    margin: 0 10px;
+}
 
+@media screen and (min-width: 600px){
+    .hourly-portfolio-parent {
+        display: flex;
+    
+    }   
+    .portfolio-child {
+        margin-left: 80px;
+    }
+    .profilec {
+        padding: 50px;
+        margin: 30px;
+        max-width: 900px;
+        .profile-category {
+            margin-top: 40px;
+        }
+    }
+}
 
+@media screen and (min-width: 1000px) {
+    .dev-info {
+        margin: 0 auto;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+    }
+    .hourly-portfolio-parent {
+        justify-content: space-between;
+    }
+    .skills-education-parent {
+        display: flex;
+        justify-content: space-between;
+    }
+    .portfolio-child {
+        margin-left: initial;
+    }
+    .overview {
+        max-width: 800px;
+        margin: 0 auto;
+    }
 }
