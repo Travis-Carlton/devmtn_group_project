@@ -11,7 +11,9 @@ class Favorites extends Component {
         }
     }
     componentDidMount(){
+        setTimeout(() => {
         this.getUserFavorites()
+        }, 500)
     }
 
     getUserFavorites = () => {
@@ -56,7 +58,8 @@ render() {
             :
             <div>
                 <br /> <br /> <br /> <br /> <br />
-                PLease login before viewing watched tasks
+                <img style={{margin: '0px auto'}} src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif' />
+                {/* PLease login before viewing watched tasks */}
             </div>
         }
         </div>

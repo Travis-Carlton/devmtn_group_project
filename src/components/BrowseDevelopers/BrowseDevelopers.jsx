@@ -53,7 +53,7 @@ render() {
             </div>
             :
             <div>
-                Loading...
+                <img style={{margin: '0 auto'}} src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif' />
                 {this.getDevelopers()}
             </div>
         }
