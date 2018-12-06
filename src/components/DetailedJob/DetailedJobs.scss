@@ -1,0 +1,37 @@
+.detailedJobp{
+    height: 85vh;
+    padding-top: 10vh;
+}
+.emailFormp{
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 255, 0.568);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: translate(0,-10vh);
+    >.emailFormc{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 400px;
+        width: 300px;
+        background-color: grey;
+        >label{
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        >button{
+            margin-top: 15px;
+        }
+        > .attachDocs{
+            background: white;
+            padding: 2px;
+            border-radius: 5px;
+        }
+    }
+}
