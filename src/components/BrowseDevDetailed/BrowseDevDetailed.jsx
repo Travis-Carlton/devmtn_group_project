@@ -12,7 +12,7 @@ class BrowseDevDetailed extends Component {
     componentDidMount(){
         setTimeout(() => {
         this.getInfo() 
-        }, 500)
+        }, 300)
     }
 
     getInfo = () => {
@@ -44,7 +44,7 @@ class BrowseDevDetailed extends Component {
                     </div>
                     :
                     <div>
-                        <img style={{margin: '0 auto'}} src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif' />
+                        <img src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif' />
                     </div>
                 }
             </div>

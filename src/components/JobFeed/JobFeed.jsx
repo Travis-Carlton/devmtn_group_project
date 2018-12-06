@@ -16,7 +16,7 @@ componentDidMount(){
     axios.get('/api/getalljobs').then(res => {
         this.setState({jobs: res.data})
     })
-    }, 500)
+    }, 300)
 }
 
 render() { 
@@ -28,7 +28,6 @@ render() {
                     let num = job.description.split(' ').length
                     let splitDescription = job.description.split(' ')
                     let trimDescription = splitDescription.splice(0, ((splitDescription.length/1.5))).join(' ')
-                    console.log(num)
                     return <div onClick={() => {}}>
                             <Link to={`/job/${job.job_id}`}>
                                 <div>
@@ -46,7 +45,7 @@ render() {
                 })
                 :
                 <div>
-                    <img style={{margin: '0 auto'}} src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif' />
+                    <img src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif' />
                 </div>
             }
         </div>

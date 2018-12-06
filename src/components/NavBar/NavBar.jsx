@@ -27,17 +27,30 @@ class NavBar extends Component {
             <Link to="/">HOME</Link>
             {/* a tags are place holders for visual */}
             <Link to="/howitworks">HOW IT WORKS</Link>
+            
             {!this.props.loggedIn ? (
               <p onClick={this.props.login}>LOGIN</p>
             ) : (
               <p onClick={this.props.logout}>LOGOUT</p>
             )}
-            {this.props.loggedIn && (
-              <>
-                <Link to="/jobfeed">JOB FEED</Link>
-                <Link to="/profile">PROFILE</Link>
-              </>
-            )}
+
+            {
+              //Logged in as a Developer
+              this.props.loggedIn && this.props.isDeveloper === true ? (
+                <>
+                  <Link to="/feed">JOB FEED</Link>
+                  <Link to="/profile">PROFILE</Link>
+                </>
+              )
+            :
+            //Logged in as a Client
+            this.props.loggedIn && this.props.isDeveloper === false &&
+              ( <>
+                  <Link to="/feed">BROWSE DEVS</Link>
+                  <Link to="/profile">PROFILE</Link>
+                </> )
+            }
+
           </div>
           <button onClick={this.toggleTabs} className="mobiletab">
             ❖
@@ -47,17 +60,32 @@ class NavBar extends Component {
               <div>
                 <Link to="/">HOME</Link>
                 <Link to="/howitworks">HOW IT WORKS</Link>
-                {!this.props.loggedIn ? (
-                  <p onClick={this.props.login}>LOGIN</p>
-                ) : (
-                  <p onClick={this.props.logout}>LOGOUT</p>
-                )}
-                {this.props.loggedIn && (
-                  <>
-                    <Link to="/jobfeed">JOB FEED</Link>
-                    <Link to="/profile">PROFILE</Link>
-                  </>
-                )}
+                
+                {!this.props.loggedIn ?
+                  (
+                    <p onClick={this.props.login}>LOGIN</p>
+                  )
+                :
+                  (
+                    <p onClick={this.props.logout}>LOGOUT</p>
+                  )}
+                  
+                  {
+                    //Logged in as a Developer
+                    this.props.loggedIn && this.props.isDeveloper === true ? (
+                      <>
+                        <Link to="/feed">JOB FEED</Link>
+                        <Link to="/profile">PROFILE</Link>
+                      </>
+                    )
+                  :
+                  //Logged in as a Client
+                  this.props.loggedIn && this.props.isDeveloper === false &&
+                    ( <>
+                        <Link to="/feed">BROWSE DEVS</Link>
+                        <Link to="/profile">PROFILE</Link>
+                      </> )
+                  }
               </div>
             </div>
           )}
@@ -68,9 +96,10 @@ class NavBar extends Component {
 }
 
 function mapStateToProps(state) {
-  const { loggedIn } = state;
+  const { loggedIn, isDeveloper } = state;
   return {
-    loggedIn
+    loggedIn,
+    isDeveloper
   };
 }
 

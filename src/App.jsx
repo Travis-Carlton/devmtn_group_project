@@ -107,6 +107,7 @@ class App extends Component {
     axios.post("/api/logout").then(() => {
       this.props.updateLoggedIn(false);
       this.props.clearState();
+      this.props.history.push('/')
       // this.props.updateShow(false);
       // this.props.updateUser(null);
       // this.props.alert.show("Logged Out");

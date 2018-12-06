@@ -35,11 +35,21 @@ class LandingPage extends Component {
                         <h2>The best site for developers to meet clients</h2>
                         <div>
                             {console.log(this.props.loggedIn)}
-                            {this.props.loggedIn?
-                            <>
-                                <Link to='/devwiz'><button onClick={() => this.setDeveloper(true, userId)}>Get started as developer</button></Link>
-                                <button onClick={() => this.setDeveloper(false, userId)}>Get started as client</button>
-                            </>
+                            {this.props.loggedIn ?
+                                this.props.isDeveloper === true ?
+                                <>
+                                    Hello DEVELOPER
+                                </>
+                            :
+                                this.props.isDeveloper === null ?
+                                <>
+                                    <Link to='/devwiz'><button onClick={() => this.setDeveloper(true, userId)}>Get started as developer</button></Link>
+                                    <Link to='/create'><button onClick={() => this.setDeveloper(false, userId)}>Post A Job</button></Link>
+                                </>
+                            :
+                                <>
+                                    Hello CLIENT
+                                </>
                             :
                             <button onClick={this.login}>Login/Sign Up</button>
 
@@ -53,9 +63,10 @@ class LandingPage extends Component {
 }
 
 function mapStateToProps(state){
-    const {loggedIn} = state;
+    const { loggedIn, isDeveloper } = state;
     return {
-        loggedIn
+        loggedIn,
+        isDeveloper
     }
 }
 

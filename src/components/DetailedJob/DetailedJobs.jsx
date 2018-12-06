@@ -50,7 +50,6 @@ class DetailedJob extends Component {
                         </div>
                     })
                 }
-                {console.log(this.state.job)}
             </div>
         )}
 }

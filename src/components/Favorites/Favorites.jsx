@@ -13,7 +13,7 @@ class Favorites extends Component {
     componentDidMount(){
         setTimeout(() => {
         this.getUserFavorites()
-        }, 500)
+        }, 300)
     }
 
     getUserFavorites = () => {
@@ -28,9 +28,10 @@ class Favorites extends Component {
 render() {
     return (
         <div>
-            {console.log(this.state.list)}
         {
+            this.props.loggedIn ?
             this.state.list.length > 0 && this.props.userID ?
+            this.props.isDeveloper ?
             <div>
                 {
                 this.state.list.map(job => {
@@ -56,20 +57,31 @@ render() {
                 }
             </div>
             :
+                <div>
+                    You do not have access to this page as a Client
+                </div>
+            :
             <div>
                 <br /> <br /> <br /> <br /> <br />
-                <img style={{margin: '0px auto'}} src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif' />
-                {/* PLease login before viewing watched tasks */}
+                <img src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif' />
+                    Please make sure you have added something to your favoites
+            </div>
+            :
+            <div>
+                Please login to view favoites
             </div>
         }
         </div>
     )}
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state) {
+    const { userID, loggedIn, isDeveloper } = state;
     return {
-        userID: state.userID
-    }
+        loggedIn,
+        isDeveloper,
+        userID
+    };
 }
 
 export default connect(mapStateToProps)(Favorites);
