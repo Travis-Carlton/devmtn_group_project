@@ -33,22 +33,16 @@ render() {
                 <div className="developer-card-parent">
                 {this.state.developers.map(devs => {
                     return <div>
- 
-                            
-                                
-                                    <div className="developer-card">
-                                        <div className="developer-card-details">
-                                            <img src={devs.profile_picture || 'https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-12/25/User-Circle-512.png'} />
-                                            <h2>{devs.name}</h2>
-                                            <p>{devs.skills}</p>
-                                        </div>
-                                        <div>
-                                            <Link to={`/devprofile/${devs.user_id}`}><button>View Developer</button></Link>
-                                        </div>
-                                    </div>
-                              
-                            
-
+                        <div className="developer-card">
+                            <div className="developer-card-details">
+                                <img src={devs.profile_picture || 'https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-12/25/User-Circle-512.png'} />
+                                <h2>{devs.name}</h2>
+                                <p>{devs.skills}</p>
+                            </div>
+                            <div>
+                                <Link to={`/devprofile/${devs.user_id}`}><button>View Developer</button></Link>
+                            </div>
+                        </div>
                     </div>
                     }
                 )
