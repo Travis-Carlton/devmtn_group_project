@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import './BrowseDevelopers.scss';
 
 class BrowseDevelopers extends Component {
     constructor(){
@@ -23,33 +24,36 @@ class BrowseDevelopers extends Component {
 
 render() {
     return (
-        <div>
+        <div className="developer-parent-container">
         {
             this.state.developers.length > 0 ?
             <div>
-                <br /> <br /> <br /> <br />
+                {/* <br /> <br /> <br /> <br /> */}
                 <h1>Browse Developers</h1>
+                <div className="developer-card-parent">
                 {this.state.developers.map(devs => {
                     return <div>
-                    {
-                        devs.skills ?
-                            <div>
-                                <Link to={`/devprofile/${devs.user_id}`}>
-                                    <div>
-                                        
-                                        <img style={{'maxWith': 100, 'maxHeight': 100}}src={devs.profile_picture || 'https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-12/25/User-Circle-512.png'} /> <br />
-                                        {devs.user_id} <br />
-                                        {devs.skills} <br />
-                                        {devs.hourly_rate}
+ 
+                            
+                                
+                                    <div className="developer-card">
+                                        <div className="developer-card-details">
+                                            <img src={devs.profile_picture || 'https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-12/25/User-Circle-512.png'} />
+                                            <h2>{devs.name}</h2>
+                                            <p>{devs.skills}</p>
+                                        </div>
+                                        <div>
+                                            <Link to={`/devprofile/${devs.user_id}`}><button>View Developer</button></Link>
+                                        </div>
                                     </div>
-                                </Link>
-                            </div>
-                        :
-                        <div></div>
-                    }
+                              
+                            
+
                     </div>
-                })
+                    }
+                )
                 }
+            </div>
             </div>
             :
             <div>
