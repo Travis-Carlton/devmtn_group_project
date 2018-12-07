@@ -8,6 +8,7 @@ const app = express();
 const server = require('http').createServer(app)
 const io = require('socket.io')(server)
 const authController = require('./authController'); 
+const stripe = require("stripe")("sk_test_48bsYBhFSRnBOUFnGUpFwpKk");
 
 // controllers
 const controller = require('./controller.js');
@@ -53,6 +54,30 @@ io.sockets.on('connection', (socket) =>{
 // https://github.com/sendgrid/sendgrid-nodejs
 app.post('/api/contact/sendgrid', emailController.contactEmail);
 app.post(`/api/sendEmailToClient`, emailController.u2uEmail);
+
+//Stripe Donation
+app.post("/api/stripe", (req, res) => {
+    const stripeToken = req.body.body;
+    stripe.charges.create({
+        amount: req.body.amount,
+        currency: 'usd',
+        description: 'Order Id',
+        receipt_email: stripeToken.email,
+        source: stripeToken.id,
+    }, function(err, charge) {
+        console.log('charge', charge)
+        if(err){
+            res.send({
+                success: false,
+                message: 'Errorr'
+            })
+        } else {
+            res.send({
+            success: true,
+            message: 'Success'
+        })}
+    });
+});
 
 
 /////////////////////////
