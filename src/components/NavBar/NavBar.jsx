@@ -2,60 +2,75 @@ import React, { Component } from "react";
 import "./NavBar.scss";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import icon from '../../media/profile.png';
 
 class NavBar extends Component {
   constructor() {
     super();
     this.state = {
-      showTabs: false
+      toggleNav: false
     };
   }
 
-  toggleTabs = () => {
-    this.setState({
-      showTabs: !this.state.showTabs
-    });
-  };
+  toggle = () => {
+    this.setState((prevState) => {
+      return {
+        toggleNav: !prevState.toggleNav
+      }
+    })
+  }
+
+  toggleLogout = () => {
+    this.props.logout()
+    this.setState({toggleNav: false})
+  }
+
+  toggleLogin = () => {
+    this.props.login()
+    this.setState({toggleNav: false})
+  }
 
   render() {
+    console.log(this.state.toggleNav)
     return (
+      
       <div className="navbarp">
-        <div className="navbarc">
           <div className="navbarlogo">DevWay</div>
-          <div className="navbarcc">
 
-            <Link to="/">HOME</Link>
-            {/* a tags are place holders for visual */}
-            <Link to="/howitworks">HOW IT WORKS</Link>
-            
-            {!this.props.loggedIn ? (
-              <p onClick={this.props.login}>LOGIN</p>
-            ) : (
-              <p onClick={this.props.logout}>LOGOUT</p>
-            )}
+          <button onClick={this.toggle} className="mobiletab"> ❖ </button>
 
-            {
-              //Logged in as a Developer
-              this.props.loggedIn && this.props.isDeveloper === true ? (
-                <>
-                  <Link to="/feed">JOB FEED</Link>
-                  <Link to="/profile">PROFILE</Link>
-                </>
-              )
-            :
-            //Logged in as a Client
-            this.props.loggedIn && this.props.isDeveloper === false &&
-              ( <>
-                  <Link to="/feed">BROWSE DEVS</Link>
-                  <Link to="/profile">PROFILE</Link>
-                </> )
-            }
+          {<nav className={this.state.toggleNav ? 'show' : ''}>
+              <div className="navbarcc">
 
-          </div>
-          <button onClick={this.toggleTabs} className="mobiletab">
-            ❖
-          </button>
-          {this.state.showTabs && (
+                <Link to="/" onClick={() => this.setState({toggleNav: false})}>HOME</Link>
+                {/* a tags are place holders for visual */}
+                <Link to="/howitworks" onClick={() => this.setState({toggleNav: false})}>HOW IT WORKS</Link>
+
+                {
+                  //Logged in as a Developer
+                  this.props.loggedIn && this.props.isDeveloper === true ? (
+                    <>
+                      <Link to="/feed" onClick={() => this.setState({toggleNav: false})}>JOB FEED</Link>
+                    </>
+                  )
+                :
+                //Logged in as a Client
+                this.props.loggedIn && this.props.isDeveloper === false &&
+                  ( <>
+                      <Link to="/feed" onClick={() => this.setState({toggleNav: false})}>BROWSE DEVS</Link>
+                    </> )
+                }
+                {!this.props.loggedIn ? (
+                  <p onClick={() => this.toggleLogin()}>LOGIN</p>
+                ) : (
+                  <p onClick={() => this.toggleLogout()}>LOGOUT</p>
+                )}
+                
+                  <Link to="/profile" onClick={() => this.setState({toggleNav: false})}><img className="icon" src={icon}/></Link>
+              </div>
+          </nav>
+          }
+          {/* {this.state.showTabs && (
             <div className="showtabs">
               <div>
                 <Link to="/">HOME</Link>
@@ -89,7 +104,7 @@ class NavBar extends Component {
               </div>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
     );
   }
