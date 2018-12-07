@@ -32,7 +32,7 @@ class JobForm extends Component {
             email: email,
         }).then(response => {
             alert('Job Posted')
-            this.props.redirect('/')
+            this.props.history.push('/')
         })
     }
     
