@@ -10,31 +10,37 @@
 
 .workstitle {
     color: rgb(232, 232, 232);
-    margin: 50px auto 10px 40px;
     font-size: 50px;
+    text-align: center;
+    font-weight: 900;
+    margin: 50px auto;
 }
 
 .worksp {
-    display: grid;
-    grid-template-columns: 500px 500px;
-    grid-template-rows: 80px 500px;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 100px;
     color: rgb(232, 232, 232);
-    max-width: 1100px;
-    margin: 30px auto;
+    width: 95%;
+    max-width: 700px;
+    margin: 20px auto;
     background: rgba(0,0,0,.8);
     border-radius: 20px;
+    // padding: 10px 0px 30px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .worksc {
-    width: 500px;
-    padding: 10px 30px;
-    margin: 10px;
+    width: 95%;
     color: rgb(232, 232, 232);
+    margin: 10px auto;
     h2 {
-        font-size: 30px;
+        font-size: 38px;
+        color: rgb(26, 144, 217);
+        text-align: center;
+        margin: 20px auto;
+    }
+    h4 {
+        font-size: 24px;
         margin-bottom: 40px;
         margin-top: 30px;
     }
@@ -48,6 +54,57 @@
 }
 
 .worksimg {
-    width: 560px;
+    width: 90%;
+    max-width: 400px;
     border-radius: 10px;
+    
+}
+
+.worksimg-container {
+    margin: 0 auto;
+}
+
+.mobile-hide {
+    display: none;
+}
+
+@media screen and (min-width: 1012px) {
+
+    .workstitle {
+        flex: 0 0 100%;
+        margin: 20px auto;
+        padding-top: 20px;
+    }
+    .worksp {
+        max-width: 1100px;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 50px auto;
+        padding: 10px 20px 40px 20px;
+    }
+    .mobile-hide {
+        display: initial;
+    }
+    .desktop-hide {
+        display: none;
+    }
+    .worksc {
+        width: 400px;
+        margin: 10px 30px;
+        h2 {
+            text-align: left;
+        }
+        h4 {
+            margin: 10px auto;
+        }
+    }
+    .worksimg {
+        width: 90%;
+        max-width: 500px;
+
+        
+    }
 }

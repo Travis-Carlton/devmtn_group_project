@@ -29,21 +29,19 @@
             width: 260px;
             border: none;
             border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.789);
+            color: white;
+            background-color: rgb(26, 144, 217);
             box-shadow: 10px 10px 5px rgb(34, 34, 34);
             font-size: 20px;
         }
         > h1 {
             font-size: 100px;
-            // text-shadow: 10px 10px 5px rgb(34, 34, 34);
         }
         > h2 {
             margin-bottom: 30px;
-            // text-shadow: 10px 10px 5px rgb(34, 34, 34);
             font-weight: 200;
             font-family: 'Quicksand', sans-serif;
         }
-
     }
 }
 
