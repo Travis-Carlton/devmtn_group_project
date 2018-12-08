@@ -1,0 +1,69 @@
+.job-form-container {
+    padding-top: 10vh;
+    min-height: 105vh;
+    height: fit-content;
+    max-width: 100vw;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    h1 {
+        text-align: center;
+    }
+    form {
+        margin: 0 auto;
+        width: 90%;
+        background: rgba(0, 0, 0, 0.7);
+        // height: 500px;
+        padding: 30px 10px;
+        border-radius: 10px;
+        text-align: center;
+        
+        p {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+    }
+    input {
+        height: 30px;
+        font-size: 26px;
+        border-radius: 5px;
+        width: 80%;
+        margin-bottom: 10px;
+    }
+    textarea {
+        font-size: 20px;
+        border-radius: 5px;
+        width: 80%;
+    }
+    button {
+        height: 40px;
+        width: 120px;
+        background: rgb(26, 144, 217);
+        margin-top: 20px;
+        // margin-bottom: 40px;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 16px;
+
+    } 
+}
+
+@media screen and (min-width: 900px) {
+    .job-form-container {
+    form {
+        width: 60%;
+        grid-template-columns: 150px 500px;
+        display: grid;
+        align-items: center;
+        grid-gap: 10px;
+        margin: 0 auto;
+        justify-content: center;
+        textarea {
+            height: 200px;
+        }
+    }
+}
+}

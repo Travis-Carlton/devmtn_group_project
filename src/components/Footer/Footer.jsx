@@ -102,13 +102,13 @@ export default class Footer extends Component {
                     <p onClick={this.toggleModal}>Contact</p>
                     <Link to='/favorites'>Favorites</Link>
                     <input name='donationAmount' onChange={(e) => this.handleInputs(e)}/> 
-                    <StripeCheckout
+                    {/* <StripeCheckout
                         token={this.onToken}
                         name="Donate to Devway"
                         stripeKey="pk_test_rGBc29KX9tUGcuNiWorM9GuZ"
                         label="Donate"
                     />
-                    <PaypalExpressBtn env={env} client={client} currency={currency} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />
+                    <PaypalExpressBtn env={env} client={client} currency={currency} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} /> */}
                 </div>
             </div>
         );
