@@ -12,7 +12,9 @@ class BrowseDevelopers extends Component {
     }
 
     componentDidMount(){
+        setTimeout(() => {
         this.getDevelopers();
+        }, 700)
     }
 
     getDevelopers = () => {
@@ -51,7 +53,7 @@ render() {
             </div>
             :
             <div>
-                <img src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif' />
+                <img src='http://www.vivo.com/themes/custom/vivo/img/loader.gif' />
                 {this.getDevelopers()}
             </div>
         }

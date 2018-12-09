@@ -18,7 +18,7 @@ componentDidMount(){
     axios.get('/api/getalljobs').then(res => {
         this.setState({jobs: res.data})
     })
-    }, 300)
+    }, 700)
 }
 
 render() { 
@@ -60,7 +60,7 @@ render() {
                     })
                     :
                     <div>
-                        <img src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif' />
+                        <img src='http://www.vivo.com/themes/custom/vivo/img/loader.gif' />
                     </div>
                 }
             </div>

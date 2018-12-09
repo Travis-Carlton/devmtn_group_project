@@ -14,7 +14,7 @@ class Favorites extends Component {
     componentDidMount(){
         setTimeout(() => {
         this.getUserFavorites()
-        }, 300)
+        }, 700)
     }
 
     getUserFavorites = () => {
@@ -74,7 +74,7 @@ render() {
             :
             <div>
                 <br /> <br /> <br /> <br /> <br />
-                <img src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif' />
+                <img src='http://www.vivo.com/themes/custom/vivo/img/loader.gif' />
                     Please make sure you have added something to your favoites
             </div>
             :
