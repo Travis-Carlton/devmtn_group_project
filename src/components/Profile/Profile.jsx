@@ -21,7 +21,7 @@ class Profile extends Component {
         devEmail,
         savedJobs
     } = this.props;
-    console.log(this.props.profilePicture)
+    console.log(this.props)
     return (
       <div className="profilep">
       {loggedIn ?
@@ -29,10 +29,10 @@ class Profile extends Component {
           <img src={profilePicture} alt="" />
           <h1>{name}</h1>
           <h2>{title}</h2>
-          <h3>{devEmail}</h3>
           <p className="overview">{overview}</p>
           {isDeveloper ?
           <div className="dev-info">
+          <h3>{devEmail}</h3>
             <div className="hourly-portfolio-parent">
               <div className="child">
                 <p className="profile-category">Hourly rate: </p>

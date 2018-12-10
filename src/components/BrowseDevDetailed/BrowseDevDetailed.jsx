@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import '../Profile/Profile';
 
 class BrowseDevDetailed extends Component {
     constructor(){
@@ -26,21 +27,37 @@ class BrowseDevDetailed extends Component {
     render() {
         let devInfo = this.state.devInfo
         return (
-            <div>
+            <div className="profilep">
                 {
                     devInfo !== null ?
-                    <div>
-                        <br /><br /><br /><br /><br />
-                        <img style={{'maxWith': 100, 'maxHeight': 100}}src={devInfo.profile_picture || 'https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-12/25/User-Circle-512.png'} /> <br />
-                        {devInfo.user_id} <br />
-                        {devInfo.name} <br />
-                        {devInfo.skills} <br />
-                        {devInfo.title} <br />
-                        {devInfo.developer_email} <br />
-                        {devInfo.education} <br />
-                        {devInfo.hourly_rate} <br />
-                        {devInfo.overview} <br />
-                        {devInfo.portfolio} <br />
+                    <div className="profilec">
+                        <img src={devInfo.profile_picture || 'https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-12/25/User-Circle-512.png'} />
+                        <h1>{devInfo.name}</h1>
+                        <h2>{devInfo.title}</h2>
+                        <h3>{devInfo.developer_email}</h3>
+                        <p>{devInfo.overview}</p>
+                        <div>
+                            <div className="hourly-portfolio-parent">
+                                <div className="child">
+                                <p className="profile-category">Hourly rate: </p>
+                                <p>${devInfo.hourly_rate}</p>
+                                </div>
+                                <div className="portfolio-child child">
+                                    <p className="profile-category">Portfolio: </p>
+                                    <p>{devInfo.portfolio}</p>
+                                </div>
+                            </div>
+                            <div className="skills-education-parent">
+                                <div className="child">
+                                    <p className="profile-category">Skills: </p>
+                                    <p>{devInfo.skills}</p>
+                                </div>
+                                <div className="child">
+                                    <p className="profile-category">Education: </p>
+                                    <p>{devInfo.education}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     :
                     <div>
