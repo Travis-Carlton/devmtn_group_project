@@ -8,7 +8,8 @@ class NavBar extends Component {
   constructor() {
     super();
     this.state = {
-      toggleNav: false
+      toggleNav: false,
+      profileDropdown: false
     };
   }
 
@@ -20,9 +21,25 @@ class NavBar extends Component {
     })
   }
 
+  profileDropdown = (x)=>{
+    if(x===true){
+      this.setState({
+        profileDropdown: true
+      })
+    } else {
+      this.setState({
+        profileDropdown: false
+      })
+    }
+  }
+
+
   toggleLogout = () => {
     this.props.logout()
-    this.setState({toggleNav: false})
+    this.setState({
+      toggleNav: false,
+      profileDropdown: false
+    })
   }
 
   toggleLogin = () => {
@@ -65,8 +82,14 @@ class NavBar extends Component {
                 ) : (
                   <p onClick={() => this.toggleLogout()}>LOGOUT</p>
                 )}
-                
-                  <Link to="/profile" onClick={() => this.setState({toggleNav: false})}><img className="icon" src={icon}/></Link>
+                  <Link className='mobiletab' onClick={()=>this.profileDropdown(false)} to='/favorites'>Favorites</Link>
+                  <Link to="/profile" onClick={() => this.setState({toggleNav: false})}><img onMouseEnter={()=>this.profileDropdown(true)} onMouseLeave={()=>this.profileDropdown(false)} className="icon" src={icon} alt=''/></Link>
+                  {this.state.profileDropdown && this.props.loggedIn &&
+                    <div onMouseEnter={()=>this.profileDropdown(true)} onMouseLeave={()=>this.profileDropdown(false)} className='profileDropDown'>
+                        {this.props.loggedIn && this.props.isDeveloper && <div><Link onClick={()=>this.profileDropdown(false)} to='/favorites'>Favorites</Link></div>}
+                        {this.props.loggedIn && <div onClick={() => this.toggleLogout()}>LOGOUT</div>}
+                    </div>
+                  }
               </div>
           </nav>
           }
