@@ -29,32 +29,30 @@ class LandingPage extends Component {
         console.log(userId)
         return (
             <div className='landingpagep'>
-                <div className="landingpagec">
-                    <div className='landingpagecc'>
-                        <h1>DevWay</h1>
-                        <h2>The best site for developers to meet clients</h2>
-                        <div>
-                            {console.log(this.props.loggedIn)}
-                            {this.props.loggedIn ?
-                                this.props.isDeveloper === true ?
-                                <>
-                                    Hello DEVELOPER
-                                </>
-                            :
-                                this.props.isDeveloper === null ?
-                                <>
-                                    <Link to='/devwiz'><button onClick={() => this.setDeveloper(true, userId)}>Get started as developer</button></Link>
-                                    <Link to='/create'><button onClick={() => this.setDeveloper(false, userId)}>Post A Job</button></Link>
-                                </>
-                            :
-                                <>
-                                    Hello CLIENT
-                                </>
-                            :
-                            <button onClick={this.login}>Login/Sign Up</button>
+                <div className='landingpagecc'>
+                    <h1>DevWay</h1>
+                    <h2>The best site for developers to meet clients</h2>
+                    <div>
+                        {console.log(this.props.loggedIn)}
+                        {this.props.loggedIn ?
+                            this.props.isDeveloper === true ?
+                            <>
+                                Hello DEVELOPER
+                            </>
+                        :
+                            this.props.isDeveloper === null ?
+                            <>
+                                <Link to='/devwiz'><button onClick={() => this.setDeveloper(true, userId)}>Get started as developer</button></Link>
+                                <Link to='/create'><button onClick={() => this.setDeveloper(false, userId)}>Post A Job</button></Link>
+                            </>
+                        :
+                            <>
+                                Hello CLIENT
+                            </>
+                        :
+                        <button onClick={this.login}>Login/Sign Up</button>
 
-                            }
-                        </div>
+                        }
                     </div>
                 </div>
             </div>

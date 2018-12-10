@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1089.653 108">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #2ca4ef;
+      }
+
+      .cls-3 {
+        fill: #f5f5f5;
+        font-size: 26px;
+        font-family: Futura-Medium, Futura;
+        font-weight: 500;
+      }
+    </style>
+  </defs>
+  <g id="Group_16" data-name="Group 16" transform="translate(-2167 -3181)">
+    <rect id="Rectangle_50" data-name="Rectangle 50" class="cls-1" width="1050.785" height="18.512" transform="translate(2197.117 3205.57)"/>
+    <circle id="Ellipse_27" data-name="Ellipse 27" class="cls-2" cx="33.737" cy="33.737" r="33.737" transform="translate(2185 3181)"/>
+    <circle id="Ellipse_28" data-name="Ellipse 28" class="cls-2" cx="33.737" cy="33.737" r="33.737" transform="translate(2519.726 3181)"/>
+    <circle id="Ellipse_29" data-name="Ellipse 29" class="cls-1" cx="33.737" cy="33.737" r="33.737" transform="translate(2854.452 3181)"/>
+    <circle id="Ellipse_30" data-name="Ellipse 30" class="cls-1" cx="33.737" cy="33.737" r="33.737" transform="translate(3189.178 3181)"/>
+    <rect id="Rectangle_52" data-name="Rectangle 52" class="cls-2" width="356.785" height="18.512" transform="translate(2197.117 3205.57)"/>
+    <text id="Planning" class="cls-3" transform="translate(2167 3282)"><tspan x="0" y="0">Planning</tspan></text>
+    <text id="Started" class="cls-3" transform="translate(2510 3282)"><tspan x="0" y="0">Started</tspan></text>
+    <text id="Finished" class="cls-3" transform="translate(2839 3282)"><tspan x="0" y="0">Finished</tspan></text>
+    <text id="Paid" class="cls-3" transform="translate(3197 3282)"><tspan x="0" y="0">Paid</tspan></text>
+  </g>
+</svg>

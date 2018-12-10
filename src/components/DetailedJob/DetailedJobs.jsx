@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './DetailedJobs.scss';
 import axios from 'axios';
 import {connect} from 'react-redux'
+import Started from '../../media/started.svg';
 
 class DetailedJob extends Component {
     constructor(){
@@ -78,7 +79,9 @@ class DetailedJob extends Component {
                         <button style={{cursor:'pointer'}} onClick={()=>this.showEmailModal('')}>Close</button>
                 </div>
             }
-                {/* <br /> <br /> <br /> */}
+                <div className="status-container">
+                    <img src={Started} className="status"/>
+                </div>
                 <div className="job-container">
                 {
                     this.state.job.map(job => {
