@@ -12,7 +12,6 @@ import Feed from './components/Feed/Feed.jsx';
 import Messaging from './components/Messaging/Messaging.jsx';
 import PeopleToMessage from './components/PeopleToMessage/PeopleToMessage.jsx';
 
-
 export default (
     <Switch>
        <Route exact path='/' component={LandingPage} />
