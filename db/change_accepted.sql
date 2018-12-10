@@ -1,4 +1,3 @@
-insert into jobs (accepted)
-values
-($1)
-returning *;
+update jobs
+set accepted = $1
+where job_id = $2;

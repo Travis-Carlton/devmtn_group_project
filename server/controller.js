@@ -91,15 +91,15 @@ module.exports = {
     },
     changeStatus: (req, res) => {
         const db = req.app.get('db');
-        const {status} = req.body.status;
-        db.change_status(status).then(status => {
+        const {status, job_id} = req.body;
+        db.change_status(status, job_id).then(status => {
             res.status(200).json(status)
         })
     },
     accepted: (req, res) => {
         const db = req.app.get('db');
-        const {user_id} = req.body.user_id;
-        db.change_accepted(user_id).then(job => {
+        const {user_id, job_id} = req.body;
+        db.change_accepted(user_id, job_id).then(job => {
             res.status(200).json(job)
         })
     }

@@ -52,7 +52,7 @@ class NavBar extends Component {
     return (
       
       <div className="navbarp">
-          <div className="navbarlogo">DevWay</div>
+          <div className="navbarlogo"><Link to="/" style={{ textDecoration: 'none', color: 'white'}}>DevWay</Link></div>
 
           <button onClick={this.toggle} className="mobiletab"> ❖ </button>
 
