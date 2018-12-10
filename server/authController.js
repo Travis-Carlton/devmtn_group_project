@@ -26,7 +26,7 @@ module.exports = {
             if (users.length) {
               const user = users[0];
               req.session.user = user;
-              res.redirect('/');
+              res.redirect('/feed');
             } else {
               return req.app.get('db').create_user([
                 userData.sub,

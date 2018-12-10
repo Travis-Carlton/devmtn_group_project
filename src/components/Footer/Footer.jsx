@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './Footer.scss';
 import {Link} from 'react-router-dom';
+import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+import PaypalExpressBtn from 'react-paypal-express-checkout';
 
 export default class Footer extends Component {
     constructor(){
@@ -10,7 +12,8 @@ export default class Footer extends Component {
             showModal: false,
             name: '',
             email: '',
-            message: ''
+            message: '',
+            donationAmount: 0
         }
     }
 
@@ -33,7 +36,42 @@ export default class Footer extends Component {
         })
     }
 
+    onToken = (token) => {
+        axios.post('/api/stripe', {
+        method: 'POST',
+        body: token,
+        amount: this.state.donationAmount * 100
+        })
+        .then(response => {
+            if(response.data.success){
+                console.log('success')
+                this.setState({donationAmount: 0})
+                }
+            })
+        }
+
+    handleInputs = e => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+
     render() {
+        const onSuccess = (payment) => {
+            console.log("The payment was succeeded!", payment);
+        }
+        const onCancel = (data) => {
+            console.log('The payment was cancelled!', data);
+        }
+        const onError = (err) => {
+            console.log("Error!", err);
+        }
+        let env = 'sandbox';
+        let currency = 'USD';
+        let total = 1000;
+        const client = {
+            sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+            production: 'AbqrWh1gl8Vmpep3DG3iBj-sLGvgm-qFB1lFysyJRiUxybalQ3Nr5gIevSx3pUeHEsWluTJvOY60r3xK',
+        }
         return (
             <div className="footerp">
                     <div className={this.state.showModal&&'contactModal'}>
@@ -64,6 +102,15 @@ export default class Footer extends Component {
                     <p onClick={this.toggleModal}>Contact</p>
                     <Link to='/favorites' >Favorites</Link>
                     <Link to='/peopletomessage' >Messages</Link>
+                    <Link to='/favorites'>Favorites</Link>
+                    <input name='donationAmount' onChange={(e) => this.handleInputs(e)}/> 
+                    {/* <StripeCheckout
+                        token={this.onToken}
+                        name="Donate to Devway"
+                        stripeKey="pk_test_rGBc29KX9tUGcuNiWorM9GuZ"
+                        label="Donate"
+                    />
+                    <PaypalExpressBtn env={env} client={client} currency={currency} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} /> */}
                 </div>
             </div>
         );

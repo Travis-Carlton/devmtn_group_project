@@ -79,30 +79,34 @@ class DetailedJob extends Component {
                 </div>
             }
                 {/* <br /> <br /> <br /> */}
+                <div className="job-container">
                 {
                     this.state.job.map(job => {
-                        return <div key={job.id}>
-                        <h2>{job.title}</h2>
-                        <p>{job.description}</p>
-                        <p>{job.start_date}</p>
-                        <p>{job.estimation} Days</p>
-                        <p>${job.pay}</p>
-                        <button style={{cursor:'pointer'}} onClick={() => this.addFavorite(userID, job.job_id)}>Watch Post</button>
-                        </div>
-                    })
-                }
-                <br /> <br /> <br />
-                {
-                    this.state.job.map(job => {
-                        return <div key={job.id}>
+                        return <div key={job.id} className="job-profile-view">
                         Posted By: <br />
                         <img src={job.picture} alt=''/>
                         <h4>{job.profile_name}</h4>
-                        <p onClick={()=>this.showEmailModal(job.email)} >Contact: <span style={{cursor:'pointer'}}>{job.email}</span></p>
+                        <p onClick={()=>this.showEmailModal(job.email)} ><span style={{cursor:'pointer'}}>{job.email}</span></p>
                         </div>
                         
                     })
                 }
+                {
+                    this.state.job.map(job => {
+                        return <div key={job.id} className="detail-job-info">
+                                    <h2>{job.title}</h2>
+                                    <p className="detail-job-description">{job.description}</p>
+                                    <p>Start Date: {job.start_date}</p>
+                                    <p>${job.pay}</p>
+                                    <p>Estimated Completion Time: {job.estimation}</p>
+                                    <div className="button-center">
+                                        <button style={{cursor:'pointer'}} onClick={() => this.addFavorite(userID, job.job_id)}>Save to Favorites</button>
+                                    </div>
+                                </div>
+                            })
+                }
+                {/* <br /> <br /> <br /> */}
+                </div>
                 {/* {console.log(this.state.job)} */}
             </div>
         )}

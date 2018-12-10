@@ -1,9 +1,55 @@
-.devwizp {
+.devwiz-container {
     padding-top: 10vh;
-    height: 85vh;
+    color: white;
+    min-height: 85vh;
+    height: fit-content;
+    h1 {
+        text-align: center;
+        font-size: 40px;
+        margin: 10px auto;
+    }
+}
+.devwizp {
     display: flex;
     justify-content: center;
     align-items: center;
+    form {
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 15px;
+        width: 90%;
+        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        margin: 20px auto;
+    }
+    label{
+        margin: 10px auto;
+        font-size: 20px;
+    }
+    input {
+        width: 70%;
+        margin-bottom: 15px;
+        height: 30px;
+        border-radius: 5px;
+        font-size: 26px;
+    }
+    textarea {
+        width: 70%;
+        height: 100px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        font-size: 26px;
+    }
+    button {
+        background: rgb(26, 144, 217);
+        height: 40px;
+        width: 120px;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 16px;
+        margin-top: 20px;
+    }
 }
 
 .devwizc {
@@ -11,4 +57,26 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+@media screen and (min-width: 900px) {
+    .devwizp {
+        form {
+            display: grid;
+            grid-template-columns: 150px 500px;
+            grid-gap: 20px;
+            width: 60%;
+            padding: 30px;
+        }
+        input {
+            width: 100%;
+        }
+        textarea {
+            width: 100%;
+        }
+        button {
+            text-align: center;
+            
+        }
+    }
 }

@@ -1,5 +1,6 @@
 .detailedJobp{
-    height: 85vh;
+    min-height: 85vh;
+    height: fit-content;
     padding-top: 10vh;
 }
 .emailFormp{
@@ -33,5 +34,82 @@
             padding: 2px;
             border-radius: 5px;
         }
+    }
+}
+
+.job-container {
+    background: rgba(0, 0, 0, 0.6);
+    width: 85%;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    
+    h2 {
+        margin: 0 auto;
+    }
+    button {
+        background-color: rgb(26, 144, 217);
+        height: 30px;
+        width: 120px;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        margin: 20px auto;
+    }
+    img {
+        border-radius: 50%;
+        border: 5px solid rgb(26, 144, 217);
+        margin: 20px auto;
+        max-width: 120px;
+    }
+    h4 {
+        margin: 5px auto;
+    }
+}
+
+.button-center {
+    display: flex;
+}
+
+.job-profile-view {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    p {
+        margin-top: 0;
+    }
+}
+
+.detail-job-info {
+    h2 {
+        font-size: 35px;
+    }
+    .detail-job-description {
+        margin: 20px auto;
+        font-size: 16px;
+    }
+    p {
+        margin: 5px auto;
+        font-size: 20px;
+    }
+    
+}
+
+@media screen and (min-width: 900px) {
+    .job-container {
+        width: 70%;
+        padding: 20px;
+        display: flex;
+        align-items: stretch;
+    }
+
+    .job-profile-view {
+        margin-right: 30px;
+        max-width: 300px;
+    }
+
+    .button-center {
+        display: initial;
     }
 }

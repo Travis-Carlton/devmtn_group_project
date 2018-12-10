@@ -11,7 +11,7 @@ import DevProfile from './components/BrowseDevDetailed/BrowseDevDetailed';
 import Feed from './components/Feed/Feed.jsx';
 import Messaging from './components/Messaging/Messaging.jsx';
 import PeopleToMessage from './components/PeopleToMessage/PeopleToMessage.jsx';
-
+import Paypal from './components/PayPalSignUp/PayPalSignUp';
 
 export default (
     <Switch>
@@ -25,7 +25,7 @@ export default (
        <Route path='/feed' component={Feed} />
        <Route path='/messaging/:conversationid' component={Messaging} />
        <Route path='/peopletomessage' component={PeopleToMessage} />
-
+       <Route path='/paypal' component={Paypal} />
        <Route path='/devprofile/:id' component={DevProfile} />
     </Switch>
 )

@@ -1,4 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:800i|Quicksand');
+
+.job-feed-container {
+    padding-top: 15vh;
+    min-height: 85vh;
+    margin-left: 300px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.job-profile {
+    position: fixed;
+    left: 80px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    img {
+        width: 180px;
+        border-radius: 50%;
+        border: 5px solid rgb(26, 144, 217);
+    }
+    h1 {
+        color: white;
+        font-size: 30px;
+        margin: 10px 0;
+    }
+    h2 {
+        color: white;
+        font-size: 16px;
+    }
+}
+
 .jobfeedp{
-    padding-top: 10vh;
-    height: 85vh;
+    h1 {
+        font-size: 30px;
+        color: white;
+        margin-top: 10px;
+    }
+    p {
+        color: white;
+    }
+}
+
+.jobfeedc {
+    width: 80%;
+    max-width: 1000px;
+    background-color: rgba(0, 0, 0, 0.575);
+    padding: 30px;
+    border-radius: 10px;
+    margin: 20px 0px;
+    margin-left: 40px;
+    display: grid;
+    grid-template-columns: auto 120px 150px;
+    grid-gap: 10px;
+    align-items: center;
+    button {
+        width: 150px;
+        height: 30px;
+        font-size: 18px;
+        border-radius: 5px;
+        background: rgb(26, 144, 217);
+        border: 0;
+        color: white;
+    }
+}
+
+.pay {
+    font-size: 22px;
+    text-align: center;
 }

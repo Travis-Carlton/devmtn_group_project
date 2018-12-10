@@ -46,31 +46,28 @@ class DevOrClient extends Component {
     render() {
         console.log(this.state.name)
         return (
+            <div className="devwiz-container">
+            <h1>Create Profile</h1>
             <div className="devwizp">
                 <form onSubmit={this.continue} className="devwizc">
-                    <label>Name</label>
+                    <label>Name:</label>
                     <input name="name" type="text" minLength='2' onChange={event => this.handleInputs(event)} required/>
-                    <br/>
-                    <label>Title</label>
+                    <label>Title:</label>
                     <input name="title" type="text" minLength='2' onChange={event => this.handleInputs(event)} required/>
-                    <br/>
-                    <label>Overview</label>
-                    <input name="overview" type="text" minLength='2' onChange={event => this.handleInputs(event)} required/>
-                    <br/>
-                    <label>Hourly rate</label>
+                    <label>Overview:</label>
+                    <textarea name="overview" type="text" minLength='2' onChange={event => this.handleInputs(event)} required/>
+                    <label>Hourly rate:</label>
                     <input name="hourly_rate" type="number" onChange={event => this.handleInputs(event)} required/>
-                    <br/>
-                    <label>Portfolio</label>
+                    <label>Portfolio URL:</label>
                     <input name="portfolio" type="text" minLength='2' onChange={event => this.handleInputs(event)} required/>
-                    <br/>
-                    <label>Skills</label>
+                    <label>Skills:</label>
                     <input name="skills" type="text" minLength='2' onChange={event => this.handleInputs(event)} required/>
-                    <br/>
-                    <label>Education</label>
+                    <label>Education:</label>
                     <input name="education" type="text" minLength='2' onChange={event => this.handleInputs(event)} required/>
                     <br/>
                     <button type='submit'>Submit</button>
                 </form>
+            </div>
             </div>
         );
     }
