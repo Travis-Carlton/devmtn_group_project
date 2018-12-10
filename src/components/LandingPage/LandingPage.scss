@@ -3,6 +3,7 @@
 
 .landingpagep{
     height: 95vh;
+    width: 100vw;
     background: url('../../office-865091_1920.jpg');
     background-size: cover;
     background-attachment: fixed;
@@ -14,19 +15,14 @@
         font-family: 'Kanit', sans-serif;
         font-weight: 800;
         font-style: italic;
+        font-size: 80px;
     }
 }
-.landingpagec{
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    >.landingpagecc{
+.landingpagecc{
+        text-align: center;
         >div button {
             cursor: pointer;
-            margin: 20px;
+            margin: 10px;
             height: 50px;
             width: 260px;
             border: none;
@@ -36,30 +32,26 @@
             box-shadow: 10px 10px 5px rgb(34, 34, 34);
             font-size: 20px;
         }
-        > h1 {
-            font-size: 100px;
-        }
         > h2 {
             margin-bottom: 30px;
             font-weight: 200;
             font-family: 'Quicksand', sans-serif;
+            font-size: 20px;
         }
     }
-}
 
-@media (min-width: 414px) and (max-width: 1024px){
-    .landingpagec{
-        height: 80%;
-        width: 100%;
-        padding: 10px;
+
+
+
+
+@media screen and (min-width: 500px) {
+    .landingpagep {
+        h1 {
+            font-size: 120px;
+        }
     }
-}
-
-
-@media screen and (max-width: 414px){
-    .landingpagec{
-        height: 80%;
-        width: 100%;
-        padding: 10px;
+    .landingpagecc {
+        text-align: initial;
+        margin-left: 5vw;
     }
 }

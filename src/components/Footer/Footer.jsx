@@ -100,8 +100,10 @@ export default class Footer extends Component {
                     </div>
                 <div className="footerc">
                     <p onClick={this.toggleModal}>Contact</p>
+
                     {/* <Link to='/favorites' >Favorites</Link> */}
                     <Link to='/peopletomessage' >Messages</Link>
+
                     {/* <Link to='/favorites'>Favorites</Link> */}
                     <input name='donationAmount' onChange={(e) => this.handleInputs(e)}/> 
                     {/* <StripeCheckout
