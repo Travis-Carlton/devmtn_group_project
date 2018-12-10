@@ -9,6 +9,8 @@ import Favorites from './components/Favorites/Favorites';
 import HowItWorks from './components/HowItWorks/HowItWorks';
 import DevProfile from './components/BrowseDevDetailed/BrowseDevDetailed';
 import Feed from './components/Feed/Feed.jsx';
+import Messaging from './components/Messaging/Messaging.jsx';
+import PeopleToMessage from './components/PeopleToMessage/PeopleToMessage.jsx';
 import Paypal from './components/PayPalSignUp/PayPalSignUp';
 
 export default (
@@ -21,8 +23,9 @@ export default (
        <Route path='/favorites' component={Favorites} />
        <Route path='/howitworks' component={HowItWorks} />
        <Route path='/feed' component={Feed} />
+       <Route path='/messaging/:conversationid' component={Messaging} />
+       <Route path='/peopletomessage' component={PeopleToMessage} />
        <Route path='/paypal' component={Paypal} />
-
        <Route path='/devprofile/:id' component={DevProfile} />
     </Switch>
 )

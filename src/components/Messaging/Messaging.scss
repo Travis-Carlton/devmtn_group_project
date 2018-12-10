@@ -1,0 +1,11 @@
+.messagingp{
+    padding-top: 10vh;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    > button, input {
+        background: lightseagreen;
+    }
+}

@@ -22,17 +22,29 @@ import {
   updateName,
   clearState
 } from "./redux/reducer";
+import socketIOClient from 'socket.io-client';
+const socket = socketIOClient('http://localhost:4005');
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      something: null
+      notifications: []
     };
   }
 
   componentWillMount() {
     this.getProfileInfo();
+    this.getNotifications();
+  }
+
+  getNotifications = ()=>{
+    socket.on('notification',(msg)=>{
+      // console.log('======APP', msg);
+      this.setState({
+        notifications: [...this.state.notifications, msg]
+      })
+    })
   }
 
   getProfileInfo = () => {
@@ -115,6 +127,7 @@ class App extends Component {
   };
 
   render() {
+    // console.log('>>>>>APP NOT', this.state.notifications)
     return (
       <div className="App">
         <NavBar login={this.login} logout={this.logout} />

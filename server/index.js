@@ -13,6 +13,7 @@ const stripe = require("stripe")("sk_test_48bsYBhFSRnBOUFnGUpFwpKk");
 // controllers
 const controller = require('./controller.js');
 const emailController = require('./emailController.js');
+const msgCntrl = require('./msgController.js');
 
 
 massive(process.env.CONNECTION_STRING).then(database => {
@@ -39,6 +40,21 @@ app.use(express.static(`${__dirname}/../build`));
 
 io.sockets.on('connection', (socket) =>{
     console.log('user connected')
+    socket.on('message', (msg) => {
+        const db = app.get('db');
+        let {message, conversationid, userID} = msg;
+        userID = parseInt(userID);
+        conversationid = parseInt(conversationid);
+        console.log(msg);
+        db.create_message([conversationid,message,userID]).then(response=>{
+            
+        }).catch(err=>console.log(err))
+
+
+        io.emit('messageFromServer', msg);
+        socket.broadcast.emit('notification',msg);
+        
+    })
 
 
 
@@ -105,6 +121,15 @@ app.get('/api/getselectedjob/:id', controller.viewSelectedJob);
 app.post('/api/addfavorite', controller.addFavorite);
 app.get('/api/getfavorite/:id', controller.getFavorites);
 app.get('/api/getalldevelopers', controller.getAllDevelopers);
+////////////////////////////
+
+//////// messaging calls ///////
+app.get('/api/getallusers/formessaging', msgCntrl.getAllUsers);
+app.post(`/api/newconversation`, msgCntrl.createConversation);
+app.get(`/api/:conversationid/prevcomments`,msgCntrl.getPreviousMessages);
+app.get(`/api/getactiveconversations/:userid`, msgCntrl.getActiveConversations);
+
+//////////////////////////
 
 const path = require('path')
 app.get('*', (req, res)=>{

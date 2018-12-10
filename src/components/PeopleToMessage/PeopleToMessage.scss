@@ -1,0 +1,80 @@
+.peopletomessagep{
+    padding-top: 10vh;
+    height: 85vh;
+    display: flex;
+    // flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: scroll;
+    .ptmsidebar{
+        height: 100%;
+        width: 20%;
+        background: blue;
+        display: flex;
+        flex-direction: column;
+        // justify-content: flex-start;
+        .profilebox{
+            height: 40%;
+            width: 100%;
+            background: grey;
+        }
+        .notificationsbox{
+            height: 60%;
+            width: 100%;
+            background: purple;
+        }
+    }
+    .rightmenubox{
+        height: 100%;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
+    .ptmtopbar{
+        height: 20%;
+        width: 100%;
+        background: green;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        > button{
+            background: rgb(92, 92, 201);
+            height: fit-content;
+            width: fit-content;
+            font-size: 20px;
+            margin: 10px;
+        }
+    }
+    .ptmpeopleview{
+        height: 80%;
+        width: 100%;
+        background: lightblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .thumbnails{
+            padding: 20px;
+            width: 90%;
+            height: 90%;
+            display: flex;
+            flex-wrap: wrap;
+            > div {
+                margin: 10px 20px;
+                height: 20%;
+                width: 20%;
+            }
+        }
+    }
+     .peoplecards {
+        margin-top: 30px;
+        height: fit-content;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        img {
+           height: 100px;
+           width: 100px;
+       }
+    }
+}
