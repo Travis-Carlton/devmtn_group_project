@@ -12,25 +12,32 @@ module.exports = {
         userID = parseInt(userID);
         otherUserId = parseInt(otherUserId);
         db.get_conversations().then(response=>{
-            // console.log(response)
+            console.log(response)
             let match = false
+            let matchTwo = false
             let forEach = response.filter(convo=>{
-                if((convo.user_id_one === userID || convo.user_id_one === otherUserId)
-                    && (convo.user_id_two === userID || convo.user_id_two === otherUserId)){
+                if(convo.user_id_one === userID || convo.user_id_two === userID){
+                    // if(convo.user_id_two === userID || convo.user_id_two === otherUserId){
+                    // console.log('object', convo.user_id_one === userID, convo.user_id_one === otherUserId);
+                    // console.log('object', convo.user_id_two === userID, convo.user_id_two === otherUserId);
                     match = true
-                    return convo
+                    }
+                if(convo.user_id_one === otherUserId || convo.user_id_two === otherUserId){
+                    matchTwo = true
                 } 
-                // if(convo.user_id_two === userID || convo.user_id_two === otherUserId){
-                //      matchTwo = true
-                // } 
+                if(match && matchTwo){
+                    return convo
+                }
+                
             });
-            // console.log('>>>>>>',forEach[0].conversation_id)
-            // console.log(match);
-            if(match){
+            // console.log('>>>>>>',forEach[0])
+            // console.log(forEach);
+            // console.log(match,matchTwo);
+            if(match && matchTwo){
                 let msg = 'already have a conversation started';
                return res.status(200).json({convoId: forEach[0].conversation_id, msg})
             } else {
-                // console.log('help')
+                console.log('help')
                 return db.create_new_conversation([userID,otherUserId]).then(newConvo=>{
                     res.status(200).json({convo: newConvo[0]})
                 }).catch(err=>console.error(err))

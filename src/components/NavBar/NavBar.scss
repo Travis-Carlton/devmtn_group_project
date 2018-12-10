@@ -67,6 +67,7 @@ nav {
     }
     a, p {
         margin: 20px auto;
+        width: fit-content;
     }
 }
 
@@ -104,6 +105,29 @@ nav {
     .showtabs{
         display: none;
     }
+    .profileDropDown{
+        height: 60px;
+        width: 7.25vw;
+        padding-top: 2.6vh;
+        position: absolute;
+        z-index: 1;
+        transform: translate(41vw,5.25vh);
+        // background: blue;
+        
+        >div{
+            background-color:rgba(0, 0, 0, 0.75);
+            width: 5vw;
+            padding: 0 20px 5px 20px;
+            font-size: 20px;
+            > * {
+                color: white;
+                text-decoration: none;
+                font-size: 20px;
+            }
+        }
+
+    }
+    
 
 }
 

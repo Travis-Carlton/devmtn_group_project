@@ -90,7 +90,7 @@ class PeopleToMessage extends Component {
 
         const activeConvos = this.state.conversations.map(el=>{
             return (
-                <div className='peoplecards' style={{cursor:'pointer'}} 
+                <div onClick={()=>this.createConversation(el.user_id)} className='peoplecards' style={{cursor:'pointer'}} 
                 key={el.user_id}>
                     <img src={el.profile_picture} alt=""/>
                     <p>{el.profile_name}</p>
