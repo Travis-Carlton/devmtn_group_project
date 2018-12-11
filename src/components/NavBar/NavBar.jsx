@@ -3,6 +3,7 @@ import "./NavBar.scss";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import icon from '../../media/profile.png';
+import logo from '../../media/complogo.svg';
 
 class NavBar extends Component {
   constructor() {
@@ -52,7 +53,10 @@ class NavBar extends Component {
     return (
       
       <div className="navbarp">
-          <div className="navbarlogo"><Link to="/" style={{ textDecoration: 'none', color: 'white'}}>DevWay</Link></div>
+          <div className="navbarlogo">
+            <Link to="/" style={{ textDecoration: 'none', color: 'white'}}>DevWay</Link>
+            <img src={logo} alt='logo'/>
+          </div>
 
           <button onClick={this.toggle} className="mobiletab"> ❖ </button>
 

@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import './DetailedJobs.scss';
 import axios from 'axios';
 import {connect} from 'react-redux'
+import Planning from '../../media/planning.svg';
 import Started from '../../media/started.svg';
+import Finished from '../../media/finished.svg';
+import Paid from '../../media/paid.svg';
 
-class DetailedJob extends Component {
+class DetailedJobsHired extends Component {
     constructor(){
         super();
         this.state = {
@@ -14,21 +17,29 @@ class DetailedJob extends Component {
             modalEmail: '',
             modalMessage: '',
             modalFile: '',
-            modalClientEmail: ''
+            modalClientEmail: '',
+            status: '',
+            accepted: null,
+            client_id: null
         }
     }
     componentDidMount(){
-        axios.get( `/api/getselectedjob/${this.props.match.params.id}`).then(res => {
-            console.log(res.data)
-            this.setState({job: res.data})
+        this.getJobInfo()
+    }
+
+    getJobInfo = () => {
+        axios.get( `/api/getselectedjob/${this.props.jobID}`).then(res => {
+            console.log('res.data.status', res.data[0].status)
+            this.setState({job: res.data, status: res.data[0].status, accepted: res.data[0].accepted, client_id: res.data[0].client_id})
         })
     }
 
-    addFavorite = (userId, jobId) => {
-        axios.post('/api/addfavorite', {user_id: userId, job_id: jobId}).then(res => {
-            alert('Job added to favorites')
+    changeStatus = (status, job_id) => {
+        axios.post('/api/changestatus', {status, job_id}).then(res => {
+            this.getJobInfo()
         })
     }
+
 
     showEmailModal = (email)=>{
 
@@ -60,8 +71,11 @@ class DetailedJob extends Component {
     render() {
         let {userID} = this.props;
         const {showEmailForm} = this.state;
-        console.log('detailed job view', this.state.modalClientEmail);
+        // console.log('detailed job view', this.state.modalClientEmail);
         return (
+            <div>
+            { this.state.accepted === userID || this.state.client_id === userID ?
+
             <div className='detailedJobp'>
                 {showEmailForm&&
                 <div className='emailFormp'>
@@ -80,14 +94,29 @@ class DetailedJob extends Component {
                 </div>
             }
                 <div className="status-container">
+                    { this.state.status === 'planning' ?
+                    <img src={Planning} className="status"/>
+                    : <></>
+                    }
+                    { this.state.status === 'started' ?
                     <img src={Started} className="status"/>
+                    : <></>
+                    }
+                    { this.state.status === 'finished' ?
+                    <img src={Finished} className="status"/>
+                    : <></>
+                    }
+                    { this.state.status === 'paid' ?
+                    <img src={Paid} className="status"/>
+                    : <></>
+                    }
                 </div>
                 <div className="job-container">
                 {
                     this.state.job.map(job => {
                         return <div key={job.id} className="job-profile-view">
                         Posted By: <br />
-                        <img src={job.picture} alt=''/>
+                        <img src={job.profile_picture} alt=''/>
                         <h4>{job.profile_name}</h4>
                         <p onClick={()=>this.showEmailModal(job.email)} ><span style={{cursor:'pointer'}}>{job.email}</span></p>
                         </div>
@@ -102,15 +131,24 @@ class DetailedJob extends Component {
                                     <p>Start Date: {job.start_date}</p>
                                     <p>${job.pay}</p>
                                     <p>Estimated Completion Time: {job.estimation}</p>
-                                    <div className="button-center">
-                                        <button style={{cursor:'pointer'}} onClick={() => this.addFavorite(userID, job.job_id)}>Save to Favorites</button>
-                                    </div>
                                 </div>
                             })
                 }
-                {/* <br /> <br /> <br /> */}
+                <div>
+                    <input type="radio" name="status" value="planning" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Planning</label>
+                    <input type="radio" name="status" value="started" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Started</label>
+                    <input type="radio" name="status" value="finished" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Finished</label>
+                    <input type="radio" name="status" value="paid" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Paid</label>
                 </div>
-                {/* {console.log(this.state.job)} */}
+                {console.log('this.state.status', this.state.status)}
+                
+                </div>
+            </div>
+            : 
+            <div>
+                <h1>This job no longer exists</h1>
+            </div>
+            }
             </div>
         )}
 }
@@ -121,4 +159,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(DetailedJob);
+export default connect(mapStateToProps)(DetailedJobsHired);

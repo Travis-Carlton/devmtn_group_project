@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
 import axios from 'axios';
 import { updateIsDeveloper } from '../../redux/reducer';
+import logo from '../../media/complogo.svg';
 
 class LandingPage extends Component {
 
@@ -30,7 +31,10 @@ class LandingPage extends Component {
         return (
             <div className='landingpagep'>
                 <div className='landingpagecc'>
-                    <h1>DevWay</h1>
+                    <div className='logo-container'>
+                        <h1>DevWay</h1>
+                        <img src={logo}/>
+                    </div>
                     <h2>The best site for developers to meet clients</h2>
                     <div>
                         {console.log(this.props.loggedIn)}

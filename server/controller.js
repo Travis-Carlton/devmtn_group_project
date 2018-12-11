@@ -99,8 +99,37 @@ module.exports = {
     accepted: (req, res) => {
         const db = req.app.get('db');
         const {user_id, job_id} = req.body;
-        db.change_accepted(user_id, job_id).then(job => {
+        db.add_accepted([user_id, job_id]).then(job => {
             res.status(200).json(job)
+        })
+    },
+    applied: (req, res) => {
+        const db = req.app.get('db');
+        const {user_id, job_id} = req.body;
+        db.add_applied(job_id, user_id).then(applied => {
+            res.status(200).json(applied)
+        })
+    },
+    getJobsPosted: (req, res) => {
+        const db = req.app.get('db');
+        const {userID} = req.params;
+        db.get_jobs_posted(userID)
+        .then(job => {
+            res.status(200).json(job)
+        })
+        .catch(error => {
+            console.error('Error on getJobsPosted', error)
+        })
+    },
+    getApplied: (req, res) => {
+        const db = req.app.get('db');
+        const {jobID} = req.params;
+        db.get_applied(jobID)
+        .then(users => {
+            res.status(200).json(users)
+        })
+        .catch(error => {
+            console.error('Error on getApplied', error)
         })
     }
 }
