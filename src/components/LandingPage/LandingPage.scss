@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Kanit:800,800i');
 
 .landingpagep{
-    height: 95vh;
+    min-height: 100vh;
     width: 100vw;
     background: url('../../office-865091_1920.jpg');
     background-size: cover;
@@ -20,6 +20,7 @@
 }
 .landingpagecc{
         text-align: center;
+        width: 100%;
         >div button {
             cursor: pointer;
             margin: 10px;
@@ -33,10 +34,11 @@
             font-size: 20px;
         }
         > h2 {
-            margin-bottom: 30px;
+            margin: 0px auto 30px auto;
             font-weight: 200;
             font-family: 'Quicksand', sans-serif;
             font-size: 20px;
+            
         }
     }
 
@@ -46,13 +48,14 @@
     img {
         width: 50px;
         margin-left: 10px;
+        margin-top: 5px;
     }
 }
 
 
 
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 700px) {
     .landingpagep {
         h1 {
             font-size: 120px;
@@ -61,5 +64,12 @@
     .landingpagecc {
         text-align: initial;
         margin-left: 5vw;
+    }
+    .logo-container {
+        justify-content: flex-start;
+        img {
+            width: 90px;
+            margin-top: 10px;
+        }
     }
 }
