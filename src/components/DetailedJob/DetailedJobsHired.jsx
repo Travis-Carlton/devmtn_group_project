@@ -134,7 +134,7 @@ class DetailedJobsHired extends Component {
                                 </div>
                             })
                 }
-                <div>
+                <div className="status=buttons">
                     <input type="radio" name="status" value="planning" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Planning</label>
                     <input type="radio" name="status" value="started" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Started</label>
                     <input type="radio" name="status" value="finished" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Finished</label>
