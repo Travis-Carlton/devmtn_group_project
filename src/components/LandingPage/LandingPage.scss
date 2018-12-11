@@ -15,7 +15,7 @@
         font-family: 'Kanit', sans-serif;
         font-weight: 800;
         font-style: italic;
-        font-size: 80px;
+        font-size: 55px;
     }
 }
 .landingpagecc{
@@ -40,6 +40,14 @@
         }
     }
 
+.logo-container {
+    display: flex;
+    justify-content: center;
+    img {
+        width: 50px;
+        margin-left: 10px;
+    }
+}
 
 
 

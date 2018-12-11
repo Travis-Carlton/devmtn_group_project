@@ -55,3 +55,32 @@ on u.user_id = f.user_id
 join jobs j
 on j.job_id = f.job_id
 where user_id = $1;
+
+create table applied (
+    id serial primary key,
+    job_id int references jobs(job_id),
+    user_id int references users(user_id)
+)
+
+create table conversations (
+conversation_id serial primary key,
+user_id_one int references users(user_id),
+user_id_two int references users(user_id)
+);
+
+create table messages (
+messages_id serial primary key,
+conversation_id int references conversations(conversation_id),
+messages text,
+stamp date default now()
+);
+
+insert into conversations
+(user_id_one,user_id_two)
+values
+(1,2)
+
+insert into messages
+(conversation_id,messages,user_id)
+values
+($1,$2,$3)

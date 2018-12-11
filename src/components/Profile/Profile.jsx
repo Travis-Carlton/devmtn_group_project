@@ -1,11 +1,29 @@
 import React, { Component } from "react";
 import "./Profile.scss";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
+import axios from "axios";
 
 class Profile extends Component {
+  constructor(){
+    super();
+    this.state = {
+      jobData: []
+    }
+  }
+
+  componentWillMount(){
+    this.getJobsPosted()
+  }
+
+  getJobsPosted = () => {
+    let userID = localStorage.getItem('userId')
+    axios.get(`/api/getjobsposted/${userID}`).then(res => {
+      this.setState({jobData: res.data})
+    })
+  }
+
   render() {
-    console.log("profile ===>", this.props);
     const {
         loggedIn,
         isDeveloper,
@@ -21,17 +39,28 @@ class Profile extends Component {
         devEmail,
         savedJobs
     } = this.props;
-    console.log(this.props)
+
+
+    let jobList = this.state.jobData.map(item => {
+      return <div>
+        {console.log(item)}
+        <p>{item.title}</p>
+        <Link to={`/job/${item.job_id}`}><button>View Job</button></Link>
+        <button>View Applied</button>
+      </div>
+    })
+
+
     return (
       <div className="profilep">
       {loggedIn ?
         <div className="profilec">
           <img src={profilePicture} alt="" />
           <h1>{name}</h1>
-          <h2>{title}</h2>
           <p className="overview">{overview}</p>
           {isDeveloper ?
           <div className="dev-info">
+          <h2>{title}</h2>
           <h3>{devEmail}</h3>
             <div className="hourly-portfolio-parent">
               <div className="child">
@@ -56,7 +85,18 @@ class Profile extends Component {
           </div>
           :
           console.log('Not a developer')}
-        </div>
+        
+          { !isDeveloper ?
+            <div>
+              
+              {jobList}
+
+            </div>
+            :
+            <p>I am not a client</p>
+          }
+          </div>
+      
         : <h1>Please log in</h1>
       }
       </div>

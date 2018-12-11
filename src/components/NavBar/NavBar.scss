@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Kanit:500,500i,600,600i,700,700i,800,800i,900,900i');
 
 .navbarp {
-    height: 50px;
+    height: 60px;
     width: 100%;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.75);
@@ -23,12 +23,19 @@
 
 .navbarlogo{
     margin-left: 40px;
-    font-size: 38px;
+    font-size: 25px;
     color: white;
     font-family: 'Kanit', sans-serif;
     font-weight: 800;
     font-style: italic;
     margin-bottom: 5px;
+    display: flex;
+    height: 100%;
+    img {
+        width: 35px;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
 }
 
 .icon {
@@ -40,7 +47,7 @@ nav {
     position: fixed;
     left: 0%;
     top: 0%;
-    transform: translate(0px, -100vh);
+    transform: translate(0px, -120vh);
     transition: .3s ease-in-out;
     height: 100vh;
     width: 100vw;
@@ -57,7 +64,7 @@ nav {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20%;
+    margin-top: 7%;
     font-family: 'Quicksand', sans-serif;
     > * {
         cursor: pointer;

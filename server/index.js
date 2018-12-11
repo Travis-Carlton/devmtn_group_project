@@ -121,8 +121,11 @@ app.get('/api/getselectedjob/:id', controller.viewSelectedJob);
 app.post('/api/addfavorite', controller.addFavorite);
 app.get('/api/getfavorite/:id', controller.getFavorites);
 app.get('/api/getalldevelopers', controller.getAllDevelopers);
-app.post('/api/changestatus', controller.changeStatus)
-app.post('/api/accept', controller.accepted)
+app.post('/api/changestatus', controller.changeStatus);
+app.post('/api/accept', controller.accepted);
+app.post('/api/applied', controller.applied);
+app.get('/api/getjobsposted/:userID', controller.getJobsPosted);
+app.get('/api/getapplied/:jobID', controller.getApplied);
 ////////////////////////////
 
 //////// messaging calls ///////

@@ -64,13 +64,15 @@ class App extends Component {
       updateName
     } = this.props;
     axios.get("/api/user-data").then(res => {
-      console.log(res.data);
+      console.clear();
+      console.log('res.data', res.data);
       if (res.data === "no session") {
         return;
       } else {
         let {
           user_id,
-          picture,
+          profile_picture,
+          profile_name,
           email,
           developer
         } = res.data.user;
@@ -83,20 +85,25 @@ class App extends Component {
           updateLoggedIn(true);
           updateIsDeveloper(developer);
           updateUserID(user_id);
+          updateProfilePicture(profile_picture);
+          updateName(profile_name);
           localStorage.setItem('userId', user_id)
         }
+
+        axios.get('/api/user')
+
         axios.get(`/api/getdevprofile/${user_id}`).then(res2 => {
           console.log("profile get ", res2.data);
           let { developer_email,education,hourly_rate,overview,
-            portfolio,profile_picture,skills,title, name } = res2.data;
-          updateName(name);
+            portfolio,skills,title } = res2.data;
+          
           updateTitle(title)
           updateOverview(overview);
           updateHourlyRate(hourly_rate);
           updatePortfolio(portfolio);
           updateSkills(skills);
           updateEducation(education);
-          updateProfilePicture(profile_picture);
+          
           updateDevEmail(developer_email);
         });
       }
@@ -132,7 +139,7 @@ class App extends Component {
       <div className="App">
         <NavBar login={this.login} logout={this.logout} />
         <div className="Appc">{routes}</div>
-        <Footer />
+        <Footer loggedIn={this.props.loggedIn} />
       </div>
     );
   }
