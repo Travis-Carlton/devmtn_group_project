@@ -139,7 +139,7 @@ class App extends Component {
       <div className="App">
         <NavBar login={this.login} logout={this.logout} />
         <div className="Appc">{routes}</div>
-        <Footer />
+        <Footer loggedIn={this.props.loggedIn} />
       </div>
     );
   }

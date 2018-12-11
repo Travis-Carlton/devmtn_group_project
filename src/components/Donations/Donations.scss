@@ -1,0 +1,42 @@
+
+
+@media screen and (min-width: 1012px) {
+    .donationmodalp{
+        position: absolute;
+        z-index: 1;
+        height: 100vh;
+        width: 100vw;
+        background: rgba(0, 0, 0, 0.721);
+        transform: translate(-1.8vw,-47.5vh);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        > .donationmodalc{
+            height: 40%;
+            width: 25%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            border-radius: 5px;
+            cursor: initial;
+            >h1{
+                color: black;
+                text-align: center;
+            }
+            >input{
+                height: 5vh;
+                font-size: 28px;
+                overflow-x: scroll;
+                max-width: 9vw;
+            }
+            >input::placeholder{
+                font-size: 16px;
+            }
+            >button{
+                cursor: pointer;
+            }
+        }
+    }
+}
