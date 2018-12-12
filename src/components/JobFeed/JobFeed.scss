@@ -1,20 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:800i|Quicksand');
 
 .job-feed-container {
-    padding-top: 15vh;
+    padding-top: 10vh;
     min-height: 85vh;
-    margin-left: 300px;
+    width: 100vw;
     font-family: 'Quicksand', sans-serif;
+    display: flex;
+    justify-content: center;
+    h1 {
+        color: white;
+        font-size: 50px;
+        text-align: center;
+    }
 }
 
-.job-profile {
-    position: fixed;
-    left: 80px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+.job-profile {   
+    display: none;
     img {
         width: 180px;
         border-radius: 50%;
@@ -32,40 +33,81 @@
 }
 
 .jobfeedp{
+    display: flex;
+    flex-direction: column;
     h1 {
-        font-size: 30px;
+        font-size: 26px;
         color: white;
         margin-top: 10px;
+        color: rgb(50, 172, 247);
+        text-align: left;
     }
     p {
         color: white;
     }
 }
 
+#feed-title {
+    color: white;
+    font-size: 60px;
+    text-align: center;
+    margin-right: 30px;
+}
+
 .jobfeedc {
     width: 80%;
-    max-width: 1000px;
-    background-color: rgba(0, 0, 0, 0.575);
+    max-width: 900px;
+    margin: 10px auto;
+    background-color: rgba(0, 0, 0, 0.475);
     padding: 30px;
     border-radius: 10px;
-    margin: 20px 0px;
-    margin-left: 40px;
-    display: grid;
-    grid-template-columns: auto 120px 150px;
-    grid-gap: 10px;
     align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: start;
     button {
-        width: 150px;
-        height: 30px;
+        width: 160px;
+        height: 40px;
         font-size: 18px;
         border-radius: 5px;
         background: rgb(26, 144, 217);
         border: 0;
         color: white;
+        margin: 20px;
     }
 }
 
 .pay {
     font-size: 22px;
     text-align: center;
+    margin: 30px;
+}
+
+@media screen and (min-width: 1200px) {
+    .job-feed-container {
+        width: 90vw;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .job-profile {
+        display: initial;        
+        text-align: center;
+        margin-right: 20px;
+        margin-top: 30px;
+    }
+
+    .jobfeedp {
+        margin: 30px auto;
+    }
+
+    .jobfeedc {
+        flex-direction: row;
+        button {
+            margin: 0;
+        }
+    }
+
+
 }
