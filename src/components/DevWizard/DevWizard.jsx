@@ -33,7 +33,7 @@ class DevOrClient extends Component {
             updatePortfolio(portfolio)
             updateSkills(skills)
             updateEducation(education)
-            return window.location.assign('/jobfeed')
+            return window.location.assign('/feed')
         }).catch(error => {
             console.error('Error on Dev form submit', error)
         })
@@ -44,22 +44,17 @@ class DevOrClient extends Component {
     }
 
     render() {
-        console.log(this.state.name)
         return (
             <div className="devwiz-container">
             <h1>Create Profile</h1>
             <div className="devwizp">
                 <form onSubmit={this.continue} className="devwizc">
-                    <label>Name:</label>
-                    <input name="name" type="text" minLength='2' onChange={event => this.handleInputs(event)} required/>
                     <label>Title:</label>
                     <input name="title" type="text" minLength='2' onChange={event => this.handleInputs(event)} required/>
                     <label>Overview:</label>
                     <textarea name="overview" type="text" minLength='2' onChange={event => this.handleInputs(event)} required/>
                     <label>Hourly rate:</label>
                     <input name="hourly_rate" type="number" onChange={event => this.handleInputs(event)} required/>
-                    <label>Portfolio URL:</label>
-                    <input name="portfolio" type="text" minLength='2' onChange={event => this.handleInputs(event)} required/>
                     <label>Skills:</label>
                     <input name="skills" type="text" minLength='2' onChange={event => this.handleInputs(event)} required/>
                     <label>Education:</label>

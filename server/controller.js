@@ -12,6 +12,12 @@ module.exports = {
     createDevProfile: (req, res) => {
         const db = req.app.get('db');
         const { userID, name, title, overview, hourly_rate, portfolio, skills, education} = req.body;
+        req.session.user.title = title;
+        req.session.user.overview = overview;
+        req.session.user.hourly_rate = hourly_rate;
+        req.session.user.portfolio = portfolio;
+        req.session.user.skills = skills;
+        req.session.user.education = education;
         db.create_dev_profile(userID, name, title, overview, hourly_rate, portfolio, skills, education)
         .then(profile => {
             res.status(200).json(profile)
@@ -130,6 +136,17 @@ module.exports = {
         })
         .catch(error => {
             console.error('Error on getApplied', error)
+        })
+    },
+    uploadProfile: (req, res) => {
+        const db = req.app.get('db')
+        const {profile_picture, user_id} = req.body
+        req.session.user.profile_picture = profile_picture;
+        db.upload_profile_picture([profile_picture, user_id]).then(response => {
+            res.status(200).json(response)
+            console.log(response)
+        }).catch(error => {
+            console.error('Error on uploadProfile', error)
         })
     }
 }

@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import "./Profile.scss";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
+import { updateProfilePicture } from '../../redux/reducer';
 import axios from "axios";
 
 class Profile extends Component {
   constructor(){
     super();
     this.state = {
-      jobData: []
+      jobData: [],
+      image: ''
     }
   }
 
@@ -22,6 +24,28 @@ class Profile extends Component {
       this.setState({jobData: res.data})
     })
   }
+
+  uploadWidget = () => {
+    window.cloudinary.openUploadWidget({
+        cloud_name: 'dtjiplvkp',
+        upload_preset: 'amedwnem',
+        tags:['devway'],
+        theme: 'minimal',
+        autoMinimize: true,
+        multiple: false,
+        thumbnailTransformation: [{ width: 5, height: 100, crop: 'fit' }],
+        styles: {
+            width: "100%"
+        }
+        },
+        (error, result) => {
+            const userID = localStorage.getItem('userId')
+            console.log(result.info.url)
+            console.log(userID)
+            this.props.updateProfilePicture(result.info.url)
+            axios.post('/api/uploadprofilepicture', {profile_picture: result.info.url, user_id: userID})
+        });
+}
 
   render() {
     const {
@@ -56,6 +80,8 @@ class Profile extends Component {
       {loggedIn ?
         <div className="profilec">
           <img src={profilePicture} alt="" />
+          <button onClick={() => this.uploadWidget()} className="upload-button">Upload Picture</button>
+          {console.log('this.state.image-=-=-=-=->', this.state.image)}
           <h1>{name}</h1>
           <p className="overview">{overview}</p>
           {isDeveloper ?
@@ -137,4 +163,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default withRouter(connect(mapStateToProps)(Profile));
+export default withRouter(connect(mapStateToProps, {updateProfilePicture})(Profile));
