@@ -99,7 +99,7 @@ app.post("/api/stripe", (req, res) => {
 /////////////////////////
 
 //auth endpoints
-app.get('/__auth/callback', authController.login);
+app.get('/auth/callback', authController.login);
 app.get('/api/user-data', (req, res) => {
     req.session.user ?
     res.status(200).json({ user: req.session.user})

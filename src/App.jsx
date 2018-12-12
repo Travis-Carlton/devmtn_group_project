@@ -112,7 +112,7 @@ class App extends Component {
 
   login = () => {
     const redirecturi = encodeURIComponent(
-      window.location.origin + "/__auth/callback"
+      window.location.origin + "/auth/callback"
     );
     const url = `https://${
       process.env.REACT_APP_AUTH0_DOMAIN
