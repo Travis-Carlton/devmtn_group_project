@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import icon from '../../media/profile.png';
 import logo from '../../media/complogo.svg';
+import menuicon from '../../media/menuicon.svg';
 
 class NavBar extends Component {
   constructor() {
@@ -58,7 +59,7 @@ class NavBar extends Component {
             <img src={logo} alt='logo'/>
           </div>
 
-          <button onClick={this.toggle} className="mobiletab"> ❖ </button>
+          <img onClick={this.toggle} className="mobiletab" src={menuicon}/>
 
           {<nav className={this.state.toggleNav ? 'show' : ''}>
               <div className="navbarcc">
@@ -84,7 +85,7 @@ class NavBar extends Component {
                 {!this.props.loggedIn ? (
                   <p onClick={() => this.toggleLogin()}>LOGIN</p>
                 ) : (
-                  <p onClick={() => this.toggleLogout()}>LOGOUT</p>
+                  <></>
                 )}
                   <Link className='mobiletab' onClick={()=>this.profileDropdown(false)} to='/favorites'>Favorites</Link>
                   <Link to="/profile" onClick={() => this.setState({toggleNav: false})}><img onMouseEnter={()=>this.profileDropdown(true)} onMouseLeave={()=>this.profileDropdown(false)} className="icon" src={icon} alt=''/></Link>
@@ -97,41 +98,6 @@ class NavBar extends Component {
               </div>
           </nav>
           }
-          {/* {this.state.showTabs && (
-            <div className="showtabs">
-              <div>
-                <Link to="/">HOME</Link>
-                <Link to="/howitworks">HOW IT WORKS</Link>
-                
-                {!this.props.loggedIn ?
-                  (
-                    <p onClick={this.props.login}>LOGIN</p>
-                  )
-                :
-                  (
-                    <p onClick={this.props.logout}>LOGOUT</p>
-                  )}
-                  
-                  {
-                    //Logged in as a Developer
-                    this.props.loggedIn && this.props.isDeveloper === true ? (
-                      <>
-                        <Link to="/feed">JOB FEED</Link>
-                        <Link to="/profile">PROFILE</Link>
-                      </>
-                    )
-                  :
-                  //Logged in as a Client
-                  this.props.loggedIn && this.props.isDeveloper === false &&
-                    ( <>
-                        <Link to="/feed">BROWSE DEVS</Link>
-                        <Link to="/profile">PROFILE</Link>
-                      </> )
-                  }
-              </div>
-            </div>
-          )}
-        </div> */}
       </div>
     );
   }

@@ -31,6 +31,7 @@ render() {
                 <h2>{title}</h2>
             </div>
             <div className='jobfeedp'>
+            <h1 id="feed-title">Job Feed</h1>
                 {
                     this.state.jobs.length > 0 ?
                     this.state.jobs.map(job => {
@@ -60,7 +61,7 @@ render() {
                     })
                     :
                     <div>
-                        <img src='http://www.vivo.com/themes/custom/vivo/img/loader.gif' />
+                        <h1>Loading...</h1>
                     </div>
                 }
             </div>

@@ -1,18 +1,19 @@
 .developer-parent-container {
     padding-top: 10vh;
     min-height: 85vh;
+    
     h1 {
         text-align: center;
         color: white;
         font-size: 50px;
-        margin: 20px auto;
+        margin: 20px 10px;
     }
 }
 
 .developer-card-parent {
     display: flex;
     flex-direction: row;
-    width: 1100px;
+    width: 100%;
     flex-wrap: wrap;
     margin: 10px auto;
     justify-content: center;
@@ -21,24 +22,23 @@
 .developer-card {
     background: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
-    margin: 10px;
-    width: 260px;
+    margin: 10px auto;
+    width: 280px;
     height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 20px 0px 30px 0px;
     color: white;
     img {
-        width: 180px;
+        width: 160px;
         border-radius: 50%;
         border: 5px solid rgb(26, 144, 217);
-        margin-top: 10px;
+        margin: 10px auto;
     }
     h2 {
         text-decoration: none;
-        
     }
     button {
         margin-bottom: 10px;
@@ -60,4 +60,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+@media screen and (min-width:500px){
+    .developer-parent-container {
+        h1 {
+            font-size: 60px;
+            margin-bottom: 40px;
+        }
+    }
+    .developer-card-parent {
+        width: 90vw;
+        max-width: 1200px;
+    }
+    .developer-card {
+        margin: 10px;
+        width: 300px;
+    }
 }

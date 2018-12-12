@@ -12,12 +12,9 @@
 }
 
 .mobiletab {
-    width: 50px;
-    height: 50px;
+    width: 35px;
     margin-right: 20px;
-    border-radius: 10px;
     display: initial;
-    // position: fixed;
     z-index: 4;
 }
 
@@ -83,15 +80,14 @@ nav {
 
 
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 800px) {
 
     nav {
-        margin-right: 0px;
+        margin-right: 10px;
         background: none;
         transform: initial;
         height: 80px;
-        width: 50%;
-        
+        width: 55%;
         position: initial;
         
     }
@@ -120,11 +116,9 @@ nav {
         padding-top: 2.6vh;
         position: absolute;
         z-index: 1;
-        transform: translate(41vw,5.25vh);
-        // background: blue;
-        
+        transform: translate(46vw,5.25vh);        
         >div{
-            background-color:rgba(0, 0, 0, 0.75);
+            background-color:rgba(0, 0, 0, 0.65);
             width: 5vw;
             padding: 0 20px 5px 20px;
             font-size: 20px;
@@ -147,99 +141,3 @@ nav {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-// @media (min-width: 414px) and (max-width: 1024px){
-//     .navbarlogo{
-//         border: none;
-//     }
-//     .navbarc{
-//         width: 100%;
-//     }
-//     .navbarcc{
-//         display: none;
-//     }
-//     .mobiletab{
-//         display: block;
-//         height: 100%;
-//         width: 10%;
-//         color: white;
-//         font-size: 30px;
-//         margin-right: 10px;
-//     }
-//     .showtabs{
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         position: absolute;
-//         background-color: rgba(0, 0, 0, 0.808);
-//         height: 50vh;
-//         width: 100vw;
-//         transform: translate(0,305px);
-//         > div{
-//            display: flex;
-//            flex-direction: column;
-//            justify-content: space-around;
-//            align-items: center;
-//            height: 80%;
-//            width: 80%;
-//             > * {
-//                 cursor: pointer;
-//                 color: white;
-//                 text-decoration: none;
-//                 font-size: 30px;
-//             }
-//         }
-//     }
-// }
-
-// @media screen and (max-width: 414px){
-//     .navbarlogo{
-//         border: none;
-//     }
-//     .navbarc{
-//         width: 100%;
-//     }
-//     .navbarcc{
-//         display: none;
-//     }
-//     .mobiletab{
-//         display: block;
-//         height: 100%;
-//         width: 10%;
-//         color: white;
-//         font-size: 30px;
-//         margin-right: 10px;
-//     }
-//     .showtabs{
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         position: absolute;
-//         background-color: rgba(0, 0, 0, 0.808);
-//         height: 50vh;
-//         width: 100vw;
-//         transform: translate(0,220px);
-//         > div{
-//            display: flex;
-//            flex-direction: column;
-//            justify-content: space-around;
-//            align-items: center;
-//            height: 80%;
-//            width: 80%;
-//             > * {
-//                 color: white;
-//                 text-decoration: none;
-//                 font-size: 30px;
-//             }
-//         }
-//     }
-// }
