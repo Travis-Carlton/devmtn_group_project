@@ -40,7 +40,6 @@ class App extends Component {
 
   getNotifications = ()=>{
     socket.on('notification',(msg)=>{
-      // console.log('======APP', msg);
       this.setState({
         notifications: [...this.state.notifications, msg]
       })
@@ -61,11 +60,11 @@ class App extends Component {
       updateProfilePicture,
       updateDevEmail,
       updateSavedJobs,
-      updateName,
+      updateName
     } = this.props;
     axios.get("/api/user-data").then(res => {
       console.clear();
-      console.log('res.data------>', res.data);
+      console.log('res.data', res.data);
       if (res.data === "no session") {
         return;
       } else {
@@ -74,12 +73,7 @@ class App extends Component {
           profile_picture,
           profile_name,
           email,
-          developer,
-          overview,
-          hourly_rate,
-          portfolio,
-          skills,
-          education
+          developer
         } = res.data.user;
         console.log(user_id)
         // if (developer === null) {
@@ -91,16 +85,8 @@ class App extends Component {
           updateIsDeveloper(developer);
           updateUserID(user_id);
           updateProfilePicture(profile_picture);
-          updateName(profile_name)
+          updateName(profile_name);
           localStorage.setItem('userId', user_id)
-        }
-
-        if(res.data.user.skills){
-            updateOverview(overview)
-            updateHourlyRate(hourly_rate)
-            updatePortfolio(portfolio)
-            updateSkills(skills)
-            updateEducation(education)
         }
 
         axios.get('/api/user')

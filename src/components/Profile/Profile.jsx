@@ -10,12 +10,16 @@ class Profile extends Component {
     super();
     this.state = {
       jobData: [],
-      image: ''
+      setMe: '',
+      applied: [],
+      allJobs: []
     }
   }
 
   componentWillMount(){
     this.getJobsPosted()
+    this.getApplied()
+    this.getAllJobs()
   }
 
   getJobsPosted = () => {
@@ -25,6 +29,25 @@ class Profile extends Component {
     })
   }
 
+  getApplied = () => {
+    let userID = localStorage.getItem('userId')
+    axios.get(`/api/getdevapplied/${userID}`).then(res => {
+      if(res.data.length){
+        this.setState({applied: res.data})
+      } else {
+        this.setState({applied: [{name: 'You have applied to no jobs'}]})
+      }
+    })
+  }
+
+  getAllJobs = () => {
+    axios.get('/api/getalljobswithnonzeros').then(res => {
+      this.setState({allJobs: res.data})
+    })
+  }
+
+
+
   uploadWidget = () => {
     window.cloudinary.openUploadWidget({
         cloud_name: 'dtjiplvkp',
@@ -33,6 +56,7 @@ class Profile extends Component {
         theme: 'minimal',
         autoMinimize: true,
         multiple: false,
+        queueViewPosition: 'display: none',
         thumbnailTransformation: [{ width: 5, height: 100, crop: 'fit' }],
         styles: {
             width: "100%"
@@ -40,10 +64,10 @@ class Profile extends Component {
         },
         (error, result) => {
             const userID = localStorage.getItem('userId')
-            console.log(result.info.url)
-            console.log(userID)
-            this.props.updateProfilePicture(result.info.url)
-            axios.post('/api/uploadprofilepicture', {profile_picture: result.info.url, user_id: userID})
+            axios.post('/api/uploadprofilepicture', {profile_picture: result.info.url, user_id: userID}).then(() => {
+              this.props.updateProfilePicture(result.info.url)
+            })
+            axios.post('/api/uploadprofilepicturedevprofile', {profile_picture: result.info.url, user_id: userID})
         });
 }
 
@@ -67,13 +91,11 @@ class Profile extends Component {
 
     let jobList = this.state.jobData.map(item => {
       return <div>
-        {console.log(item)}
         <p>{item.title}</p>
         <Link to={`/job/${item.job_id}`}><button>View Job</button></Link>
         <button>View Applied</button>
       </div>
     })
-
 
     return (
       <div className="profilep">
@@ -81,7 +103,6 @@ class Profile extends Component {
         <div className="profilec">
           <img src={profilePicture} alt="" />
           <button onClick={() => this.uploadWidget()} className="upload-button">Upload Picture</button>
-          {console.log('this.state.image-=-=-=-=->', this.state.image)}
           <h1>{name}</h1>
           <p className="overview">{overview}</p>
           {isDeveloper ?
@@ -108,6 +129,38 @@ class Profile extends Component {
                 <p >{education}</p>
               </div>
             </div>
+            { this.props.isDeveloper &&
+              <div>
+                <p>Current Jobs</p>
+                {
+                  this.state.allJobs.map(jobs => {
+                    let userID = localStorage.getItem('userId')
+                    if(userID == jobs.accepted){
+                      return <div>
+                        <p>{jobs.title}</p>
+                        <Link to={`/job/${jobs.job_id}`}><button>View Job</button></Link>
+                        <button>View Applied</button>
+                      </div>
+                    } else{
+                      return <></>
+                    }
+                  })
+                }
+                <p>Applied</p>
+                {this.state.applied.map(item => {
+                  if(item.accepted === 0){
+                  return <div>
+                    <p>{item.title}</p>
+                    <Link to={`/job/${item.job_id}`}><button>View Job</button></Link>
+                    <button>View Applied</button>
+                  </div>
+                  }
+                })}
+              </div>
+            }
+
+
+
           </div>
           :
           console.log('Not a developer')}
@@ -119,7 +172,7 @@ class Profile extends Component {
 
             </div>
             :
-            <p>I am not a client</p>
+            <></>
           }
           </div>
       

@@ -103,12 +103,19 @@ class DetailedJobsPublic extends Component {
                 }
                 {
                     this.state.job.map(job => {
+                        let semiFinalDate = []
+                        let splitStamp = job.stamp.split('')
+                        let betterDate = splitStamp.slice(0, 10)
+                        semiFinalDate.push(betterDate[5], betterDate[6], betterDate[4], betterDate[8], betterDate[9], betterDate[7],betterDate[0], betterDate[1], betterDate[2], betterDate[3]);
+                        let finalDate = semiFinalDate.join('')
+                        console.log('==========finalDatefinalDate', finalDate)
                         return <div key={job.id} className="detail-job-info">
                                     <h2>{job.title}</h2>
                                     <p className="detail-job-description">{job.description}</p>
                                     <p>Start Date: {job.start_date}</p>
                                     <p>${job.pay}</p>
                                     <p>Estimated Completion Time: {job.estimation}</p>
+                                    <p>Posted on {finalDate}</p>
                                     <div className="button-center">
                                         <button style={{cursor:'pointer'}} onClick={() => this.addFavorite(userID, job.job_id)}>Save to Favorites</button>
                                         <button style={{cursor:'pointer'}} onClick={() => this.applyToJob(userID, job.job_id)}>Apply for Job</button>
