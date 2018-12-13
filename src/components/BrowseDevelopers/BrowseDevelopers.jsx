@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import './BrowseDevelopers.scss';
+import {connect} from 'react-redux';
 
 class BrowseDevelopers extends Component {
     constructor(){
@@ -24,20 +25,21 @@ class BrowseDevelopers extends Component {
         })
     }
 
+    
+
 render() {
     return (
         <div className="developer-parent-container">
         {
             this.state.developers.length > 0 ?
             <div>
-                {/* <br /> <br /> <br /> <br /> */}
                 <h1>Browse Developers</h1>
                 <div className="developer-card-parent">
                 {this.state.developers.map(devs => {
                     return <div>
                         <div className="developer-card">
                             <div className="developer-card-details">
-                                <img src={devs.profile_picture || 'https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-12/25/User-Circle-512.png'} />
+                                <img src={this.props.profilePicture || 'https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-12/25/User-Circle-512.png'} />
                                 <h2>{devs.name}</h2>
                                 <p>{devs.skills}</p>
                             </div>
@@ -61,4 +63,11 @@ render() {
     )}
 }
 
-export default BrowseDevelopers;
+const mapStateToProps = (state) => {
+    return {
+        userID: state.userID,
+        profilePicture: state.profilePicture
+    }
+}
+
+export default connect(mapStateToProps)(BrowseDevelopers);

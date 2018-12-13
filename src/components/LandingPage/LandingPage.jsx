@@ -31,10 +31,10 @@ class LandingPage extends Component {
         return (
             <div className='landingpagep'>
                 <div className='landingpagecc'>
-                    <div className='logo-container'>
+                   
                         <h1>DevWay</h1>
-                        <img src={logo}/>
-                    </div>
+                        {/* <img src={logo}/> */}
+                    
                     <h2>The best site for developers to meet clients</h2>
                     <div>
                         {console.log(this.props.loggedIn)}

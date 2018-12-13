@@ -42,15 +42,7 @@
         }
     }
 
-.logo-container {
-    display: flex;
-    justify-content: center;
-    img {
-        width: 50px;
-        margin-left: 10px;
-        margin-top: 5px;
-    }
-}
+
 
 
 
@@ -59,17 +51,12 @@
     .landingpagep {
         h1 {
             font-size: 120px;
+            margin-bottom: 240px;
         }
     }
     .landingpagecc {
         text-align: initial;
         margin-left: 5vw;
     }
-    .logo-container {
-        justify-content: flex-start;
-        img {
-            width: 90px;
-            margin-top: 10px;
-        }
-    }
+
 }

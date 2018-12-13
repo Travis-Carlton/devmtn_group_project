@@ -40,6 +40,7 @@ render() {
             this.state.list.length > 0 && this.props.userID ?
             this.props.isDeveloper ?
             <div className='jobfeedp'>
+                <h1 id="feed-title">Favorites</h1>
                 {
                 this.state.list.map(job => {
                     let num = job.description.split(' ').length
@@ -56,7 +57,7 @@ render() {
                                     <p>{job.description}</p>
                                     }
                                 </div>
-                                    <p>${job.pay}</p>
+                                    <p className="pay">${job.pay}</p>
                                     <Link to={`/job/${job.job_id}`} style={{ textDecoration: 'none' }}>
                                         <div>
                                             <button>View Job</button>

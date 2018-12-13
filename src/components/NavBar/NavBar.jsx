@@ -55,8 +55,14 @@ class NavBar extends Component {
       
       <div className="navbarp">
           <div className="navbarlogo">
-            <Link to="/" style={{ textDecoration: 'none', color: 'white'}}>DevWay</Link>
             <img src={logo} alt='logo'/>
+            <Link to="/" style={{ textDecoration: 'none', color: 'white'}}>DevWay</Link>
+            { this.props.isDeveloper ?
+            <p className="nav-switch">Developer</p> 
+            : this.props.isDeveloper === false ?
+            <p className="nav-switch">Client</p>
+            : <></>
+            }
           </div>
 
           <img onClick={this.toggle} className="mobiletab" src={menuicon}/>

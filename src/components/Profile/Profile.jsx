@@ -66,11 +66,13 @@ class Profile extends Component {
 
 
     let jobList = this.state.jobData.map(item => {
-      return <div>
+      return <div className="client-job-card">
         {console.log(item)}
-        <p>{item.title}</p>
-        <Link to={`/job/${item.job_id}`}><button>View Job</button></Link>
-        <button>View Applied</button>
+        <h2>{item.title}</h2>
+        <div>
+          <Link to={`/job/${item.job_id}`}><button>View Job</button></Link>
+          <Link to={`/applied/${item.job_id}`}><button>View Applied</button></Link>
+        </div>
       </div>
     })
 

@@ -130,16 +130,19 @@ class DetailedJobsHired extends Component {
                                     <p className="detail-job-description">{job.description}</p>
                                     <p>Start Date: {job.start_date}</p>
                                     <p>${job.pay}</p>
-                                    <p>Estimated Completion Time: {job.estimation}</p>
+                                    <p>Est. Completion Time: {job.estimation}</p>
                                 </div>
                             })
                 }
-                <div className="status=buttons">
-                    <input type="radio" name="status" value="planning" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Planning</label>
-                    <input type="radio" name="status" value="started" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Started</label>
-                    <input type="radio" name="status" value="finished" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Finished</label>
-                    <input type="radio" name="status" value="paid" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Paid</label>
+                { this.props.isDeveloper ?
+                <div className="status-buttons">
+                    <div><input type="radio" name="status" value="planning" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Planning</label></div>
+                    <div><input type="radio" name="status" value="started" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Started</label></div>
+                    <div><input type="radio" name="status" value="finished" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Finished</label></div>
+                    <div><input type="radio" name="status" value="paid" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Paid</label></div>
                 </div>
+                : <></>
+                }
                 {console.log('this.state.status', this.state.status)}
                 
                 </div>
@@ -155,7 +158,8 @@ class DetailedJobsHired extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        userID: state.userID
+        userID: state.userID,
+        isDeveloper: state.isDeveloper
     }
 }
 

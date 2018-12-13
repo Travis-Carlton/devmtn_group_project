@@ -33,10 +33,10 @@ class AppliedDevelopers extends Component {
 
 render() {
     const appliedDevelopers = this.state.developers.map(applicant => {
-        return <div>
+        return <div className="applied-developer-card">
             <img src={applicant.profile_picture} />
-            Name: {applicant.profile_name}
-            Email: {applicant.email}
+            <p>Name: {applicant.profile_name}</p>
+            <p>Email: {applicant.email}</p>
             <Link to={`/devprofile/${applicant.user_id}`}><button>View Developer</button></Link>
             <button onClick={() => this.acceptDeveloper(applicant.user_id, applicant.job_id)}>Hire Developer</button>
         </div>
@@ -45,7 +45,9 @@ render() {
         <div className="applied-container">
             {console.log('this.props.match.params', this.props.match.params)}
             <h1>Applied Developers</h1>
-            {appliedDevelopers}
+            <div className="applied-card-container">
+                {appliedDevelopers}
+            </div>
         </div>
     )
     }

@@ -101,6 +101,12 @@
     
 }
 
+.status-buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
 @media screen and (min-width: 900px) {
     .job-container {
         width: 70%;
@@ -116,5 +122,9 @@
 
     .button-center {
         display: initial;
+    }
+    .status-container {
+        max-width: 900px;
+        margin: 20px auto 40px auto;
     }
 }
