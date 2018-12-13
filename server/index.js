@@ -126,6 +126,7 @@ app.post('/api/accept', controller.accepted);
 app.post('/api/applied', controller.applied);
 app.get('/api/getjobsposted/:userID', controller.getJobsPosted);
 app.get('/api/getapplied/:jobID', controller.getApplied);
+app.put(`/api/updatedevprofile`, controller.updateDevProfile);
 ////////////////////////////
 
 //////// messaging calls ///////

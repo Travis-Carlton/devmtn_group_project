@@ -3,12 +3,14 @@ import "./Profile.scss";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
+import EditProfile from '../EditProfile/EditProfile.jsx';
 
 class Profile extends Component {
   constructor(){
     super();
     this.state = {
-      jobData: []
+      jobData: [],
+      editModal: false
     }
   }
 
@@ -20,6 +22,12 @@ class Profile extends Component {
     let userID = localStorage.getItem('userId')
     axios.get(`/api/getjobsposted/${userID}`).then(res => {
       this.setState({jobData: res.data})
+    })
+  }
+
+  toggleModal = ()=>{
+    this.setState({
+      editModal: !this.state.editModal
     })
   }
 
@@ -58,6 +66,7 @@ class Profile extends Component {
           <img src={profilePicture} alt="" />
           <h1>{name}</h1>
           <p className="overview">{overview}</p>
+          {/* Developer section */}
           {isDeveloper ?
           <div className="dev-info">
           <h2>{title}</h2>
@@ -82,18 +91,25 @@ class Profile extends Component {
                 <p >{education}</p>
               </div>
             </div>
+            <button onClick={this.toggleModal} style={{cursor:'pointer'}}>Edit Profile</button>
+            {
+              this.state.editModal &&
+                <div className='editmodalp'>
+                  <EditProfile {...this.props} />
+                  <button onClick={this.toggleModal} style={{cursor:'pointer'}}>Cancel</button>
+                  
+                </div>
+            }
           </div>
           :
           console.log('Not a developer')}
         
-          { !isDeveloper ?
+          { !isDeveloper &&
             <div>
               
               {jobList}
 
             </div>
-            :
-            <p>I am not a client</p>
           }
           </div>
       
