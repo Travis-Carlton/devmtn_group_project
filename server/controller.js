@@ -175,4 +175,13 @@ module.exports = {
             console.error('Error on viewAllJobs', error)
         })
     },
+    updateDevProfile: (req,res)=>{
+        const db = req.app.get('db');
+        const {userID,overview,title,email,hourlyRate,portfolio,skills,education} = req.body;
+        console.log(req.body)
+        db.update_dev_profile([overview,hourlyRate,portfolio,skills,education,email,title,userID]).then(response=>{
+            res.send('success')
+            // req.session.user
+        })
+    }
 }

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import { updateProfilePicture } from '../../redux/reducer';
 import axios from "axios";
+import EditProfile from '../EditProfile/EditProfile.jsx';
 
 class Profile extends Component {
   constructor(){
@@ -12,7 +13,8 @@ class Profile extends Component {
       jobData: [],
       setMe: '',
       applied: [],
-      allJobs: []
+      allJobs: [],
+      editModal: false
     }
   }
 
@@ -71,6 +73,12 @@ class Profile extends Component {
         });
 }
 
+  toggleModal = ()=>{
+    this.setState({
+      editModal: !this.state.editModal
+    })
+  }
+
   render() {
     const {
         loggedIn,
@@ -106,6 +114,8 @@ class Profile extends Component {
           <img src={profilePicture} alt="" />
           <button onClick={() => this.uploadWidget()} className="upload-button">Upload Picture</button>
           <h1>{name}</h1>
+          <p className="overview">{overview}</p>
+          {/* Developer section */}
           {isDeveloper ?
           <div className="dev-info">
           <h2>{title}</h2>
@@ -161,18 +171,25 @@ class Profile extends Component {
 
 
 
+            <button onClick={this.toggleModal} style={{cursor:'pointer'}}>Edit Profile</button>
+            {
+              this.state.editModal &&
+                <div className='editmodalp'>
+                  <EditProfile {...this.props} />
+                  <button onClick={this.toggleModal} style={{cursor:'pointer'}}>Cancel</button>
+                  
+                </div>
+            }
           </div>
           :
           console.log('Not a developer')}
         
-          { !isDeveloper ?
+          { !isDeveloper &&
             <div>
               
               {jobList}
 
             </div>
-            :
-            <></>
           }
           </div>
       

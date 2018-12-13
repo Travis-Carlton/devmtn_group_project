@@ -130,6 +130,7 @@ app.get('/api/getapplied/:jobID', controller.getApplied);
 app.post('/api/uploadprofilepicture', controller.uploadProfile);
 app.post('/api/uploadprofilepicturedevprofile', controller.uploadDevProfilePicture);
 app.get('/api/getdevapplied/:id', controller.getDevApplied)
+app.put(`/api/updatedevprofile`, controller.updateDevProfile);
 ////////////////////////////
 
 //////// messaging calls ///////
