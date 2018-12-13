@@ -117,6 +117,7 @@ app.post('/api/createdevprofile', controller.createDevProfile);
 app.get('/api/getdevprofile/:id', controller.viewDevProfile);
 app.post('/api/createjob', controller.createJob);
 app.get('/api/getalljobs', controller.viewAllJobs);
+app.get('/api/getalljobswithnonzeros', controller.viewAllJobsWithNonZeros);
 app.get('/api/getselectedjob/:id', controller.viewSelectedJob);
 app.post('/api/addfavorite', controller.addFavorite);
 app.get('/api/getfavorite/:id', controller.getFavorites);
@@ -126,7 +127,9 @@ app.post('/api/accept', controller.accepted);
 app.post('/api/applied', controller.applied);
 app.get('/api/getjobsposted/:userID', controller.getJobsPosted);
 app.get('/api/getapplied/:jobID', controller.getApplied);
-app.post('/api/uploadprofilepicture', controller.uploadProfile)
+app.post('/api/uploadprofilepicture', controller.uploadProfile);
+app.post('/api/uploadprofilepicturedevprofile', controller.uploadDevProfilePicture);
+app.get('/api/getdevapplied/:id', controller.getDevApplied)
 ////////////////////////////
 
 //////// messaging calls ///////

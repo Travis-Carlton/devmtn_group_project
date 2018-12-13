@@ -98,6 +98,8 @@ class NavBar extends Component {
                   {this.state.profileDropdown && this.props.loggedIn &&
                     <div onMouseEnter={()=>this.profileDropdown(true)} onMouseLeave={()=>this.profileDropdown(false)} className='profileDropDown'>
                         {this.props.loggedIn && this.props.isDeveloper && <div><Link onClick={()=>this.profileDropdown(false)} to='/favorites'>Favorites</Link></div>}
+                        {this.props.loggedIn && this.props.isDeveloper === false && <div><Link to='/create'>POST JOB</Link></div>}
+                        {this.props.loggedIn && this.props.isDeveloper === false && <div><Link to='/profile'>MY JOBS</Link></div>}
                         {this.props.loggedIn && <div onClick={() => this.toggleLogout()}>LOGOUT</div>}
                     </div>
                   }

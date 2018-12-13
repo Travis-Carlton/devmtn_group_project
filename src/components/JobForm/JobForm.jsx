@@ -30,7 +30,7 @@ class JobForm extends Component {
             start_date: startDate,
             estimation: estimatedTime,
             pay: pay,
-            email: email,
+            job_email: email,
         }).then(response => {
             alert('Job Posted')
             this.props.history.push('/')
@@ -52,9 +52,9 @@ class JobForm extends Component {
                 <p>Title:</p><input type='text' name='title' onChange={(e) => this.handleSearch(e)} required/>
                 <p>Description:</p><textarea type='text' rows='5' name='description' onChange={(e) => this.handleSearch(e)} required/>
                 <p>Start:</p><input type='date' name='startDate' onChange={(e) => this.handleSearch(e)} required/>
-                <p>Estimated Time:</p><input type='number' name='estimatedTime' onChange={(e) => this.handleSearch(e)} required/>
-                <p>Pay: $</p><input type='number' name='pay' onChange={(e) => this.handleSearch(e)} required/>
-                <p>Email:</p><input type='number' name='email' onChange={(e) => this.handleSearch(e)} required/>
+                <p>Estimated Time:</p><input type='text' name='estimatedTime' onChange={(e) => this.handleSearch(e)} required/>
+                <p>Pay: $</p><input type='text' name='pay' onChange={(e) => this.handleSearch(e)} required/>
+                <p>Email:</p><input type='text' name='email' onChange={(e) => this.handleSearch(e)} required/>
                 <br></br>
             <div>
                 <button type="submit">Submit</button>

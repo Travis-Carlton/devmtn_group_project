@@ -143,10 +143,36 @@ module.exports = {
         const {profile_picture, user_id} = req.body
         req.session.user.profile_picture = profile_picture;
         db.upload_profile_picture([profile_picture, user_id]).then(response => {
-            res.status(200).json(response)
-            console.log(response)
+            res.status(200).send('success')
         }).catch(error => {
             console.error('Error on uploadProfile', error)
         })
-    }
+    },
+    uploadDevProfilePicture: (req, res) => {
+        const db = req.app.get('db')
+        const {profile_picture, user_id} = req.body
+        db.upload_profile_picture_dev(profile_picture, user_id).then(response => {
+            res.status(200).send('success')
+        }).catch(error => {
+            console.error('Error on uploadDevProfilePicture', error)
+        })
+    },
+    getDevApplied: (req, res) => {
+        const db = req.app.get('db')
+        const {id: user_id} = req.params
+        db.dev_applied(user_id).then(jobs => {
+            res.status(200).json(jobs)
+        }).catch(error => {
+            console.error('Error on getDevApplied', error)
+        })
+    },
+    viewAllJobsWithNonZeros: (req, res) => {
+        const db = req.app.get('db');
+        db.get_all_jobs_with_non_zeros()
+        .then(jobs => {
+            res.status(200).json(jobs)
+        }).catch(error => {
+            console.error('Error on viewAllJobs', error)
+        })
+    },
 }

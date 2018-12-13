@@ -40,7 +40,6 @@ class App extends Component {
 
   getNotifications = ()=>{
     socket.on('notification',(msg)=>{
-      // console.log('======APP', msg);
       this.setState({
         notifications: [...this.state.notifications, msg]
       })
@@ -91,16 +90,8 @@ class App extends Component {
           updateIsDeveloper(developer);
           updateUserID(user_id);
           updateProfilePicture(profile_picture);
-          updateName(profile_name)
+          updateName(profile_name);
           localStorage.setItem('userId', user_id)
-        }
-
-        if(res.data.user.skills){
-            updateOverview(overview)
-            updateHourlyRate(hourly_rate)
-            updatePortfolio(portfolio)
-            updateSkills(skills)
-            updateEducation(education)
         }
 
         axios.get('/api/user')
