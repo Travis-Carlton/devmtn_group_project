@@ -31,7 +31,7 @@ render() {
     return (
         <div className="job-feed-container">
         <div className="job-profile">
-                <img src={profilePicture}/>
+                <img src={profilePicture} alt="profile"/>
                 <h1>{name}</h1>
                 <h2>{title}</h2>
             </div>
@@ -75,7 +75,7 @@ render() {
             :
             <div>
                 <br /> <br /> <br /> <br /> <br />
-                <img src='http://www.vivo.com/themes/custom/vivo/img/loader.gif' />
+                <img src='http://www.vivo.com/themes/custom/vivo/img/loader.gif' alt="loading"/>
                     Please make sure you have added something to your favoites
             </div>
             :

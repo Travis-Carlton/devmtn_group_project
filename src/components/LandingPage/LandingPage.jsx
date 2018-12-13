@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
 import axios from 'axios';
 import { updateIsDeveloper } from '../../redux/reducer';
-import logo from '../../media/complogo.svg';
+// import logo from '../../media/complogo.svg';
 
 class LandingPage extends Component {
 
@@ -27,21 +27,20 @@ class LandingPage extends Component {
     
     render() {
         let userId = localStorage.getItem('userId')
-        console.log(userId)
+        // console.log(userId)
         return (
             <div className='landingpagep'>
                 <div className='landingpagecc'>
-                   
                         <h1>DevWay</h1>
                         {/* <img src={logo}/> */}
                     
                     <h2>The best site for developers to meet clients</h2>
                     <div>
-                        {console.log(this.props.loggedIn)}
+                        {/* {console.log(this.props.loggedIn)} */}
                         {this.props.loggedIn ?
                             this.props.isDeveloper === true ?
                             <>
-                                Hello DEVELOPER
+                                
                             </>
                         :
                             this.props.isDeveloper === null ?
@@ -51,7 +50,7 @@ class LandingPage extends Component {
                             </>
                         :
                             <>
-                                Hello CLIENT
+                                
                             </>
                         :
                         <button onClick={this.login}>Login/Sign Up</button>

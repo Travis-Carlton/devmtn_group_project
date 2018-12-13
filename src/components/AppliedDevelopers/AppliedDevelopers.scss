@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
+
 .applied-container {
     min-height: 85vh;
     padding-top: 10vh;
@@ -8,6 +10,15 @@
         color: white;
         margin: 20px;
         text-align: center;
+        font-family: 'Montserrat', sans-serif;
+    }
+    h3 {
+        text-align: center;
+        font-size: 20px;
+        color: white;
+        margin: 0px auto 20px auto;
+        font-family: 'Montserrat', sans-serif;
+        color: rgb(26, 144, 217);
     }
 }
 
@@ -21,6 +32,7 @@
     padding: 20px 10px;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.6);
+    font-family: 'Montserrat', sans-serif;
     p {
         margin: 10px auto;
     }
@@ -47,6 +59,9 @@
         max-width: 1300px;
         h1 {
             font-size: 50px;
+        }
+        h3 {
+            font-size: 30px;
         }
     }
     .applied-developer-card {

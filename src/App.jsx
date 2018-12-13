@@ -60,12 +60,12 @@ class App extends Component {
       updateEducation,
       updateProfilePicture,
       updateDevEmail,
-      updateSavedJobs,
+      // updateSavedJobs,
       updateName,
     } = this.props;
     axios.get("/api/user-data").then(res => {
       console.clear();
-      console.log('res.data------>', res.data);
+      // console.log('res.data------>', res.data);
       if (res.data === "no session") {
         return;
       } else {
@@ -73,7 +73,7 @@ class App extends Component {
           user_id,
           profile_picture,
           profile_name,
-          email,
+          // email,
           developer,
           overview,
           hourly_rate,
@@ -81,12 +81,12 @@ class App extends Component {
           skills,
           education
         } = res.data.user;
-        console.log(user_id)
+        // console.log(user_id)
         // if (developer === null) {
         //   developer = false;
         // } else
         if (user_id) {
-          console.log('developer', developer)
+          // console.log('developer', developer)
           updateLoggedIn(true);
           updateIsDeveloper(developer);
           updateUserID(user_id);
@@ -106,7 +106,7 @@ class App extends Component {
         axios.get('/api/user')
 
         axios.get(`/api/getdevprofile/${user_id}`).then(res2 => {
-          console.log("profile get ", res2.data);
+          // console.log("profile get ", res2.data);
           let { developer_email,education,hourly_rate,overview,
             portfolio,skills,title } = res2.data;
           

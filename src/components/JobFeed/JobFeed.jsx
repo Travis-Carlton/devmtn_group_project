@@ -26,7 +26,7 @@ render() {
     return (
         <div className="job-feed-container">
             <div className="job-profile">
-                <img src={profilePicture}/>
+                <img src={profilePicture} alt="profile"/>
                 <h1>{name}</h1>
                 <h2>{title}</h2>
             </div>

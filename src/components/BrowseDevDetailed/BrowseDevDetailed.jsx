@@ -31,7 +31,7 @@ class BrowseDevDetailed extends Component {
                 {
                     devInfo !== null ?
                     <div className="profilec">
-                        <img src={devInfo.profile_picture || 'https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-12/25/User-Circle-512.png'} />
+                        <img src={devInfo.profile_picture || 'https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-12/25/User-Circle-512.png'} alt="profile"/>
                         <h1>{devInfo.name}</h1>
                         <h2>{devInfo.title}</h2>
                         <h3>{devInfo.developer_email}</h3>
@@ -61,7 +61,7 @@ class BrowseDevDetailed extends Component {
                     </div>
                     :
                     <div>
-                        <img src='http://www.vivo.com/themes/custom/vivo/img/loader.gif' />
+                        <img src='http://www.vivo.com/themes/custom/vivo/img/loader.gif' alt="loading"/>
                     </div>
                 }
             </div>

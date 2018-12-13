@@ -5,8 +5,9 @@
     height: fit-content;
     h1 {
         text-align: center;
-        font-size: 40px;
+        font-size: 50px;
         margin: 10px auto;
+        font-family: 'Montserrat', sans-serif;
     }
 }
 .devwizp {
@@ -32,6 +33,7 @@
         height: 30px;
         border-radius: 5px;
         font-size: 26px;
+        border: none;
     }
     textarea {
         width: 70%;
@@ -70,13 +72,19 @@
         }
         input {
             width: 100%;
+            margin: 5px;
         }
         textarea {
             width: 100%;
+            margin: 5px;
         }
         button {
             text-align: center;
             
+        }
+        label {
+            text-align: right;
+            margin: 0;
         }
     }
 }

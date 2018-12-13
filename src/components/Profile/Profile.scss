@@ -35,18 +35,19 @@
     }
     h1 {
         text-align: center;
-        margin-bottom: 0;
+        margin: 10px auto 20px auto;
         font-size: 40px;
     }
     h2 {
         text-align: center;
         margin-top: 10px;
         margin-bottom: 0px;
+        
     }
     h3 {
         text-align: center;
         margin-top: 10px;
-        color: rgb(26, 144, 217);
+        color: rgb(65, 179, 250);
     }
     p {
         margin-top: 8px;
@@ -59,7 +60,7 @@
         margin-bottom: 0px;
         font-weight: 900;
         font-size: 22px;
-        color: rgb(26, 144, 217);
+        color: rgb(65, 179, 250);
     }
 }
 
@@ -88,7 +89,19 @@
         border: none;
         color: white;
         margin-right: 15px;
+        font-size: 14px;
     }
+}
+
+.upload-button {
+    width: 140px;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 5px;
+    background: rgb(26, 144, 217);
+    border: 0;
+    margin: 20px auto;
+    color: white;
 }
 
 @media screen and (min-width: 600px){

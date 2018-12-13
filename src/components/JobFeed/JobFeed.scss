@@ -11,6 +11,7 @@
         color: white;
         font-size: 50px;
         text-align: center;
+        font-family: 'Montserrat', sans-serif;
     }
 }
 
@@ -66,6 +67,7 @@
     flex-direction: column;
     justify-content: space-between;
     text-align: start;
+    // font-family: 'Quicksand', sans-serif;
     button {
         width: 160px;
         height: 40px;
@@ -95,7 +97,7 @@
         display: initial;        
         text-align: center;
         margin-right: 20px;
-        margin-top: 30px;
+        margin-top: 100px;
     }
 
     .jobfeedp {
@@ -104,10 +106,13 @@
 
     .jobfeedc {
         flex-direction: row;
+        margin-left: 5px;
         button {
             margin: 0;
         }
     }
-
+    #feed-title {
+        margin-right: 200px;
+    }
 
 }

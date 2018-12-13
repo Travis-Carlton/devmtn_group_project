@@ -10,6 +10,8 @@
     margin: 20px auto;
     h1 {
         text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 50px;
     }
     form {
         margin: 0 auto;
@@ -19,7 +21,6 @@
         padding: 30px 10px;
         border-radius: 10px;
         text-align: center;
-        
         p {
             font-size: 20px;
             margin-bottom: 10px;
@@ -27,10 +28,13 @@
     }
     input {
         height: 30px;
-        font-size: 26px;
+        font-size: 24px;
         border-radius: 5px;
         width: 80%;
         margin-bottom: 10px;
+        align-items: center;
+        font-family: 'Quicksand', sans-serif;
+        border: none;
     }
     textarea {
         font-size: 20px;
@@ -61,9 +65,17 @@
         grid-gap: 10px;
         margin: 0 auto;
         justify-content: center;
+        p {
+            margin-bottom: 12px;
+            text-align: right;
+            
+        }
         textarea {
             height: 200px;
         }
+    }
+    input {
+        margin-bottom: 0;
     }
 }
 }

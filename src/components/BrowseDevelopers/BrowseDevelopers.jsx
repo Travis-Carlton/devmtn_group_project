@@ -20,7 +20,7 @@ class BrowseDevelopers extends Component {
 
     getDevelopers = () => {
         axios.get('/api/getalldevelopers').then(res => {
-            {console.log(res.data)}
+            // console.log(res.data)
             this.setState({developers: res.data})
         })
     }
@@ -36,10 +36,10 @@ render() {
                 <h1>Browse Developers</h1>
                 <div className="developer-card-parent">
                 {this.state.developers.map(devs => {
-                    return <div>
+                    return <div key={devs.id}>
                         <div className="developer-card">
                             <div className="developer-card-details">
-                                <img src={this.props.profilePicture || 'https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-12/25/User-Circle-512.png'} />
+                                <img src={this.props.profilePicture || 'https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-12/25/User-Circle-512.png'} alt="profile"/>
                                 <h2>{devs.name}</h2>
                                 <p>{devs.skills}</p>
                             </div>
@@ -55,7 +55,7 @@ render() {
             </div>
             :
             <div>
-                <img src='http://www.vivo.com/themes/custom/vivo/img/loader.gif' />
+                <img src='http://www.vivo.com/themes/custom/vivo/img/loader.gif' alt="loading"/>
                 {this.getDevelopers()}
             </div>
         }

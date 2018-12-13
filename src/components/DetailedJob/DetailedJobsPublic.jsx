@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './DetailedJobs.scss';
 import axios from 'axios';
 import {connect} from 'react-redux'
-import Started from '../../media/started.svg';
+// import Started from '../../media/started.svg';
 
 class DetailedJobsPublic extends Component {
     constructor(){

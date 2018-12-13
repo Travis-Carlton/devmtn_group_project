@@ -34,7 +34,7 @@
             font-size: 20px;
         }
         > h2 {
-            margin: 0px auto 30px auto;
+            margin: 0px 10px 30px 10px;
             font-weight: 200;
             font-family: 'Quicksand', sans-serif;
             font-size: 20px;
@@ -51,12 +51,15 @@
     .landingpagep {
         h1 {
             font-size: 120px;
-            margin-bottom: 240px;
+            margin-bottom: 180px;
         }
     }
     .landingpagecc {
         text-align: initial;
         margin-left: 5vw;
+        h2 {
+            font-size: 30px;
+        }
     }
 
 }

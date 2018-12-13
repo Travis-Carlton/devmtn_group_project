@@ -49,7 +49,7 @@
     padding: 15px;
     border-radius: 10px;
     color: white;
-    
+    font-family: 'Quicksand', sans-serif;
     h2 {
         margin: 0 auto;
     }
@@ -75,12 +75,23 @@
 
 .button-center {
     display: flex;
+    button {
+        margin-bottom: 10px;
+        width: 150px;
+        height: 40px;
+        background: rgb(26, 144, 217);
+        border-radius: 10px;
+        border: none;
+        color: white;
+        font-size: 16px;
+        margin-right: 20px;
+    }
 }
 
 .job-profile-view {
     width: 100%;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px auto;
     p {
         margin-top: 0;
     }

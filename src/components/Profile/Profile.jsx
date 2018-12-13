@@ -51,7 +51,7 @@ class Profile extends Component {
     const {
         loggedIn,
         isDeveloper,
-        userID,
+        // userID,
         name,
         title,
         overview,
@@ -60,8 +60,7 @@ class Profile extends Component {
         skills,
         education,
         profilePicture,
-        devEmail,
-        savedJobs
+        devEmail
     } = this.props;
 
 
@@ -85,11 +84,11 @@ class Profile extends Component {
           <button onClick={() => this.uploadWidget()} className="upload-button">Upload Picture</button>
           {console.log('this.state.image-=-=-=-=->', this.state.image)}
           <h1>{name}</h1>
-          <p className="overview">{overview}</p>
           {isDeveloper ?
           <div className="dev-info">
           <h2>{title}</h2>
           <h3>{devEmail}</h3>
+          <p className="overview">{overview}</p>
             <div className="hourly-portfolio-parent">
               <div className="child">
                 <p className="profile-category">Hourly rate: </p>

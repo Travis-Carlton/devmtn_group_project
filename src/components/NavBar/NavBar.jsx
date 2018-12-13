@@ -50,7 +50,7 @@ class NavBar extends Component {
   }
 
   render() {
-    console.log(this.state.toggleNav)
+    // console.log(this.state.toggleNav)
     return (
       
       <div className="navbarp">
@@ -65,7 +65,7 @@ class NavBar extends Component {
             }
           </div>
 
-          <img onClick={this.toggle} className="mobiletab" src={menuicon}/>
+          <img onClick={this.toggle} className="mobiletab" src={menuicon} alt="menu"/>
 
           {<nav className={this.state.toggleNav ? 'show' : ''}>
               <div className="navbarcc">

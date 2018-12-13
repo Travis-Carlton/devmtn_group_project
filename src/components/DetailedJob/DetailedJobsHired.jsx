@@ -95,19 +95,19 @@ class DetailedJobsHired extends Component {
             }
                 <div className="status-container">
                     { this.state.status === 'planning' ?
-                    <img src={Planning} className="status"/>
+                    <img src={Planning} className="status" alt="planning"/>
                     : <></>
                     }
                     { this.state.status === 'started' ?
-                    <img src={Started} className="status"/>
+                    <img src={Started} className="status" alt="started"/>
                     : <></>
                     }
                     { this.state.status === 'finished' ?
-                    <img src={Finished} className="status"/>
+                    <img src={Finished} className="status" alt="finished"/>
                     : <></>
                     }
                     { this.state.status === 'paid' ?
-                    <img src={Paid} className="status"/>
+                    <img src={Paid} className="status" alt="paid"/>
                     : <></>
                     }
                 </div>
