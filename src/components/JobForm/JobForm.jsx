@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './JobForm.scss';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import {updateIsDeveloper} from '../../redux/reducer';
 
 class JobForm extends Component {
     constructor(){
@@ -23,6 +26,7 @@ class JobForm extends Component {
         const estimatedTime = this.state.estimatedTime;
         const pay = this.state.pay;
         const email = this.state.email;
+        const {name} = this.props;
 
         axios.post('/api/createjob', {
             client_id: id,
@@ -32,10 +36,12 @@ class JobForm extends Component {
             estimation: estimatedTime,
             pay: pay,
             job_email: email,
+            name,
+            // profilePicture
         }).then(response => {
-            
+            this.props.updateIsDeveloper(false)
             alert('Job Posted')
-            this.props.history.push('/')
+            this.props.history.push('/feed')
         })
     }
 
@@ -49,7 +55,7 @@ class JobForm extends Component {
     render() {
     return (
         <div className="job-form-container">
-            {console.log(localStorage.getItem('userId'))}
+            {/* {console.log(localStorage.getItem('userId'))} */}
             <h1>Create Job Posting</h1>
             <form onSubmit={(e) => this.handleSubmit(e)}>
                 <p>Title:</p><input type='text' name='title' onChange={(e) => this.handleSearch(e)} required/>
@@ -68,4 +74,13 @@ class JobForm extends Component {
     }
 }
 
-export default JobForm;
+function mapStateToProps(state){
+    const {userID,name,profilePicture} = state;
+    return {
+        userID,
+        name,
+        profilePicture
+    }
+}
+
+export default withRouter(connect(mapStateToProps, {updateIsDeveloper})(JobForm));

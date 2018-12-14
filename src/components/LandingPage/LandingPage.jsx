@@ -14,16 +14,16 @@ class LandingPage extends Component {
         window.location = url;  
     }
 
-    setDeveloper = (developer, id) => {
+    // setDeveloper = (developer, id) => {
         
-        axios.post('/api/devorclient', {developer, id})
-        .then(() => {
-            this.props.updateIsDeveloper(developer)
-            console.log('Developer set')
-        }).catch(error => {
-            console.error('Error on setDeveloper', error)
-        })
-    }
+    //     axios.post('/api/devorclient', {developer, id})
+    //     .then(() => {
+    //         this.props.updateIsDeveloper(developer)
+    //         console.log('Developer set')
+    //     }).catch(error => {
+    //         console.error('Error on setDeveloper', error)
+    //     })
+    // }
     
     render() {
         let userId = localStorage.getItem('userId')
@@ -45,8 +45,8 @@ class LandingPage extends Component {
                         :
                             this.props.isDeveloper === null ?
                             <>
-                                <Link to='/devwiz'><button onClick={() => this.setDeveloper(true, userId)}>Get started as developer</button></Link>
-                                <Link to='/create'><button onClick={() => this.setDeveloper(false, userId)}>Post A Job</button></Link>
+                                <Link to='/devwiz'><button>Get started as developer</button></Link>
+                                <Link to='/create'><button>Post A Job</button></Link>
                             </>
                         :
                             <>

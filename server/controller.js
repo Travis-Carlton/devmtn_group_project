@@ -12,7 +12,7 @@ module.exports = {
     },
     createDevProfile: (req, res) => {
         const db = req.app.get('db');
-        const { userID, email, title, overview, hourly_rate, portfolio, skills, education} = req.body;
+        const { userID, name, profilePicture, email, title, overview, hourly_rate, portfolio, skills, education} = req.body;
         // req.session.user.user_id = userID;
         req.session.user.title = title;
         req.session.user.email = email;
@@ -21,8 +21,9 @@ module.exports = {
         req.session.user.portfolio = portfolio;
         req.session.user.skills = skills;
         req.session.user.education = education;
+        req.session.user.developer = true;
         // req.session.user.isDeveloper = true;
-        db.create_dev_profile(userID, email, title, overview, hourly_rate, portfolio, skills, education)
+        db.create_dev_profile(userID, email, title, overview, hourly_rate, portfolio, skills, education, profilePicture, name, true)
         .then(profile => {
             // db.is_developer([parseInt(userID),true]).then(response=>{
 
@@ -46,13 +47,17 @@ module.exports = {
     },
     createJob: (req, res) => {
         const db = req.app.get('db');
-        const { client_id, title, description, start_date, estimation, pay, job_email } = req.body;
-        db.create_job(client_id, title, description, start_date, estimation, pay, job_email)
+        const { client_id, title, description, start_date, 
+            estimation, pay, job_email, name} = req.body;
+        const profilePicture = `https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-12/25/User-Circle-512.png`
+        req.session.user.developer = false;
+        db.create_job(client_id, title, description, start_date, estimation, pay, job_email, profilePicture, name, false)
         .then(job => {
             res.status(200).json(job)
         }).catch(error => {
             console.error('Error on createJob', error)
         })
+        // const addInfoToDevProfile = db.
     },
     viewAllJobs: (req, res) => {
         const db = req.app.get('db');

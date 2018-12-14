@@ -25,13 +25,14 @@ class DevOrClient extends Component {
     continue = (e)=>{
         e.preventDefault();
         const { email, title, overview, hourly_rate, portfolio, skills, education } = this.state;
-        const { userID, updateTitle, updateDevEmail, updateOverview, updateHourlyRate, updatePortfolio, updateSkills, updateEducation} = this.props;
+        const { userID, name, profilePicture, updateIsDeveloper, updateTitle, updateDevEmail, updateOverview, updateHourlyRate, updatePortfolio, updateSkills, updateEducation} = this.props;
         
-        axios.post('/api/createdevprofile', {userID, title, email, overview, hourly_rate, portfolio, skills, education})
+        axios.post('/api/createdevprofile', {userID, name, profilePicture, title, email, overview, hourly_rate, portfolio, skills, education})
         .then(() => {
             console.log('It worked')
             // updateName(name)
             // this.setDeveloper(true,userID)
+            updateIsDeveloper(true)
             updateTitle(title)
             updateDevEmail(email)
             updateOverview(overview)
@@ -52,6 +53,8 @@ class DevOrClient extends Component {
     }
 
     render() {
+        console.log('======',this.props)
+        // console.log('======',localStorage)
         return (
             <div className="devwiz-container">
             <h1>Create Profile</h1>
@@ -81,10 +84,12 @@ class DevOrClient extends Component {
 }
 
 function mapStateToProps(state){
-    const {loggedIn, userID} = state;
+    const {loggedIn, userID, profilePicture, name} = state;
     return {
         loggedIn,
-        userID
+        userID,
+        profilePicture,
+        name
     }
 }
 
