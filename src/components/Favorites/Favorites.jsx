@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import '../JobFeed/JobFeed.scss'
+import '../JobFeed/JobFeed.scss';
 import Loading from '../../media/Loading.gif';
 
 class Favorites extends Component {
@@ -27,6 +27,13 @@ class Favorites extends Component {
         })
     }
 
+    deleteFave = (job_id) => {
+        axios.delete(`/api/deletefavorite/${job_id}`).then(res => {
+            console.log('deleted')
+            this.getUserFavorites()
+        })
+    }
+
 render() {
     const {title, profilePicture, name} = this.props
     return (
@@ -46,7 +53,7 @@ render() {
                 this.state.list.map(job => {
                     let num = job.description.split(' ').length
                     let splitDescription = job.description.split(' ')
-                    let trimDescription = splitDescription.splice(0, ((splitDescription.length/1.5))).join(' ')
+                    let trimDescription = splitDescription.slice(0, 20).join(' ')
                     return <div onClick={() => {}}>                        
                                 <div className="jobfeedc">
                                 <div>
@@ -64,6 +71,8 @@ render() {
                                             <button>View Job</button>
                                         </div>
                                     </Link>
+                                            {console.log(job.job_id)}
+                                            <button onClick={() => this.deleteFave(job.job_id)}>Delete</button>
                                 </div>
                         </div>
                     })
@@ -76,8 +85,8 @@ render() {
             :
             <div>
                 <br /> <br /> <br /> <br /> <br />
-                <img src={Loading} alt="loading"/>
-                    Please make sure you have added something to your favoites
+                {/* <img src={Loading} alt="loading"/> */}
+                    Nothing Saved
             </div>
             :
             <div>

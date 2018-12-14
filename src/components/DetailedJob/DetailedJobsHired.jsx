@@ -40,6 +40,12 @@ class DetailedJobsHired extends Component {
         })
     }
 
+    completeJob = (job_id) => {
+        axios.post(`/api/completejob/${job_id}`).then(res => {
+            this.getJobInfo()
+        })
+    }
+
 
     showEmailModal = (email)=>{
 
@@ -126,11 +132,19 @@ class DetailedJobsHired extends Component {
                 {
                     this.state.job.map(job => {
                         return <div key={job.id} className="detail-job-info">
+                                    {
+                                        job.completed === true &&
+                                        <p>THIS JOB HAS BEEN COMPLETED</p>
+                                    }
                                     <h2>{job.title}</h2>
                                     <p className="detail-job-description">{job.description}</p>
                                     <p>Start Date: {job.start_date}</p>
                                     <p>${job.pay}</p>
                                     <p>Est. Completion Time: {job.estimation}</p>
+                                    {   
+                                        this.props.isDeveloper === false && job.completed === false &&
+                                        <button onClick={() => this.completeJob(job.job_id)}>Mark Job As Completed</button>
+                                    }
                                 </div>
                             })
                 }
