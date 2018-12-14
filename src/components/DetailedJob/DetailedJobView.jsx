@@ -21,7 +21,7 @@ export default class DetailedJobView extends Component {
 
   render() {
     return (
-      <div>
+      <div className="background-detailed">
             { this.state.accepted === 0 ?
             <DetailedJobsPublic jobID={this.props.match.params.id}/>
             :

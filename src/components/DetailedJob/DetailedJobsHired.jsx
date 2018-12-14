@@ -90,7 +90,7 @@ class DetailedJobsHired extends Component {
                         <input onChange={e=>this.handleChange('modalFile',e.target.value)} id='files' style={{visibility:'hidden'}} type="file"/>
                         {this.props.userID&&<button type='submit'>Send</button>}
                     </form>
-                        <button style={{cursor:'pointer'}} onClick={()=>this.showEmailModal('')}>Close</button>
+                        <button style={{cursor:'pointer'}} onClick={()=>this.showEmailModal('')} className="contactCloseBtn">Close</button>
                 </div>
             }
                 <div className="status-container">
@@ -134,8 +134,12 @@ class DetailedJobsHired extends Component {
                                 </div>
                             })
                 }
+                {console.log('this.state.status', this.state.status)}
+                
+                </div>
                 { this.props.isDeveloper ?
                 <div className="status-buttons">
+                    <h3>Status Bar</h3>
                     <div><input type="radio" name="status" value="planning" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Planning</label></div>
                     <div><input type="radio" name="status" value="started" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Started</label></div>
                     <div><input type="radio" name="status" value="finished" onChange={e => this.changeStatus(e.target.value, this.props.jobID)}/><label>Finished</label></div>
@@ -143,9 +147,6 @@ class DetailedJobsHired extends Component {
                 </div>
                 : <></>
                 }
-                {console.log('this.state.status', this.state.status)}
-                
-                </div>
             </div>
             : 
             <div>

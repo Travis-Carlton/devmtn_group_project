@@ -52,7 +52,7 @@ export default class Footer extends Component {
                         <form onSubmit={this.sendEmail} className={this.state.showModal&&'contactModalForm'}>
                             {this.state.showModal&&
                             <>
-                                <h1>Contact</h1>
+                                <h1>Contact DevWay</h1>
                                 <div>
                                     <label>Name</label>
                                     <input onChange={e=>this.handleChange('name',e.target.value)} type="text" minLength='3' required/>

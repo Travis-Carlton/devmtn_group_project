@@ -142,36 +142,40 @@ class Profile extends Component {
               </div>
             </div>
             { this.props.isDeveloper &&
-              <div>
-                <p>Current Jobs</p>
-                {
-                  this.state.allJobs.map((jobs, i) => {
-                    let userID = localStorage.getItem('userId')
-                    if(userID == jobs.accepted){
-                      return <div key={i}>
-                        <p>{jobs.title}</p>
-                        <Link to={`/job/${jobs.job_id}`}><button>View Job</button></Link>
-                      </div>
-                    } else {
-                      return <div key={i}></div>
-                    }
-                  })
-                }
-                <p>Applied</p>
-                {this.state.applied.map((item, i) => {
-                  if(item.accepted === 0){
-                  return <div key={i}>
-                    <p>{item.title}</p>
-                    <Link to={`/job/${item.job_id}`}><button>View Job</button></Link>
-                  </div>
+              <div className="dev-profile-jobs">
+                <div className="dev-profile-jobs-child">
+                  <p className="profile-category">Current Hired Jobs:</p>
+                  {
+                    this.state.allJobs.map((jobs, i) => {
+                      let userID = localStorage.getItem('userId')
+                      if(userID == jobs.accepted){
+                        return <div key={i} className="profile-job-card">
+                          <p>{jobs.title}</p>
+                          <Link to={`/job/${jobs.job_id}`}><button>View Job</button></Link>
+                        </div>
+                      } else {
+                        return <div key={i}></div>
+                      }
+                    })
                   }
-                })}
+                </div>
+                <div className="dev-profile-jobs-child">
+                  <p className="profile-category">Jobs Applied To:</p>
+                  {this.state.applied.map((item, i) => {
+                    if(item.accepted === 0){
+                    return <div key={i} className="profile-job-card">
+                      <p>{item.title}</p>
+                      <Link to={`/job/${item.job_id}`}><button>View Job</button></Link>
+                    </div>
+                    }
+                  })}
+                </div>
               </div>
             }
 
 
 
-            <button onClick={this.toggleModal} style={{cursor:'pointer'}}>Edit Profile</button>
+            <button onClick={this.toggleModal} style={{cursor:'pointer'}} className="edit-profile">Edit Profile</button>
             {
               this.state.editModal &&
                 <div className='editmodalp'>
