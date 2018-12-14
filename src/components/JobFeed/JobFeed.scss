@@ -78,6 +78,10 @@
         border: 0;
         color: white;
         margin: 20px;
+        &:hover {
+            background: rgb(20, 104, 157);
+            cursor: pointer;
+        }
     }
 }
 

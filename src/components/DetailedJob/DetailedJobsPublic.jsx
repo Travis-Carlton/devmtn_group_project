@@ -4,6 +4,8 @@ import axios from 'axios';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux'
 import Loading from '../../media/Loading.gif';
+import { toast, ToastContainer } from 'react-toastify';
+import '../../Toastify.css';
 
 class DetailedJobsPublic extends Component {
     constructor(){
@@ -43,12 +45,13 @@ class DetailedJobsPublic extends Component {
 
     addFavorite = (userId, jobId) => {
         axios.post('/api/addfavorite', {user_id: userId, job_id: jobId}).then(res => {
-            alert('Job added to favorites')
+            
             this.getTheJob()
             this.getApplied()
             this.getFaves()
             this.setState({setMe: 'hi'})
         })
+        this.notifyAddedToFavorites();
     }
 
     getApplied = () => {
@@ -90,10 +93,20 @@ class DetailedJobsPublic extends Component {
             this.getTheJob()
             this.getApplied()
             this.setState({setMe: 'hi'})
+            
         })
         .catch(error => {
             console.error('Error on applyToJob', error)
         })
+        this.notifyApplied();
+    }
+
+    notifyAddedToFavorites = () => {
+        toast('Added to favorites', { type: toast.TYPE.INFO, autoClose: 3000, pauseOnHover: true })
+    }
+
+    notifyApplied = () => {
+        toast('Applied to job', { type: toast.TYPE.INFO, autoClose: 3000, pauseOnHover: true })
     }
 
     render() {
@@ -119,6 +132,7 @@ class DetailedJobsPublic extends Component {
 
         return (
             <div className='detailedJobp'>
+            <ToastContainer />
                 {showEmailForm&&
                 <div className='emailFormp'>
                     <form onSubmit={this.sendEmailToClient} className='emailFormc'>
