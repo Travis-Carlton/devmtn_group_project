@@ -85,7 +85,7 @@ class DetailedJobsPublic extends Component {
                         <input onChange={e=>this.handleChange('modalFile',e.target.value)} id='files' style={{visibility:'hidden'}} type="file"/>
                         {this.props.userID&&<button type='submit'>Send</button>}
                     </form>
-                        <button style={{cursor:'pointer'}} onClick={()=>this.showEmailModal('')}>Close</button>
+                        <button style={{cursor:'pointer'}} onClick={()=>this.showEmailModal('')} className="contactCloseBtn">Close</button>
                 </div>
             }
 

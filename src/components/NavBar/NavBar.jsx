@@ -91,9 +91,9 @@ class NavBar extends Component {
                 {!this.props.loggedIn ? (
                   <p onClick={() => this.toggleLogin()}>LOGIN</p>
                 ) : (
-                  <></>
-                )}
                   <Link className='mobiletab' onClick={()=>this.profileDropdown(false)} to='/favorites'>Favorites</Link>
+                 
+                )}
                   <Link to="/profile" onClick={() => this.setState({toggleNav: false})}><img onMouseEnter={()=>this.profileDropdown(true)} onMouseLeave={()=>this.profileDropdown(false)} className="icon" src={icon} alt=''/></Link>
                   {this.state.profileDropdown && this.props.loggedIn &&
                     <div onMouseEnter={()=>this.profileDropdown(true)} onMouseLeave={()=>this.profileDropdown(false)} className='profileDropDown'>

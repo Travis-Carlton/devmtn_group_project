@@ -3,12 +3,21 @@
     height: fit-content;
     padding-top: 10vh;
 }
+
+.background-detailed {
+    min-height: 90vh;
+    width: 100vw;
+    background-image: url('../../media/office-blur.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 .emailFormp{
     position: absolute;
     z-index: 2;
     height: 100%;
     width: 100%;
-    background: rgba(0, 0, 255, 0.568);
+    background: rgba(9, 9, 9, 0.568);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,18 +30,29 @@
         flex-direction: column;
         height: 400px;
         width: 300px;
-        background-color: grey;
+        background-color: rgb(87, 87, 87);
+        border-radius: 10px;
+        color: white;
         >label{
             margin-top: 15px;
             margin-bottom: 5px;
         }
         >button{
-            margin-top: 15px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            width: 120px;
+            height: 30px;
+            border-radius: 5px;
+            background: rgb(26, 144, 217);
+            border: none;
+            color: white;
+            font-size: 16px;
         }
         > .attachDocs{
             background: white;
-            padding: 2px;
+            padding: 5px;
             border-radius: 5px;
+            color: black;
         }
     }
 }
@@ -75,6 +95,7 @@
 
 .button-center {
     display: flex;
+    
     button {
         margin-bottom: 10px;
         width: 150px;
@@ -84,12 +105,12 @@
         border: none;
         color: white;
         font-size: 16px;
-        margin-right: 20px;
+        // margin-right: 20px;
     }
 }
 
 .job-profile-view {
-    width: 100%;
+    // width: 100%;
     text-align: center;
     margin: 20px auto;
     p {
@@ -115,7 +136,18 @@
 .status-buttons {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    width: 160px;
+    align-items: stretch;
+    margin: 20px auto;
+    justify-content: flex-start;
+    color: white;
+    font-size: 20px;
+    h3 {
+        font-size: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        
+    }
 }
 
 @media screen and (min-width: 900px) {
@@ -127,15 +159,24 @@
     }
 
     .job-profile-view {
-        margin-right: 30px;
-        max-width: 300px;
+        margin: 20px 30px;
+        max-width: 200px;
     }
 
     .button-center {
         display: initial;
+        button {
+            margin-right: 30px;
+        }
     }
     .status-container {
         max-width: 900px;
         margin: 20px auto 40px auto;
+    }
+    .status-buttons {
+        input{
+            margin-bottom: 15px;
+            margin-right: 10px;
+        }
     }
 }
