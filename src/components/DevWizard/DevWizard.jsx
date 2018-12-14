@@ -46,8 +46,6 @@ class DevOrClient extends Component {
         })
     }
 
- 
-
     handleInputs = e => {
         this.setState({[e.target.name]: e.target.value})
     }

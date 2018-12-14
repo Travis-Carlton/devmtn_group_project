@@ -201,6 +201,26 @@ module.exports = {
         const db = req.app.get('db');
         db.get_all_applied().then(applied => {
             res.status(200).send(applied)
+        }).catch(error => {
+            console.error('Error on getAllApplied', error)
+        })
+    },
+    deleteFavorite: (req, res) => {
+        const db = req.app.get('db');
+        const {job_id} = req.params;
+        db.delete_favorite(job_id).then(arr => {
+            res.status(200).json(arr)
+        }).catch(error => {
+            console.error('Error on deleteFavorite', error)
+        })
+    },
+    completeJob: (req, res) => {
+        const db = req.app.get('db');
+        const {job_id} = req.params;
+        db.complete_job(job_id).then(job => {
+            res.status(200).json(job)
+        }).catch(error => {
+            console.error('Error on completeJob', error)
         })
     }
 }

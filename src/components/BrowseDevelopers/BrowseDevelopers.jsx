@@ -40,7 +40,7 @@ render() {
                     return <div key={devs.id}>
                         <div className="developer-card">
                             <div className="developer-card-details">
-                                <img src={this.props.profilePicture || 'https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-12/25/User-Circle-512.png'} alt="profile"/>
+                                <img src={devs.profile_picture || 'https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-12/25/User-Circle-512.png'} alt="profile"/>
                                 <h2>{devs.name}</h2>
                                 <p>{devs.skills}</p>
                             </div>
