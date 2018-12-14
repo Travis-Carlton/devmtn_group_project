@@ -134,7 +134,7 @@ class DetailedJobsHired extends Component {
                         return <div key={job.id} className="detail-job-info">
                                     {
                                         job.completed === true &&
-                                        <p>THIS JOB HAS BEEN COMPLETED</p>
+                                        <p id="completed">THIS JOB HAS BEEN COMPLETED</p>
                                     }
                                     <h2>{job.title}</h2>
                                     <p className="detail-job-description">{job.description}</p>
