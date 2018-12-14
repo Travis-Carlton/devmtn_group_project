@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import '../JobFeed/JobFeed.scss'
+import Loading from '../../media/Loading.gif';
 
 class Favorites extends Component {
     constructor(){
@@ -75,7 +76,7 @@ render() {
             :
             <div>
                 <br /> <br /> <br /> <br /> <br />
-                <img src='http://www.vivo.com/themes/custom/vivo/img/loader.gif' alt="loading"/>
+                <img src={Loading} alt="loading"/>
                     Please make sure you have added something to your favoites
             </div>
             :

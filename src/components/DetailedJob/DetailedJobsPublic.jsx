@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './DetailedJobs.scss';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux'
-// import Started from '../../media/started.svg';
+import Loading from '../../media/Loading.gif';
 
 class DetailedJobsPublic extends Component {
     constructor(){
@@ -14,18 +15,45 @@ class DetailedJobsPublic extends Component {
             modalEmail: '',
             modalMessage: '',
             modalFile: '',
-            modalClientEmail: ''
+            modalClientEmail: '',
+            applied: [],
+            faves: [],
+            setMe: ''
         }
     }
     componentDidMount(){
+        this.getTheJob()
+        this.getApplied()
+        this.getFaves()
+    }
+
+    getTheJob = () => {
         axios.get( `/api/getselectedjob/${this.props.jobID}`).then(res => {
             this.setState({job: res.data})
+        })
+    }
+
+    getFaves = () => {
+        let userId = localStorage.getItem('userId')
+        axios.get(`/api/getfavorite/${userId}`).then(res => {
+            console.log('RES DATTTTTAA-->', res.data)
+            this.setState({faves: res.data})
         })
     }
 
     addFavorite = (userId, jobId) => {
         axios.post('/api/addfavorite', {user_id: userId, job_id: jobId}).then(res => {
             alert('Job added to favorites')
+            this.getTheJob()
+            this.getApplied()
+            this.getFaves()
+            this.setState({setMe: 'hi'})
+        })
+    }
+
+    getApplied = () => {
+        axios.get('/api/getallapplied').then(res => {
+            this.setState({applied: res.data})
         })
     }
 
@@ -46,7 +74,7 @@ class DetailedJobsPublic extends Component {
         e.preventDefault();
         let {modalName,modalEmail,modalMessage,modalFile,modalClientEmail} = this.state;
         axios.post(`/api/sendEmailToClient`,{modalName,modalEmail,modalMessage,modalFile,modalClientEmail}).then(res=>{
-            console.log(res.data)
+            // console.log(res.data)
             if(res.data === 'sent'){
                 this.setState({
                     showEmailForm: false
@@ -59,7 +87,9 @@ class DetailedJobsPublic extends Component {
     applyToJob = (user_id, job_id) => {
         axios.post('/api/applied', {job_id, user_id})
         .then(res => {
-            console.log('Applied to job')
+            this.getTheJob()
+            this.getApplied()
+            this.setState({setMe: 'hi'})
         })
         .catch(error => {
             console.error('Error on applyToJob', error)
@@ -69,7 +99,24 @@ class DetailedJobsPublic extends Component {
     render() {
         let {userID} = this.props;
         const {showEmailForm} = this.state;
-        console.log('detailed job view', this.state.modalClientEmail);
+        let appliedOrNot = this.state.applied.findIndex(id => {
+            let user = localStorage.getItem('userId')
+            return id.user_id == user
+            })
+        let appliedOrNot2 = this.state.applied.findIndex(id => {
+            return this.props.match.params.id == id.job_id
+            })
+
+
+
+        console.log('STATE DATTTTTAA-->', this.state.faves)
+        let favedOrNot = this.state.faves.findIndex(id => {
+            return this.props.match.params.id == id.job_id
+            })
+
+
+
+
         return (
             <div className='detailedJobp'>
                 {showEmailForm&&
@@ -108,7 +155,6 @@ class DetailedJobsPublic extends Component {
                         let betterDate = splitStamp.slice(0, 10)
                         semiFinalDate.push(betterDate[5], betterDate[6], betterDate[4], betterDate[8], betterDate[9], betterDate[7],betterDate[0], betterDate[1], betterDate[2], betterDate[3]);
                         let finalDate = semiFinalDate.join('')
-                        console.log('==========finalDatefinalDate', finalDate)
                         return <div key={job.id} className="detail-job-info">
                                     <h2>{job.title}</h2>
                                     <p className="detail-job-description">{job.description}</p>
@@ -116,10 +162,27 @@ class DetailedJobsPublic extends Component {
                                     <p>${job.pay}</p>
                                     <p>Estimated Completion Time: {job.estimation}</p>
                                     <p>Posted on {finalDate}</p>
-                                    <div className="button-center">
-                                        <button style={{cursor:'pointer'}} onClick={() => this.addFavorite(userID, job.job_id)}>Save to Favorites</button>
-                                        <button style={{cursor:'pointer'}} onClick={() => this.applyToJob(userID, job.job_id)}>Apply for Job</button>
-                                    </div>
+                                    {
+                                        this.props.isDeveloper ?
+                                            <div className="button-center">
+                                            {   appliedOrNot == -1 || appliedOrNot2 == -1 ?
+                                                <button style={{cursor:'pointer'}} onClick={() => this.applyToJob(userID, job.job_id)}>Apply for Job</button>
+                                                :
+                                                <>
+                                                    <button style={{background: 'none'}}>✔Applied</button>
+                                                </>
+                                            }
+                                            {   favedOrNot == -1  ?
+                                                <button style={{cursor:'pointer'}} onClick={() => this.addFavorite(userID, job.job_id)}>Save to Favorites</button>
+                                                :
+                                                <>
+                                                    <button style={{background: 'none'}}>✔Saved</button>
+                                                </>
+                                            }
+                                            </div>
+                                            
+                                        : <img src={Loading} />
+                                    }
                                 </div>
                             })
                 }
@@ -130,8 +193,9 @@ class DetailedJobsPublic extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        userID: state.userID
+        userID: state.userID,
+        isDeveloper: state.isDeveloper
     }
 }
 
-export default connect(mapStateToProps)(DetailedJobsPublic);
+export default withRouter(connect(mapStateToProps)(DetailedJobsPublic));

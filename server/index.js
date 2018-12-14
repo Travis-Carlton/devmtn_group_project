@@ -131,6 +131,7 @@ app.post('/api/uploadprofilepicture', controller.uploadProfile);
 app.post('/api/uploadprofilepicturedevprofile', controller.uploadDevProfilePicture);
 app.get('/api/getdevapplied/:id', controller.getDevApplied)
 app.put(`/api/updatedevprofile`, controller.updateDevProfile);
+app.get('/api/getallapplied', controller.getAllApplied);
 ////////////////////////////
 
 //////// messaging calls ///////

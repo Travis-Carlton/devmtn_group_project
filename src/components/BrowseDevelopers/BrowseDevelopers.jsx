@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import './BrowseDevelopers.scss';
 import {connect} from 'react-redux';
+import Loading from '../../media/Loading.gif';
 
 class BrowseDevelopers extends Component {
     constructor(){
@@ -55,7 +56,7 @@ render() {
             </div>
             :
             <div>
-                <img src='http://www.vivo.com/themes/custom/vivo/img/loader.gif' alt="loading"/>
+                <img src={Loading} alt="loading"/>
                 {this.getDevelopers()}
             </div>
         }

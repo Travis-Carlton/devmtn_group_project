@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Loading from '../../media/Loading.gif';
 import '../Profile/Profile';
 
 class BrowseDevDetailed extends Component {
@@ -61,7 +62,7 @@ class BrowseDevDetailed extends Component {
                     </div>
                     :
                     <div>
-                        <img src='http://www.vivo.com/themes/custom/vivo/img/loader.gif' alt="loading"/>
+                        <img src={Loading} alt="loading"/>
                     </div>
                 }
             </div>

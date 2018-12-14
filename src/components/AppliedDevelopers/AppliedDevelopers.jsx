@@ -30,7 +30,8 @@ class AppliedDevelopers extends Component {
 
     acceptDeveloper = (user_id, job_id) => {
         axios.post('/api/accept', {user_id, job_id}).then(res => {
-            console.log('Hired Dev')
+            alert('Hired Dev')
+            this.props.history.push('/profile')
         })
     }
 

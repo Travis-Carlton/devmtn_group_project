@@ -44,11 +44,12 @@ export default class  extends Component {
         }
         let env = 'sandbox';
         let currency = 'USD';
-        let total = 1000;
+        let total = this.state.donationAmount;
         const client = {
             sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
             production: 'AbqrWh1gl8Vmpep3DG3iBj-sLGvgm-qFB1lFysyJRiUxybalQ3Nr5gIevSx3pUeHEsWluTJvOY60r3xK',
         }
+        console.log('donateeeeee', this.state.donationAmount)
         return (
             <div className='donationmodalp'>
                 <div className='donationmodalc'>

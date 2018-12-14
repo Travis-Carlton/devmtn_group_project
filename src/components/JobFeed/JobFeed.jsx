@@ -4,6 +4,7 @@ import './JobFeed.scss';
 import {Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import Loading from '../../media/Loading.gif';
 
 class JobFeed extends Component {
 constructor(){
@@ -37,7 +38,7 @@ render() {
                     this.state.jobs.map(job => {
                         let num = job.description.split(' ').length
                         let splitDescription = job.description.split(' ')
-                        let trimDescription = splitDescription.splice(0, ((splitDescription.length/1.5))).join(' ')
+                        let trimDescription = splitDescription.slice(0, 20).join(' ')
                         return <div onClick={() => {}}>
         
                                     <div className="jobfeedc">
@@ -61,7 +62,7 @@ render() {
                     })
                     :
                     <div>
-                        <h1>Loading...</h1>
+                        <img src={Loading} />
                     </div>
                 }
             </div>

@@ -183,5 +183,11 @@ module.exports = {
             res.send('success')
             // req.session.user
         })
+    },
+    getAllApplied: (req, res) => {
+        const db = req.app.get('db');
+        db.get_all_applied().then(applied => {
+            res.status(200).send(applied)
+        })
     }
 }
