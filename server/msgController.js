@@ -11,18 +11,19 @@ module.exports = {
         let {userID,otherUserId} = req.body;
         userID = parseInt(userID);
         otherUserId = parseInt(otherUserId);
+        // console.log('user ids ===', userID, otherUserId);
         db.get_conversations().then(response=>{
             console.log(response)
             let match = false
             let matchTwo = false
             let forEach = response.filter(convo=>{
-                if(convo.user_id_one === userID || convo.user_id_two === userID){
+                if(convo.user_id_one === userID || convo.user_id_one === otherUserId){
                     // if(convo.user_id_two === userID || convo.user_id_two === otherUserId){
-                    // console.log('object', convo.user_id_one === userID, convo.user_id_one === otherUserId);
-                    // console.log('object', convo.user_id_two === userID, convo.user_id_two === otherUserId);
+                    // console.log('object',convo.user_id_one === userID || convo.user_id_two === userID);
                     match = true
-                    }
-                if(convo.user_id_one === otherUserId || convo.user_id_two === otherUserId){
+                }
+                if(convo.user_id_two === userID || convo.user_id_two === otherUserId){
+                    // console.log('object', convo.user_id_one === otherUserId || convo.user_id_two === otherUserId);
                     matchTwo = true
                 } 
                 if(match && matchTwo){

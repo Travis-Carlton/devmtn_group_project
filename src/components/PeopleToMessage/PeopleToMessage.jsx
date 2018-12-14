@@ -13,11 +13,12 @@ class PeopleToMessage extends Component {
             conversations: [],
             conversationId: '',
             activeTab: true,
-            searchTab: false
+            searchTab: false,
+            isConvos: false
         }
     }
 
-    componentDidMount(){
+    componentWillMount(){
         this.getAllUsers();
         this.getActiveConversations();
     }
@@ -32,11 +33,27 @@ class PeopleToMessage extends Component {
     }
 
     getActiveConversations = ()=>{
-        const {userID} = this.props;
+        // const {userID} = this.props;
+        
+        const userID = localStorage.getItem('userId')
+        console.log(userID)
         axios.get(`/api/getactiveconversations/${userID}`).then(res=>{
-            // console.log('==========active convos',res.data);
-            this.setState({
-                conversations: res.data
+            console.log('==========active convos',res.data.length);
+            if(res.data.length){
+                let activeConvos = []
+                for(let i = 0; i<res.data.length;i++){
+                if(res.data[i]!=null){
+                    activeConvos.push(res.data[i])
+                }
+            }
+            console.log('<><><<>',activeConvos);
+            // return activeConvos
+                return this.setState({
+                    conversations: activeConvos,
+                    isConvos: true
+                })
+            } else return this.setState({
+                conversations: []
             })
         })        
     }
@@ -86,24 +103,42 @@ class PeopleToMessage extends Component {
     }
 
     render() {
-        console.log(this.state.conversationId);
+        console.log('this.state ===',this.state.conversations);
+        //    const activeConvos = 
+        //    this.state.conversations.map(el=>{
+        //         console.log('object help ', el)
+        //     return (
+        //            <div onClick={()=>this.createConversation(el.user_id)} className='peoplecards' style={{cursor:'pointer'}} 
+        //            key={el.user_id}>
+        //                <img src={el.profile_picture} alt=""/>
+        //                <p>{el.name}</p>
+        //            </div>
+        //        )
+        //    }) 
 
-        const activeConvos = this.state.conversations.map(el=>{
-            return (
-                <div onClick={()=>this.createConversation(el.user_id)} className='peoplecards' style={{cursor:'pointer'}} 
-                key={el.user_id}>
-                    <img src={el.profile_picture} alt=""/>
-                    <p>{el.profile_name}</p>
-                </div>
-            )
-        })
+        // const convos2 = ()=>{
+        //     let cConvos = this.state.conversations;
+        //     let nConvo = []
+        //     for(let i = 0; i<cConvos.length;i++){
+        //         if(cConvos[i]!=null){
+        //             nConvo.push(cConvos[i])
+        //         }
+        //     }
+        //     console.log('<><><<>',nConvo);
+        //     return nConvo
+        // }
+        // convos2()
+        
+        
+       
+        
 
         const filteredPeople = this.state.displayPeople.map(el=>{
             return ( 
                 <div onClick={()=>this.createConversation(el.user_id)}  
                 key={el.user_id} className='peoplecards' style={{cursor:'pointer'}}>
-                    <img src={el.picture} alt=''/>
-                    <p>{el.profile_name}</p>
+                    <img src={el.profile_picture} alt=''/>
+                    <p>{el.name}</p>
                 </div>    
             )
         })
@@ -113,8 +148,8 @@ class PeopleToMessage extends Component {
                 <div  onClick={()=>this.createConversation(el.user_id)}
                   key={el.user_id} to={`/messaging/${el.user_id}`} 
                   className='peoplecards' style={{cursor:'pointer'}}>
-                    <img src={el.picture} alt=''/>
-                    <p>{el.profile_name}</p> 
+                    <img src={el.profile_picture} alt=''/>
+                    <p>{el.name}</p> 
                 </div>
             )
         })
@@ -144,7 +179,19 @@ class PeopleToMessage extends Component {
                     <div className='ptmpeopleview'>
                         { this.state.activeTab?
                             <>
-                                <div className="thumbnails">{activeConvos}</div>
+                                <div className="thumbnails">{
+                                    this.state.conversations.map(el=>{
+                                        console.log('object help ', el)
+                                    return (
+                                           <div onClick={()=>this.createConversation(el.user_id)} className='peoplecards' style={{cursor:'pointer'}} 
+                                           key={el.user_id}>
+                                               <img src={el.profile_picture} alt=""/>
+                                               <p>{el.name}</p>
+                                           </div>
+                                       )
+                                   }) 
+                                }</div>
+                                {/* {activeConvos} */}
                             </>
                             :
                             <>
