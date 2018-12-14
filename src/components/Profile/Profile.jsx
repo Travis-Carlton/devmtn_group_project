@@ -114,12 +114,12 @@ class Profile extends Component {
           <img src={profilePicture} alt="" />
           <button onClick={() => this.uploadWidget()} className="upload-button">Upload Picture</button>
           <h1>{name}</h1>
-          <p className="overview">{overview}</p>
+          {/* <p className="overview">{overview}</p> */}
           {/* Developer section */}
           {isDeveloper ?
           <div className="dev-info">
           <h2>{title}</h2>
-          <h3>{devEmail}</h3>
+          <h3><a href={devEmail}>{devEmail}</a></h3>
           <p className="overview">{overview}</p>
             <div className="hourly-portfolio-parent">
               <div className="child">

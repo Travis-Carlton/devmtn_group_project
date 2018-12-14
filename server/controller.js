@@ -4,6 +4,7 @@ module.exports = {
         const { developer, id } = req.body;
         db.is_developer(id, developer)
         .then(user => {
+            // req.session.user = developer
             res.status(200).json(user)
         }).catch(error => {
             console.error('Error on isDeveloper', error)
@@ -11,22 +12,29 @@ module.exports = {
     },
     createDevProfile: (req, res) => {
         const db = req.app.get('db');
-        const { userID, name, title, overview, hourly_rate, portfolio, skills, education} = req.body;
+        const { userID, email, title, overview, hourly_rate, portfolio, skills, education} = req.body;
+        // req.session.user.user_id = userID;
         req.session.user.title = title;
+        req.session.user.email = email;
         req.session.user.overview = overview;
         req.session.user.hourly_rate = hourly_rate;
         req.session.user.portfolio = portfolio;
         req.session.user.skills = skills;
         req.session.user.education = education;
-        db.create_dev_profile(userID, name, title, overview, hourly_rate, portfolio, skills, education)
+        // req.session.user.isDeveloper = true;
+        db.create_dev_profile(userID, email, title, overview, hourly_rate, portfolio, skills, education)
         .then(profile => {
-            res.status(200).json(profile)
+            // db.is_developer([parseInt(userID),true]).then(response=>{
+
+                res.status(200).json({profile})
+            // })
         }).catch(error => {
             console.error('Error on createDevProfile', error)
         })
     },
     viewDevProfile: (req, res) => {
         const db = req.app.get('db');
+        // console.log('++++++++++++',req.params)
         let { id } = req.params;
         id = parseInt(id);
         db.get_dev_profile([id])

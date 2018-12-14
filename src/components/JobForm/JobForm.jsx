@@ -23,6 +23,7 @@ class JobForm extends Component {
         const estimatedTime = this.state.estimatedTime;
         const pay = this.state.pay;
         const email = this.state.email;
+
         axios.post('/api/createjob', {
             client_id: id,
             title: title,
@@ -32,10 +33,12 @@ class JobForm extends Component {
             pay: pay,
             job_email: email,
         }).then(response => {
+            
             alert('Job Posted')
             this.props.history.push('/')
         })
     }
+
     
     handleSearch = (e) => {
         this.setState({

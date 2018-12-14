@@ -95,7 +95,7 @@ class App extends Component {
         }
 
         axios.get('/api/user')
-
+        console.log('________',user_id)
         axios.get(`/api/getdevprofile/${user_id}`).then(res2 => {
           // console.log("profile get ", res2.data);
           let { developer_email,education,hourly_rate,overview,
