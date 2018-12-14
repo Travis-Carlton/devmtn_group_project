@@ -47,6 +47,9 @@
             border: none;
             color: white;
             font-size: 16px;
+            &:hover {
+                background: rgb(20, 104, 157);
+            }
         }
         > .attachDocs{
             background: white;
@@ -81,6 +84,10 @@
         border: none;
         color: white;
         margin: 20px auto;
+        &:hover {
+            background: rgb(20, 104, 157);
+            cursor: pointer;
+        }
     }
     img {
         border-radius: 50%;

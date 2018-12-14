@@ -80,7 +80,10 @@ nav {
     a, p {
         margin: 20px auto;
         width: fit-content;
+        text-decoration: none;
+        color: white;
     }
+    
 }
 
 
@@ -109,6 +112,9 @@ nav {
         p, a {
             font-size: 16px;
             margin: 10px auto;
+            &:hover {
+                color: rgb(165, 165, 165);
+            }
         }
     }
 
@@ -127,16 +133,16 @@ nav {
         z-index: 1;
         transform: translate(44vw,5.1vh);     
         
-        >div{
+        div {
             background-color:rgba(0, 0, 0, 0.65);
-            width: 90px;
-            padding: 0 20px 5px 20px;
-            font-size: 18px;
+            width: 100px;
+            padding: 20px 20px 5px 20px;
+            font-size: 16px;
             text-align: center;
             > * {
                 color: white;
                 text-decoration: none;
-                font-size: 20px;
+                font-size: 16px;
             }
         }
 

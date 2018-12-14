@@ -46,7 +46,7 @@
     min-height: 64px;
     box-sizing: border-box;
     margin-bottom: 1rem;
-    padding: 5px;
+    padding: 10px;
     border-radius: 1px;
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 15px 0 rgba(0, 0, 0, 0.05);
     display: -ms-flexbox;
@@ -65,7 +65,7 @@
       color: rgb(255, 255, 255); 
       }
     .Toastify__toast--info {
-      background: #2d9dff; }
+      background: rgb(26, 144, 217);; }
     .Toastify__toast--success {
       background: #07bc0c; }
     .Toastify__toast--warning {
