@@ -165,10 +165,11 @@ class DetailedJobsPublic extends Component {
                 {
                     this.state.job.map(job => {
                         let semiFinalDate = []
-                        let splitStamp = job.stamp.split('')
-                        let betterDate = splitStamp.slice(0, 10)
-                        semiFinalDate.push(betterDate[5], betterDate[6], betterDate[4], betterDate[8], betterDate[9], betterDate[7],betterDate[0], betterDate[1], betterDate[2], betterDate[3]);
-                        let finalDate = semiFinalDate.join('')
+                        console.log(job.stamp)
+                        let splitStamp = job.stamp.split('T')
+                        let withoutDashes = splitStamp[0].split('-')
+                        semiFinalDate.push(withoutDashes[1], withoutDashes[2], withoutDashes[0])
+                        let finalDate = semiFinalDate.join('-')
                         return <div key={job.id} className="detail-job-info">
                                     <h2>{job.title}</h2>
                                     <p className="detail-job-description">{job.description}</p>
