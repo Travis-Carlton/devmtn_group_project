@@ -3,14 +3,17 @@ import './DevWizard.scss';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import {updateName, updateTitle, updateOverview, updateHourlyRate, updatePortfolio, updateSkills, updateEducation} from '../../redux/reducer'
+import {updateName, updateTitle, updateOverview, 
+    updateHourlyRate, updatePortfolio, updateSkills, 
+    updateEducation, updateDevEmail, updateIsDeveloper} from '../../redux/reducer';
 
 class DevOrClient extends Component {
     constructor() {
         super();
         this.state = {
-            name: '',
+            // name: '',
             title: '',
+            email: '',
             overview: '',
             hourly_rate: '',
             portfolio: '',
@@ -21,13 +24,16 @@ class DevOrClient extends Component {
 
     continue = (e)=>{
         e.preventDefault();
-        const { name, title, overview, hourly_rate, portfolio, skills, education } = this.state;
-        const { userID, updateName, updateTitle, updateOverview, updateHourlyRate, updatePortfolio, updateSkills, updateEducation} = this.props;
-        axios.post('/api/createdevprofile', {userID, name, title, overview, hourly_rate, portfolio, skills, education})
+        const { email, title, overview, hourly_rate, portfolio, skills, education } = this.state;
+        const { userID, updateTitle, updateDevEmail, updateOverview, updateHourlyRate, updatePortfolio, updateSkills, updateEducation} = this.props;
+        
+        axios.post('/api/createdevprofile', {userID, title, email, overview, hourly_rate, portfolio, skills, education})
         .then(() => {
             console.log('It worked')
-            updateName(name)
+            // updateName(name)
+            // this.setDeveloper(true,userID)
             updateTitle(title)
+            updateDevEmail(email)
             updateOverview(overview)
             updateHourlyRate(hourly_rate)
             updatePortfolio(portfolio)
@@ -38,6 +44,8 @@ class DevOrClient extends Component {
             console.error('Error on Dev form submit', error)
         })
     }
+
+ 
 
     handleInputs = e => {
         this.setState({[e.target.name]: e.target.value})
@@ -51,10 +59,14 @@ class DevOrClient extends Component {
                 <form onSubmit={this.continue} className="devwizc">
                     <label>Title:</label>
                     <input name="title" type="text" minLength='2' onChange={event => this.handleInputs(event)} required/>
+                    <label>Email:</label>
+                    <input name="email" type="email" minLength='2' onChange={event => this.handleInputs(event)} required/>
                     <label>Overview:</label>
                     <textarea name="overview" type="text" minLength='2' onChange={event => this.handleInputs(event)} required/>
                     <label>Hourly rate:</label>
                     <input name="hourly_rate" type="number" onChange={event => this.handleInputs(event)} required/>
+                    <label>Portfolio:</label>
+                    <input name="portfolio" type="text" onChange={event => this.handleInputs(event)} required/>
                     <label>Skills:</label>
                     <input name="skills" type="text" minLength='2' onChange={event => this.handleInputs(event)} required/>
                     <label>Education:</label>
@@ -76,4 +88,7 @@ function mapStateToProps(state){
     }
 }
 
-export default withRouter(connect(mapStateToProps, {updateName, updateTitle, updateOverview, updateHourlyRate, updatePortfolio, updateSkills, updateEducation})(DevOrClient))
+export default withRouter(connect(mapStateToProps, 
+    {updateName, updateTitle, updateDevEmail, updateOverview, 
+        updateHourlyRate, updatePortfolio, updateSkills, updateEducation,
+            updateIsDeveloper})(DevOrClient))
